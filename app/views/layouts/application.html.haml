@@ -1,0 +1,36 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Gallery
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .navbar.navbar-default.navbar-static-top
+      .container
+        %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to "My project",  root_path, class: "navbar-brand"
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          %ul.nav.navbar-nav
+            %li Category
+    .container
+      .row
+        .col-lg-9
+          = yield
+        .col-lg-3
+          .well.sidebar-nav
+            %h3 Sidebar
+            %ul.nav.nav-list
+              / <li class="nav-header"><haml_silent></haml_silent></li>
+              / <li><haml_silent></haml_silent></li>
+          / /.well
+        / /span
+      / /row
+      %footer
+        %p © Company 2019
+    / /container

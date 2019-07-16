@@ -68,3 +68,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails', '4.3.5'
 
 gem "haml-rails", "~> 2.0"
+
+gem 'friendly_id', '~> 5.2.4'
+
+gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'

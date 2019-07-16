@@ -1,0 +1,5 @@
+%h1
+  =@category.title
+  - @images.each do |image|
+    =image_tag "#{image.src}"
+

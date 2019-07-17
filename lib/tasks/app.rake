@@ -7,7 +7,7 @@ namespace :app do
       imgs = Dir.entries("app/assets/images/#{cat}").reject {|f| File.directory?(f)}
       id = Category.find_by(title:"#{cat}").id
       imgs.each do |img|
-        Image.find_or_create_by(src:"#{cat}/#{img}", category_id: id)
+        Image.find_or_create_by(src:"#{cat}/#{img}", category_id: id, wave_src:"#{img}")
       end
     end
   end

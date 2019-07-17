@@ -1,0 +1,7 @@
+%h1
+  Изображения
+- @images.each do |image|
+  %div.col-2
+    = image_tag "#{image.src}", :class => "img-fluid"
+    = link_to "Image", image_path(image)
+

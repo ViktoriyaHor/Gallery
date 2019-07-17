@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#index'
 
-  resources :categories do
+  resources :categories, shallow: true do
     resources :images
   end
 

@@ -1,5 +1,21 @@
 %h1
   =@category.title
-  - @images.each do |image|
-    =image_tag "#{image.src}"
+  %div.row
+    - @images.each do |image|
+      %div.col-2
+        = link_to image_tag("#{image.src}", :class => "img-fluid"), image_path(image)
 
+%h2 Add an image:
+= form_with(model: [ @category, @category.images.build ], local: true) do |f|
+  -if @category.errors.any?
+    #errors
+      %p
+        = pluralize(@category.errors.count, "error")
+        Prevented this recipe from saving
+      %ul
+        -@category.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.file_field :src
+    = f.submit 'Save'
+= link_to "Back", categories_path

@@ -37,11 +37,9 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    if @category.destroy
+    @category.destroy
       redirect_to categories_path
-    else
-      redirect_to categories_path, error: 'Not delete'
-    end
+
   end
 
   private

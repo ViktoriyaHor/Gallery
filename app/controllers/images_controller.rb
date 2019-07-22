@@ -24,24 +24,19 @@ class ImagesController < ApplicationController
         render :new
       end
     end
-    # raise hhh
-    # @image = @category.images.create(src: "/uploads/image/wave_src/#{image_params[:wave_src].original_filename}",
-    #                                  wave_src: image_params[:wave_src])
-
-
   end
 
   def destroy
     @category = Category.friendly.find(params[:category_id])
     @image = @category.images.find(params[:id])
     @image.destroy
-    redirect_to categories_path(@category)
+    redirect_to category_path(@category)
   end
 
   private
 
   def image_params
     # raise qwe
-    params.require(:image).permit(:id, :wave_src)
+    params.require(:image).permit(:src, :category_id)
   end
 end

@@ -1,5 +1,5 @@
 class Image < ApplicationRecord
-  mount_uploader :wave_src, ImageUploader
+  mount_uploader :src, ImageUploader
   belongs_to :category
-  # validates :wave_src, presence: true
+  validates :src, presence: true
 end

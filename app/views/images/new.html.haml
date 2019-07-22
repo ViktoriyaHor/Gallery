@@ -4,6 +4,6 @@
 = simple_form_for [ @category, @category.images.build ] do |f|
   .form-group
     = f.error_notification
-    = f.file_field :wave_src
+    = f.file_field :src
     = f.submit 'Save'
 -#= link_to "Back", categories_path

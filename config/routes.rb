@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   get 'images/index'
 
-  resources :categories, shallow: true do
-    resources :images
+  # resources :categories, shallow: true do
+    resources :categories do
+      resources :images
   end
 
 

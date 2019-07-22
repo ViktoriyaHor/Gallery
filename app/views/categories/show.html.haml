@@ -1,20 +1,22 @@
 %h1
   =@category.title
-  %div.row
-    - @images.each do |image|
-      %div.col-2
-        = link_to image_tag("#{image.wave_src.url(:thumb)}", :class => "img-fluid"),
-                             image_path(image) if image.src.nil?
-        -#= link_to image_tag("#{image.src}", :class => "img-fluid"),
-        -#                     image_path(image) if !image.src.nil?
+%div.row
+  - @images.each do |image|
+    %div.col-2
+      = link_to image_tag("#{image.src.url(:thumb)}", :class => "img-fluid"),
+                            image_path(image) if image.src?
+      = link_to 'Destroy Image', image_path(category_id: image.category.id, id: image.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }
+
 -flash.each do |name, msg|
   = content_tag :div, msg, class: name
+
 %h2 Add an image:
 = simple_form_for [ @category, @category.images.build ] do |f|
   .form-group
     = f.error_notification
-    = f.file_field :wave_src
-
+    = f.file_field :src
     = f.submit 'Save'
 = link_to "Back", categories_path
 

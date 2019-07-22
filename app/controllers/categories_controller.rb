@@ -22,6 +22,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to @category
     else
+      # raise ff
       render :new
     end
   end

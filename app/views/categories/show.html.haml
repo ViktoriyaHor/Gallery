@@ -3,19 +3,18 @@
   %div.row
     - @images.each do |image|
       %div.col-2
-        = link_to image_tag("#{image.src}", :class => "img-fluid"), image_path(image)
-
+        = link_to image_tag("#{image.wave_src.url(:thumb)}", :class => "img-fluid"),
+                             image_path(image) if image.src.nil?
+        -#= link_to image_tag("#{image.src}", :class => "img-fluid"),
+        -#                     image_path(image) if !image.src.nil?
+-flash.each do |name, msg|
+  = content_tag :div, msg, class: name
 %h2 Add an image:
-= form_with(model: [ @category, @category.images.build ], local: true) do |f|
-  -if @category.errors.any?
-    #errors
-      %p
-        = pluralize(@category.errors.count, "error")
-        Prevented this recipe from saving
-      %ul
-        -@category.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for [ @category, @category.images.build ] do |f|
   .form-group
-    = f.file_field :src
+    = f.error_notification
+    = f.file_field :wave_src
+
     = f.submit 'Save'
 = link_to "Back", categories_path
+

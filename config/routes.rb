@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   # resources :categories, shallow: true do
   resources :categories, param: :slug do
-    resources :images
+    resources :images do
+      resources :comments, shallow: true
+    end
   end
 
   get 'categories/:category_slug/:id', to: 'images#show', as: 'category_image_new'

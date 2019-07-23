@@ -7,6 +7,7 @@ class ImagesController < ApplicationController
     @image = Image.new
   end
   def show
+    @category = Category.friendly.find(params[:category_slug])
     @image = Image.find(params[:id])
   end
 

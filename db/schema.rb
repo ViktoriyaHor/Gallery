@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_083312) do
+ActiveRecord::Schema.define(version: 2019_07_23_080315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2019_07_16_083312) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "commenter"
+    t.text "body"
+    t.bigint "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_comments_on_image_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -42,5 +51,6 @@ ActiveRecord::Schema.define(version: 2019_07_16_083312) do
     t.index ["category_id"], name: "index_images_on_category_id"
   end
 
+  add_foreign_key "comments", "images"
   add_foreign_key "images", "categories"
 end

@@ -11,7 +11,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @category = Category.friendly.find(params[:category_id])
+    @category = Category.friendly.find(params[:category_slug])
     if params[:image].blank?
       flash[:notice] = "You didn't select a file"
       redirect_to @category
@@ -27,7 +27,7 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    @category = Category.friendly.find(params[:category_id])
+    @category = Category.friendly.find(params[:category_slug])
     @image = @category.images.find(params[:id])
     @image.destroy
     redirect_to category_path(@category)

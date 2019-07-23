@@ -45,11 +45,12 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:title)
+    params.require(:category).permit(:title, :slug)
   end
 
   def find_category
-    @category = Category.friendly.find(params[:id])
+    @category = Category.find_by_slug(params[:slug])
+    # raise ddd
   end
 
 end

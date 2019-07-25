@@ -1,9 +1,3 @@
-= simple_form_for [ @category, @image, @image.comments.build ] do |f|
-  .form-group
-    = f.error_notification
-    - if @category.errors.any?
-      - @category.errors.full_messages.each do |msg|
-        %p= msg
-    = f.text_field :commenter
-    = f.text_field :body
-    = f.submit 'Save'
+%h2 New comment
+= render 'comments/errors'
+= render 'comments/form'

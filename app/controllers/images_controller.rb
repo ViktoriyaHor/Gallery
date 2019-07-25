@@ -1,43 +1,46 @@
 class ImagesController < ApplicationController
 
+  before_action :find_category, only: [:create, :show, :destroy]
+  before_action :find_image, only: [:show, :destroy]
+
   def index
     @images = Image.take(20)
   end
+
+  def show
+  end
+
   def new
     @image = Image.new
   end
-  def show
-    @category = Category.friendly.find(params[:category_slug])
-    @image = Image.find(params[:id])
-  end
 
   def create
-    @category = Category.friendly.find(params[:category_slug])
     if params[:image].blank?
-      flash[:notice] = "You didn't select a file"
-      redirect_to @category
+      redirect_to @category, danger: "Image didn't save! Please select a file"
     else
       @image = @category.images.new(image_params)
-      if @image.save
-        # raise hhh
-        redirect_to @category
-      else
-        render :new
-      end
+      @image.save
+      redirect_to @category, success: "Image saved"
     end
   end
 
   def destroy
-    @category = Category.friendly.find(params[:category_slug])
-    @image = @category.images.find(params[:id])
     @image.destroy
-    redirect_to category_path(@category)
+    redirect_to category_path(@category), success: "Image removed"
   end
 
   private
 
+  def find_category
+    @category = Category.friendly.find(params[:category_slug])
+  end
+
+  def find_image
+    @image = @category.images.find(params[:id])
+  end
+
   def image_params
-    # raise qwe
     params.require(:image).permit(:src, :category_id)
   end
+
 end

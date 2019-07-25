@@ -1,6 +1,10 @@
 
 = image_tag "#{@image.src.url}", :class => "img-fluid" if @image.src?
 
+= button_to 'Like', category_image_likes_path(@category, @image), method: :post
+%p
+  = @image.likes.count
+  = (@image.likes.count) == 1 ? 'Like' : 'Likes'
 %h2 Comments:
 - @image.comments.each do |comment|
   %p Commenter:
@@ -8,21 +12,13 @@
   %p Comment:
   = comment.body
   %p
-    = link_to 'Destroy Comment', comment_path(category_slug: @image.category.slug, image_id: @image.id, id: comment.id),
+    = link_to 'Destroy Comment', comment_path(category_slug: @image.category.slug,
+    image_id: @image.id, id: comment.id),
     method: :delete,
     data: { confirm: 'Are you sure?' }
     = link_to "Edit", edit_comment_path(comment)
 
 %h2 Add a comment:
-=render 'comments/form'
--#= simple_form_for [ @category, @image, @image.comments.build ] do |f|
--#  .form-group
--#    = f.error_notification
--#    - if @category.errors.any?
--#      - @category.errors.full_messages.each do |msg|
--#        %p= msg
--#    = f.text_field :commenter
--#    = f.text_field :body
--#    = f.submit 'Save'
+= render 'comments/form'
 
 = link_to "Back", categories_path

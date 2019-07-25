@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :categories, param: :slug do
     resources :images do
       resources :comments, shallow: true
+      resources :likes
     end
   end
 

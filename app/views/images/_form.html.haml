@@ -1,0 +1,5 @@
+%h2 Add an image:
+= simple_form_for [ @category, @category.images.build ] do |f|
+  .form-group
+    = f.file_field :src
+    = f.submit 'Save'

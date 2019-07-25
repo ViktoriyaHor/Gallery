@@ -1,9 +1,7 @@
+%h2 Edit comment
+= render 'comments/errors'
 = simple_form_for @comment do |f|
   .form-group
-    = f.error_notification
-    -#- if @category.errors.any?
-    -#  - @category.errors.full_messages.each do |msg|
-    -#    %p= msg
     = f.text_field :commenter
     = f.text_field :body
     = f.submit 'Save'

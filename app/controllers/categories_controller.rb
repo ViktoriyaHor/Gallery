@@ -6,12 +6,12 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def new
-    @category = Category.new
-  end
-
   def show
     @images = Image.where(category_id:"#{@category.id}")
+  end
+
+  def new
+    @category = Category.new
   end
 
   def edit
@@ -20,26 +20,23 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to @category
+      redirect_to @category, success: 'Category created'
     else
-      # raise ff
-      render :new
+      render :new, danger: "Category didn't creat"
     end
   end
 
   def update
     if @category.update(title: category_params[:title], slug: category_params[:title])
-      # raise qwe
-      redirect_to @category
+      redirect_to @category, success: 'Category updated'
     else
-      render :edit
+      render :edit, danger: "Category didn't update"
     end
   end
 
   def destroy
     @category.destroy
-      redirect_to categories_path
-
+    redirect_to categories_path, success: 'Category removed'
   end
 
   private
@@ -50,7 +47,6 @@ class CategoriesController < ApplicationController
 
   def find_category
     @category = Category.find_by_slug(params[:slug])
-    # raise ddd
   end
 
 end

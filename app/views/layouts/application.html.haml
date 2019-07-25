@@ -21,6 +21,11 @@
     .container
       .row
         .col-lg-9
+          .row
+            .col-12
+              -flash.each do |name, message|
+                %div{:class => "alert alert-#{name}"}
+                  = message
           = yield
         .col-lg-3
           .well.sidebar-nav

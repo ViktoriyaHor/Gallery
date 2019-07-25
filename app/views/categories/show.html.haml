@@ -1,5 +1,9 @@
 %h1
   =@category.title
+
+= render 'images/form'
+
+= link_to "Back", categories_path
 %div.row
   - @images.each do |image|
     %div.col-2
@@ -9,14 +13,4 @@
               method: :delete,
               data: { confirm: 'Are you sure?' }
 
--flash.each do |name, msg|
-  = content_tag :div, msg, class: name
-
-%h2 Add an image:
-= simple_form_for [ @category, @category.images.build ] do |f|
-  .form-group
-    = f.error_notification
-    = f.file_field :src
-    = f.submit 'Save'
-= link_to "Back", categories_path
 

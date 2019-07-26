@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
   root 'static_pages#index'
 
-  get 'images/index'
+  get 'images', to: 'images#index'
+  get 'comments', to: 'comments#all'
+  get 'profile', to: 'static_pages#profile'
 
   # resources :categories, shallow: true do
   resources :categories, param: :slug do

@@ -36,6 +36,10 @@ class CommentsController < ApplicationController
     redirect_to category_image_new_path(@category, @image), success: 'Comment removed'
   end
 
+  def all
+    @comments = Comment.all
+  end
+
   private
 
   def find_category_image

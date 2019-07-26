@@ -1,0 +1,8 @@
+- if user_signed_in?
+  %p
+    = @user.email
+  %p
+    = @user.username
+
+
+= link_to "Edit profile", edit_user_registration_path

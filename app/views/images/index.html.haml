@@ -1,8 +1,9 @@
 %h1
-  Изображения
+  Images
 - @images.each do |image|
   %div.col-2
     = image_tag "#{image.src}", :class => "img-fluid" if image.src?
-    = link_to "Image", image_path(image)
+    = link_to "Image",
+    category_image_new_path(category_slug: image.category.slug, id: image.id)
 
 

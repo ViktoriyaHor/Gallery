@@ -8,14 +8,15 @@
       <ObjectId>16385</ObjectId>
       <StateNumber>569</StateNumber>
       <Owner>developer</Owner>
-      <IntrospectionStateNumber>2040</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2220</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
-      <Relations>sequence|table|17830|17832|1
-sequence|table|17847|17849|1
-sequence|table|17798|17800|1
-sequence|table|17786|17788|1
-sequence|table|17812|17814|1
+      <Relations>sequence|table|17861|17863|1
+sequence|table|17873|17875|1
+sequence|table|17885|17887|1
+sequence|table|17899|17901|1
+sequence|table|17911|17913|1
+sequence|table|17936|17938|1
 </Relations>
     </database>
     <database id="3" parent="1" name="postgres">
@@ -113,7 +114,7 @@ sequence|table|17812|17814|1
       <Comment>standard public schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>2041</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2221</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -174,458 +175,615 @@ sequence|table|17812|17814|1
       <SchemaId>11</SchemaId>
     </extension>
     <sequence id="27" parent="19" name="categories_id_seq">
-      <ObjectId>17786</ObjectId>
-      <StateNumber>1855</StateNumber>
+      <ObjectId>17861</ObjectId>
+      <StateNumber>2151</StateNumber>
       <Owner>developer</Owner>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
     <sequence id="28" parent="19" name="comments_id_seq">
-      <ObjectId>17830</ObjectId>
-      <StateNumber>1985</StateNumber>
+      <ObjectId>17873</ObjectId>
+      <StateNumber>2154</StateNumber>
       <Owner>developer</Owner>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
     <sequence id="29" parent="19" name="friendly_id_slugs_id_seq">
-      <ObjectId>17798</ObjectId>
-      <StateNumber>1858</StateNumber>
+      <ObjectId>17885</ObjectId>
+      <StateNumber>2157</StateNumber>
       <Owner>developer</Owner>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
     <sequence id="30" parent="19" name="images_id_seq">
-      <ObjectId>17812</ObjectId>
-      <StateNumber>1863</StateNumber>
+      <ObjectId>17899</ObjectId>
+      <StateNumber>2162</StateNumber>
       <Owner>developer</Owner>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
     <sequence id="31" parent="19" name="likes_id_seq">
-      <ObjectId>17847</ObjectId>
-      <StateNumber>2031</StateNumber>
+      <ObjectId>17911</ObjectId>
+      <StateNumber>2165</StateNumber>
       <Owner>developer</Owner>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <table id="32" parent="19" name="ar_internal_metadata">
+    <sequence id="32" parent="19" name="users_id_seq">
+      <ObjectId>17936</ObjectId>
+      <StateNumber>2204</StateNumber>
+      <Owner>developer</Owner>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <table id="33" parent="19" name="ar_internal_metadata">
       <ObjectId>16394</ObjectId>
       <Owner>developer</Owner>
       <StateNumber>572</StateNumber>
     </table>
-    <table id="33" parent="19" name="categories">
-      <ObjectId>17788</ObjectId>
+    <table id="34" parent="19" name="categories">
+      <ObjectId>17863</ObjectId>
       <Owner>developer</Owner>
-      <StateNumber>1865</StateNumber>
+      <StateNumber>2168</StateNumber>
     </table>
-    <table id="34" parent="19" name="comments">
-      <ObjectId>17832</ObjectId>
+    <table id="35" parent="19" name="comments">
+      <ObjectId>17875</ObjectId>
       <Owner>developer</Owner>
-      <StateNumber>1985</StateNumber>
+      <StateNumber>2167</StateNumber>
     </table>
-    <table id="35" parent="19" name="friendly_id_slugs">
-      <ObjectId>17800</ObjectId>
+    <table id="36" parent="19" name="friendly_id_slugs">
+      <ObjectId>17887</ObjectId>
       <Owner>developer</Owner>
-      <StateNumber>1858</StateNumber>
+      <StateNumber>2157</StateNumber>
     </table>
-    <table id="36" parent="19" name="images">
-      <ObjectId>17814</ObjectId>
+    <table id="37" parent="19" name="images">
+      <ObjectId>17901</ObjectId>
       <Owner>developer</Owner>
-      <StateNumber>1865</StateNumber>
+      <StateNumber>2167</StateNumber>
     </table>
-    <table id="37" parent="19" name="likes">
-      <ObjectId>17849</ObjectId>
+    <table id="38" parent="19" name="likes">
+      <ObjectId>17913</ObjectId>
       <Owner>developer</Owner>
-      <StateNumber>2031</StateNumber>
+      <StateNumber>2169</StateNumber>
     </table>
-    <table id="38" parent="19" name="schema_migrations">
+    <table id="39" parent="19" name="schema_migrations">
       <ObjectId>16386</ObjectId>
       <Owner>developer</Owner>
       <StateNumber>571</StateNumber>
     </table>
-    <column id="39" parent="32" name="key">
+    <table id="40" parent="19" name="users">
+      <ObjectId>17938</ObjectId>
+      <Owner>developer</Owner>
+      <StateNumber>2204</StateNumber>
+    </table>
+    <column id="41" parent="33" name="key">
       <Position>1</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>572</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="40" parent="32" name="value">
+    <column id="42" parent="33" name="value">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>572</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="41" parent="32" name="created_at">
+    <column id="43" parent="33" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>572</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="42" parent="32" name="updated_at">
+    <column id="44" parent="33" name="updated_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>572</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="43" parent="32" name="ar_internal_metadata_pkey">
+    <index id="45" parent="33" name="ar_internal_metadata_pkey">
       <ObjectId>16400</ObjectId>
       <StateNumber>572</StateNumber>
       <ColNames>key</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="44" parent="32" name="ar_internal_metadata_pkey">
+    <key id="46" parent="33" name="ar_internal_metadata_pkey">
       <ObjectId>16401</ObjectId>
       <StateNumber>572</StateNumber>
       <ColNames>key</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>ar_internal_metadata_pkey</UnderlyingIndexName>
     </key>
-    <column id="45" parent="33" name="id">
+    <column id="47" parent="34" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1855</StateNumber>
+      <StateNumber>2151</StateNumber>
       <DefaultExpression>nextval(&apos;categories_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="46" parent="33" name="title">
+    <column id="48" parent="34" name="title">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
-      <StateNumber>1855</StateNumber>
+      <StateNumber>2151</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="47" parent="33" name="created_at">
+    <column id="49" parent="34" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1855</StateNumber>
+      <StateNumber>2151</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="48" parent="33" name="updated_at">
+    <column id="50" parent="34" name="updated_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1855</StateNumber>
+      <StateNumber>2151</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="49" parent="33" name="slug">
+    <column id="51" parent="34" name="slug">
       <Position>5</Position>
       <DataType>varchar|0s</DataType>
-      <StateNumber>1855</StateNumber>
+      <StateNumber>2151</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="50" parent="33" name="categories_pkey">
-      <ObjectId>17795</ObjectId>
-      <StateNumber>1855</StateNumber>
+    <index id="52" parent="34" name="categories_pkey">
+      <ObjectId>17870</ObjectId>
+      <StateNumber>2151</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="51" parent="33" name="index_categories_on_slug">
-      <ObjectId>17797</ObjectId>
-      <StateNumber>1856</StateNumber>
+    <index id="53" parent="34" name="index_categories_on_slug">
+      <ObjectId>17872</ObjectId>
+      <StateNumber>2152</StateNumber>
       <ColNames>slug</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="52" parent="33" name="categories_pkey">
-      <ObjectId>17796</ObjectId>
-      <StateNumber>1855</StateNumber>
+    <key id="54" parent="34" name="categories_pkey">
+      <ObjectId>17871</ObjectId>
+      <StateNumber>2151</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>categories_pkey</UnderlyingIndexName>
     </key>
-    <column id="53" parent="34" name="id">
+    <column id="55" parent="35" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1985</StateNumber>
+      <StateNumber>2154</StateNumber>
       <DefaultExpression>nextval(&apos;comments_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="54" parent="34" name="commenter">
+    <column id="56" parent="35" name="commenter">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
-      <StateNumber>1985</StateNumber>
+      <StateNumber>2154</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="55" parent="34" name="body">
+    <column id="57" parent="35" name="body">
       <Position>3</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1985</StateNumber>
+      <StateNumber>2154</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="56" parent="34" name="image_id">
+    <column id="58" parent="35" name="image_id">
       <Position>4</Position>
       <DataType>bigint|0s</DataType>
-      <StateNumber>1985</StateNumber>
+      <StateNumber>2154</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="57" parent="34" name="created_at">
+    <column id="59" parent="35" name="created_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1985</StateNumber>
+      <StateNumber>2154</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="58" parent="34" name="updated_at">
+    <column id="60" parent="35" name="updated_at">
       <Position>6</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1985</StateNumber>
+      <StateNumber>2154</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="59" parent="34" name="comments_pkey">
-      <ObjectId>17839</ObjectId>
-      <StateNumber>1985</StateNumber>
+    <index id="61" parent="35" name="comments_pkey">
+      <ObjectId>17882</ObjectId>
+      <StateNumber>2154</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="60" parent="34" name="index_comments_on_image_id">
-      <ObjectId>17846</ObjectId>
-      <StateNumber>1985</StateNumber>
+    <index id="62" parent="35" name="index_comments_on_image_id">
+      <ObjectId>17884</ObjectId>
+      <StateNumber>2155</StateNumber>
       <ColNames>image_id</ColNames>
     </index>
-    <key id="61" parent="34" name="comments_pkey">
-      <ObjectId>17840</ObjectId>
-      <StateNumber>1985</StateNumber>
+    <key id="63" parent="35" name="comments_pkey">
+      <ObjectId>17883</ObjectId>
+      <StateNumber>2154</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>comments_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="62" parent="34" name="fk_rails_33bcaea6cd">
-      <ObjectId>17841</ObjectId>
-      <StateNumber>1985</StateNumber>
+    <foreign-key id="64" parent="35" name="fk_rails_33bcaea6cd">
+      <ObjectId>17920</ObjectId>
+      <StateNumber>2167</StateNumber>
       <ColNames>image_id</ColNames>
-      <RefTableId>17814</RefTableId>
+      <RefTableId>17901</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>images</RefTableName>
       <RefKeyName>images_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="63" parent="35" name="id">
+    <column id="65" parent="36" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1858</StateNumber>
+      <StateNumber>2157</StateNumber>
       <DefaultExpression>nextval(&apos;friendly_id_slugs_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="64" parent="35" name="slug">
+    <column id="66" parent="36" name="slug">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1858</StateNumber>
+      <StateNumber>2157</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="65" parent="35" name="sluggable_id">
+    <column id="67" parent="36" name="sluggable_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1858</StateNumber>
+      <StateNumber>2157</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="66" parent="35" name="sluggable_type">
+    <column id="68" parent="36" name="sluggable_type">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
-      <StateNumber>1858</StateNumber>
+      <StateNumber>2157</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="67" parent="35" name="scope">
+    <column id="69" parent="36" name="scope">
       <Position>5</Position>
       <DataType>varchar|0s</DataType>
-      <StateNumber>1858</StateNumber>
+      <StateNumber>2157</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="68" parent="35" name="created_at">
+    <column id="70" parent="36" name="created_at">
       <Position>6</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>1858</StateNumber>
+      <StateNumber>2157</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="69" parent="35" name="friendly_id_slugs_pkey">
-      <ObjectId>17807</ObjectId>
-      <StateNumber>1858</StateNumber>
+    <index id="71" parent="36" name="friendly_id_slugs_pkey">
+      <ObjectId>17894</ObjectId>
+      <StateNumber>2157</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="70" parent="35" name="index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope">
-      <ObjectId>17809</ObjectId>
-      <StateNumber>1859</StateNumber>
+    <index id="72" parent="36" name="index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope">
+      <ObjectId>17896</ObjectId>
+      <StateNumber>2158</StateNumber>
       <ColNames>slug
 sluggable_type
 scope</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="71" parent="35" name="index_friendly_id_slugs_on_slug_and_sluggable_type">
-      <ObjectId>17810</ObjectId>
-      <StateNumber>1860</StateNumber>
+    <index id="73" parent="36" name="index_friendly_id_slugs_on_slug_and_sluggable_type">
+      <ObjectId>17897</ObjectId>
+      <StateNumber>2159</StateNumber>
       <ColNames>slug
 sluggable_type</ColNames>
     </index>
-    <index id="72" parent="35" name="index_friendly_id_slugs_on_sluggable_type_and_sluggable_id">
-      <ObjectId>17811</ObjectId>
-      <StateNumber>1861</StateNumber>
+    <index id="74" parent="36" name="index_friendly_id_slugs_on_sluggable_type_and_sluggable_id">
+      <ObjectId>17898</ObjectId>
+      <StateNumber>2160</StateNumber>
       <ColNames>sluggable_type
 sluggable_id</ColNames>
     </index>
-    <key id="73" parent="35" name="friendly_id_slugs_pkey">
-      <ObjectId>17808</ObjectId>
-      <StateNumber>1858</StateNumber>
+    <key id="75" parent="36" name="friendly_id_slugs_pkey">
+      <ObjectId>17895</ObjectId>
+      <StateNumber>2157</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>friendly_id_slugs_pkey</UnderlyingIndexName>
     </key>
-    <column id="74" parent="36" name="id">
+    <column id="76" parent="37" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1863</StateNumber>
+      <StateNumber>2162</StateNumber>
       <DefaultExpression>nextval(&apos;images_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="75" parent="36" name="src">
+    <column id="77" parent="37" name="src">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
-      <StateNumber>1863</StateNumber>
+      <StateNumber>2162</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="76" parent="36" name="category_id">
+    <column id="78" parent="37" name="category_id">
       <Position>3</Position>
       <DataType>bigint|0s</DataType>
-      <StateNumber>1863</StateNumber>
+      <StateNumber>2162</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="77" parent="36" name="created_at">
+    <column id="79" parent="37" name="created_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1863</StateNumber>
+      <StateNumber>2162</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="78" parent="36" name="updated_at">
+    <column id="80" parent="37" name="updated_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1863</StateNumber>
+      <StateNumber>2162</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="79" parent="36" name="images_pkey">
-      <ObjectId>17821</ObjectId>
-      <StateNumber>1863</StateNumber>
+    <index id="81" parent="37" name="images_pkey">
+      <ObjectId>17908</ObjectId>
+      <StateNumber>2162</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="80" parent="36" name="index_images_on_category_id">
-      <ObjectId>17823</ObjectId>
-      <StateNumber>1864</StateNumber>
+    <index id="82" parent="37" name="index_images_on_category_id">
+      <ObjectId>17910</ObjectId>
+      <StateNumber>2163</StateNumber>
       <ColNames>category_id</ColNames>
     </index>
-    <key id="81" parent="36" name="images_pkey">
-      <ObjectId>17822</ObjectId>
-      <StateNumber>1863</StateNumber>
+    <key id="83" parent="37" name="images_pkey">
+      <ObjectId>17909</ObjectId>
+      <StateNumber>2162</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>images_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="82" parent="36" name="fk_rails_9dab9b62a6">
-      <ObjectId>17824</ObjectId>
-      <StateNumber>1865</StateNumber>
+    <foreign-key id="84" parent="37" name="fk_rails_9dab9b62a6">
+      <ObjectId>17925</ObjectId>
+      <StateNumber>2168</StateNumber>
       <ColNames>category_id</ColNames>
-      <RefTableId>17788</RefTableId>
+      <RefTableId>17863</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>categories</RefTableName>
       <RefKeyName>categories_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="83" parent="37" name="id">
+    <column id="85" parent="38" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2031</StateNumber>
+      <StateNumber>2165</StateNumber>
       <DefaultExpression>nextval(&apos;likes_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="84" parent="37" name="image_id">
+    <column id="86" parent="38" name="image_id">
       <Position>2</Position>
       <DataType>bigint|0s</DataType>
-      <StateNumber>2031</StateNumber>
+      <StateNumber>2165</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="85" parent="37" name="created_at">
+    <column id="87" parent="38" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2031</StateNumber>
+      <StateNumber>2165</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="86" parent="37" name="updated_at">
+    <column id="88" parent="38" name="updated_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2031</StateNumber>
+      <StateNumber>2165</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="87" parent="37" name="likes_pkey">
-      <ObjectId>17853</ObjectId>
-      <StateNumber>2031</StateNumber>
+    <index id="89" parent="38" name="likes_pkey">
+      <ObjectId>17917</ObjectId>
+      <StateNumber>2165</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="88" parent="37" name="index_likes_on_image_id">
-      <ObjectId>17860</ObjectId>
-      <StateNumber>2031</StateNumber>
+    <index id="90" parent="38" name="index_likes_on_image_id">
+      <ObjectId>17919</ObjectId>
+      <StateNumber>2166</StateNumber>
       <ColNames>image_id</ColNames>
     </index>
-    <key id="89" parent="37" name="likes_pkey">
-      <ObjectId>17854</ObjectId>
-      <StateNumber>2031</StateNumber>
+    <key id="91" parent="38" name="likes_pkey">
+      <ObjectId>17918</ObjectId>
+      <StateNumber>2165</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>likes_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="90" parent="37" name="fk_rails_36af58c1a9">
-      <ObjectId>17855</ObjectId>
-      <StateNumber>2031</StateNumber>
+    <foreign-key id="92" parent="38" name="fk_rails_36af58c1a9">
+      <ObjectId>17930</ObjectId>
+      <StateNumber>2169</StateNumber>
       <ColNames>image_id</ColNames>
-      <RefTableId>17814</RefTableId>
+      <RefTableId>17901</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>images</RefTableName>
       <RefKeyName>images_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="91" parent="38" name="version">
+    <column id="93" parent="39" name="version">
       <Position>1</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>571</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="92" parent="38" name="schema_migrations_pkey">
+    <index id="94" parent="39" name="schema_migrations_pkey">
       <ObjectId>16392</ObjectId>
       <StateNumber>571</StateNumber>
       <ColNames>version</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="93" parent="38" name="schema_migrations_pkey">
+    <key id="95" parent="39" name="schema_migrations_pkey">
       <ObjectId>16393</ObjectId>
       <StateNumber>571</StateNumber>
       <ColNames>version</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>schema_migrations_pkey</UnderlyingIndexName>
+    </key>
+    <column id="96" parent="40" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2204</StateNumber>
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="97" parent="40" name="email">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2204</StateNumber>
+      <DefaultExpression>&apos;&apos;::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="98" parent="40" name="encrypted_password">
+      <Position>3</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2204</StateNumber>
+      <DefaultExpression>&apos;&apos;::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="99" parent="40" name="reset_password_token">
+      <Position>4</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>2204</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="100" parent="40" name="reset_password_sent_at">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>2204</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="101" parent="40" name="remember_created_at">
+      <Position>6</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>2204</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="102" parent="40" name="sign_in_count">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2204</StateNumber>
+      <DefaultExpression>0</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="103" parent="40" name="current_sign_in_at">
+      <Position>8</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>2204</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="104" parent="40" name="last_sign_in_at">
+      <Position>9</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>2204</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="105" parent="40" name="current_sign_in_ip">
+      <Position>10</Position>
+      <DataType>inet|0s</DataType>
+      <StateNumber>2204</StateNumber>
+      <TypeId>869</TypeId>
+    </column>
+    <column id="106" parent="40" name="last_sign_in_ip">
+      <Position>11</Position>
+      <DataType>inet|0s</DataType>
+      <StateNumber>2204</StateNumber>
+      <TypeId>869</TypeId>
+    </column>
+    <column id="107" parent="40" name="confirmation_token">
+      <Position>12</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>2204</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="108" parent="40" name="confirmed_at">
+      <Position>13</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>2204</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="109" parent="40" name="confirmation_sent_at">
+      <Position>14</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>2204</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="110" parent="40" name="unconfirmed_email">
+      <Position>15</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>2204</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="111" parent="40" name="created_at">
+      <Position>16</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2204</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="112" parent="40" name="updated_at">
+      <Position>17</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2204</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <index id="113" parent="40" name="users_pkey">
+      <ObjectId>17948</ObjectId>
+      <StateNumber>2204</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <index id="114" parent="40" name="index_users_on_email">
+      <ObjectId>17950</ObjectId>
+      <StateNumber>2204</StateNumber>
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="115" parent="40" name="index_users_on_reset_password_token">
+      <ObjectId>17951</ObjectId>
+      <StateNumber>2204</StateNumber>
+      <ColNames>reset_password_token</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="116" parent="40" name="index_users_on_confirmation_token">
+      <ObjectId>17952</ObjectId>
+      <StateNumber>2204</StateNumber>
+      <ColNames>confirmation_token</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="117" parent="40" name="users_pkey">
+      <ObjectId>17949</ObjectId>
+      <StateNumber>2204</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

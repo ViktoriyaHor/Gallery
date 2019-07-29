@@ -79,4 +79,5 @@ gem 'mini_magick'
 
 gem 'devise'
 
+gem 'omniauth'
 gem 'omniauth-facebook'

@@ -28,6 +28,8 @@
           %li.nav-item
             = link_to "Sign in", new_user_session_path, class: "nav-link"
           %li.nav-item
+            = link_to "Sign in with Facebook", users_omniauth_callbacks_facebook_path, class: "nav-link"
+          %li.nav-item
             = link_to "Registration", new_user_registration_path, class: "nav-link"
 
     .container

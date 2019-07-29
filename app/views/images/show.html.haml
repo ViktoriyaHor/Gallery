@@ -1,7 +1,10 @@
 
 = image_tag "#{@image.src.url}", :class => "img-fluid" if @image.src?
-
-= button_to 'Like', category_image_likes_path(@category, @image), method: :post
+- pre_like = @image.likes.find { |like| like.user_id == current_user.id}
+- if pre_like
+  = button_to 'Unlike', category_image_like_path(@category, @image, pre_like), method: :delete
+-else
+  = button_to 'Like', category_image_likes_path(@category, @image), method: :post
 %p
   = @image.likes.count
   = (@image.likes.count) == 1 ? 'Like' : 'Likes'

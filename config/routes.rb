@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  namespace :users do
+    get 'omniauth_callbacks/facebook'
+  end
+  devise_for :users,
+             :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root 'static_pages#index'
 

@@ -84,3 +84,5 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 # Development ENV Variables
 gem 'figaro'
+
+gem 'kaminari'

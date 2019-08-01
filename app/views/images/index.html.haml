@@ -6,7 +6,8 @@
         .col-6
           = image_tag "#{image.src.url(:thumb)}", :class => "img-fluid" if image.src?
           %p.text-center= link_to "Look",
-            category_image_new_path(category_slug: image.category.slug, id: image.id)
+            category_image_new_path(category_slug: image.category.slug,
+            id: image.id) if user_signed_in?
 
 
 

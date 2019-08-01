@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   # resources :categories, shallow: true do
   resources :categories, param: :slug do
-    resources :images do
+    resources :images, except: [:update, :edit] do
       resources :comments, shallow: true
-      resources :likes
+      resources :likes, only: [:create, :destroy]
     end
   end
 

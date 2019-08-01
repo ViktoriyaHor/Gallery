@@ -1,5 +1,6 @@
 %h1.text-center
   Comments
+= paginate @comments
 - @comments.each do |comment|
   .row
     .col-12
@@ -10,3 +11,4 @@
         %h5 Comment:
         %p= comment.body
       %time= comment.created_at.to_date.strftime("%Y-%m-%d")
+= paginate @comments

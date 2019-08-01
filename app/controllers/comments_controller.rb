@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
   end
 
   def all
-    @comments = Comment.all
+    @comments = Comment.order(:created_at).page(params[:page])
   end
 
   private

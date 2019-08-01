@@ -3,7 +3,10 @@
 - @comments.each do |comment|
   .row
     .col-12
-      %p Commenter:
-      = comment.commenter
-      %p Comment:
-      = comment.body
+      .div
+        %h5 Commenter:
+        %p= comment.commenter
+      .div
+        %h5 Comment:
+        %p= comment.body
+      %time= comment.created_at.to_date.strftime("%Y-%m-%d")

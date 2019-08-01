@@ -1,5 +1,6 @@
 
 = image_tag "#{@image.src.url}", :class => "img-fluid" if @image.src?
+
 - pre_like = @image.likes.find { |like| like.user_id == current_user.id}
 - if pre_like
   = button_to 'Unlike', category_image_like_path(@category, @image, pre_like), method: :delete
@@ -8,6 +9,7 @@
 %p
   = @image.likes.count
   = (@image.likes.count) == 1 ? 'Like' : 'Likes'
+
 %h2 Comments:
 - @image.comments.each do |comment|
   %p Commenter:
@@ -24,4 +26,4 @@
 %h2 Add a comment:
 = render 'comments/form'
 
-= link_to "Back", categories_path
+= link_to "Back", images_path

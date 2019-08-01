@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26065a3d-7f69-4239-b111-ad274f4e362b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.rakeTasks" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/af841673-4255-4f45-a127-c79597ed5567.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/af841673-4255-4f45-a127-c79597ed5567.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/af841673-4255-4f45-a127-c79597ed5567/storage_v2/_src_/database/gallery_development.zgfQ_Q/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/af841673-4255-4f45-a127-c79597ed5567/storage_v2/_src_/database/gallery_development.zgfQ_Q/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.generators" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.generators" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gallery.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gallery.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/uploaders/image_uploader.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploaders/image_uploader.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/categories/show.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/categories/show.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/comments/all.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/comments/all.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/images/index.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/images/index.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/devise.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -278,7 +275,7 @@
       <workItem from="1564037589959" duration="24657000" />
       <workItem from="1564127746728" duration="20995000" />
       <workItem from="1564383785740" duration="5078000" />
-      <workItem from="1564642977159" duration="4481000" />
+      <workItem from="1564642977159" duration="5024000" />
     </task>
     <servers />
   </component>

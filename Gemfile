@@ -80,4 +80,7 @@ gem 'mini_magick'
 gem 'devise'
 
 gem 'omniauth'
+# User Authentication with Facebook
 gem 'omniauth-facebook'
+# Development ENV Variables
+gem 'figaro'

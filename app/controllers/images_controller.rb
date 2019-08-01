@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
   before_action :find_image, only: [:show, :destroy]
 
   def index
-    @images = Image.take(20)
+    @images = Image.all.page(params[:page])
   end
 
   def show

@@ -11,4 +11,5 @@
         %h5 Comment:
         %p= comment.body
       %time= comment.created_at.to_date.strftime("%Y-%m-%d")
+      %hr
 = paginate @comments

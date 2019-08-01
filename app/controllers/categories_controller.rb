@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @images = Image.where(category_id:"#{@category.id}")
+    @images = Image.where(category_id:"#{@category.id}").page(params[:page])
   end
 
   def new

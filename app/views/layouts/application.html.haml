@@ -11,9 +11,13 @@
     %nav.navbar.navbar-expand-sm.bg-light.navbar-light
       %ul.navbar-nav.mr-auto
         %li.nav-item.dropdown
-          = link_to "Categories", root_path, class: "nav-link dropdown-toggle", id: "navbardrop", 'data-toggle': "dropdown"
+          = link_to "Categories", root_path, class: "nav-link dropdown-toggle", id: "navbardrop",
+            'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false"
           .dropdown-menu
-            = link_to "All categories", categories_path, class: "nav-link"
+            -rating_categories.each do |category|
+              = link_to "#{category.title}", category_path(category), class: "dropdown-item"
+            .dropdown-divider
+            = link_to "All categories", categories_path, class: "dropdown-item"
         %li.nav-item.active
           = link_to "Images", images_path, class: "nav-link"
         %li.nav-item

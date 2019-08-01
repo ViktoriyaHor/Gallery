@@ -6,7 +6,7 @@
 = link_to "Back", categories_path
 %div.row
   - @images.each do |image|
-    %div.col-2
+    %div
       = link_to image_tag("#{image.src.url(:thumb)}", :class => "img-fluid"),
                             category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
       = link_to 'Destroy Image', category_image_path(category_slug: image.category.slug, id: image.id),

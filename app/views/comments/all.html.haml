@@ -1,7 +1,9 @@
-%h1
+%h1.text-center
   Comments
 - @comments.each do |comment|
-  %p Commenter:
-  = comment.commenter
-  %p Comment:
-  = comment.body
+  .row
+    .col-12
+      %p Commenter:
+      = comment.commenter
+      %p Comment:
+      = comment.body

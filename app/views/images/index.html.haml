@@ -1,9 +1,13 @@
-%h1
-  Images
-- @images.each do |image|
-  %div.col-2
-    = image_tag "#{image.src}", :class => "img-fluid" if image.src?
-    = link_to "Image",
-    category_image_new_path(category_slug: image.category.slug, id: image.id)
+.container
+  %h1.text-center Images
+  - @images.each_slice(2).each do |pair|
+    .row
+      - pair.each do |image|
+        .col-6
+          = image_tag "#{image.src.url(:thumb)}", :class => "img-fluid" if image.src?
+          %p.text-center= link_to "Look",
+            category_image_new_path(category_slug: image.category.slug, id: image.id)
+
+
 
 

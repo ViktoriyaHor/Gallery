@@ -32,21 +32,13 @@
 
     .container
       .row
-        .col-lg-9
-          .row
-            .col-12
-              -flash.each do |name, message|
-                %div{:class => "alert #{bootstrap_class_for(name)}"}
-                  %button{:class => 'close', "data-dismiss" => 'alert'} &times;
-                  = message
-
-
-
+        .col-12
+          -flash.each do |name, message|
+            %div{:class => "alert #{bootstrap_class_for(name)}"}
+              %button{:class => 'close', "data-dismiss" => 'alert'} &times;
+              = message
           = yield
-        .col-lg-3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
+
       %footer
         %p © Company 2019
 

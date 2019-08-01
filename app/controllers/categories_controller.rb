@@ -36,18 +36,29 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
-    redirect_to categories_path, success: 'Category removed'
+    if current_user.id == @category.user_id
+      @category.destroy
+      redirect_to categories_path, success: 'Category removed'
+    else
+      redirect_to categories_path, danger: "Category not yours"
+    end
   end
 
   private
 
   def category_params
     params.require(:category).permit(:title, :slug)
+        .merge({
+                   user_id: current_user.id
+               })
   end
 
   def find_category
     @category = Category.find_by_slug(params[:slug])
+  end
+
+  def category_owner
+
   end
 
 end

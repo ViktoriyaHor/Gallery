@@ -1,0 +1,28 @@
+= image_tag "#{@image.src.url}", :class => "img-fluid" if @image.src?
+
+- pre_like = @image.likes.find { |like| like.user_id == current_user.id}
+- if pre_like
+  = button_to 'Unlike', category_image_like_path(@category, @image, pre_like), method: :delete
+-else
+  = button_to 'Like', category_image_likes_path(@category, @image), method: :post
+%p
+  = @image.likes.count
+  = (@image.likes.count) == 1 ? 'Like' : 'Likes'
+
+%h2 Comments:
+- @image.comments.each do |comment|
+  %p Commenter:
+  = comment.commenter
+  %p Comment:
+  = comment.body
+  %p
+    = link_to 'Destroy Comment', comment_path(category_slug: @image.category.slug,
+    image_id: @image.id, id: comment.id),
+    method: :delete,
+    data: { confirm: 'Are you sure?' }
+    = link_to "Edit", edit_comment_path(comment)
+
+%h2 Add a comment:
+= render 'comments/form'
+
+= link_to "Back", images_path

@@ -1,0 +1,14 @@
+- if @category.errors.any?
+  .alert.alert-danger
+    %h5
+      = t('common.errors')
+      %ul
+        - @category.errors.full_messages.each do |message|
+          %li= message
+
+= simple_form_for @category do |f|
+  .form-group
+    = f.label :title, class: 'control-label'
+    = f.text_field :title, class: 'form-control'
+    = f.submit :save
+

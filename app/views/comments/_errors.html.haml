@@ -1,0 +1,7 @@
+- if @comment.errors.any?
+  .alert.alert-danger
+    %h5
+      = t('common.errors')
+      %ul
+      - @comment.errors.full_messages.each do |message|
+        %li= message

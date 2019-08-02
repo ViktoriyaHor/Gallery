@@ -1,0 +1,19 @@
+%h1.text-center= @category.title
+
+= render 'images/form'
+
+= link_to "Back", categories_path
+= paginate @images
+
+- @images.each_slice(2).each do |pair|
+  .row
+    - pair.each do |image|
+      .col-6
+        = link_to image_tag("#{image.src.url(:thumb)}", :class => "img-fluid"),
+                              category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
+        %p.text-center= link_to 'Destroy Image', category_image_path(category_slug: image.category.slug, id: image.id),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+= paginate @images
+
+

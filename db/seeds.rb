@@ -10,5 +10,5 @@
 end
 
 5.times do |i|
-  Comment.create(commenter: "User #{i}", body: "Comment #{i}", image_id: 26)
+  Comment.create(commenter: "User #{i}", body: "Comment #{i}", image_id: 27)
 end

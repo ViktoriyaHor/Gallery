@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   end
 
   def rating_categories
-    @categories = Category.limit(3)
+    @categories = Category.select("categories.*, (COUNT(images.id)+COUNT(comments.id)+COUNT(likes.id)) AS i_count")
+                      .left_outer_joins(:images, images: [:comments, :likes]).group("categories.id")
+                      .order("i_count DESC").limit(5)
   end
 end

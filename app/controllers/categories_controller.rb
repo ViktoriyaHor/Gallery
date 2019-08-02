@@ -47,18 +47,11 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:title, :slug)
-        .merge({
-                   user_id: current_user.id
-               })
+    params.require(:category).permit(:title, :slug).merge( {user_id: current_user.id} )
   end
 
   def find_category
     @category = Category.find_by_slug(params[:slug])
-  end
-
-  def category_owner
-
   end
 
 end

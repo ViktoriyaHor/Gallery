@@ -4,7 +4,8 @@ class ImagesController < ApplicationController
   before_action :find_image, only: [:show, :destroy]
 
   def index
-    @images = Image.all.page(params[:page])
+    @images = Image.select("images.*, COUNT(likes.id) AS l_count").left_outer_joins(:likes).group("images.id")
+                  .order("l_count DESC").page(params[:page])
   end
 
   def show

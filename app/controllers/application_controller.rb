@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
     stored_location_for(users) || categories_path
   end
 
+  private
+
   def rating_categories
     @categories = Category.select("categories.*, (COUNT(images.id)+COUNT(comments.id)+COUNT(likes.id)) AS i_count")
                       .left_outer_joins(:images, images: [:comments, :likes]).group("categories.id")

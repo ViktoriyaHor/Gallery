@@ -87,3 +87,5 @@ gem 'omniauth-facebook'
 gem 'figaro'
 
 gem 'kaminari'
+
+gem "recaptcha", require: "recaptcha/rails"

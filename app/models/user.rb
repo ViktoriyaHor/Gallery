@@ -6,6 +6,9 @@ class User < ApplicationRecord
          :omniauthable, :trackable, :lockable
   has_many :categories, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  # attr_accessor :failed_attempts
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid, username: auth.info.name).first_or_create do |user|
       user.provider = auth.provider

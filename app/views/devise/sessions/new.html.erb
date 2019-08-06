@@ -11,7 +11,11 @@
                 input_html: { autocomplete: "current-password" } %>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
-  <%= recaptcha_tags %>
+  <% if User.find_by_email(resource.email) %>
+    <% if User.find_by_email(resource.email).failed_attempts >= User.logins_before_captcha %>
+    <%= recaptcha_tags %>
+    <% end %>
+  <% end %>
   <div class="form-actions">
     <%= f.button :submit, "Log in", class: 'btn btn-primary' %>
   </div>

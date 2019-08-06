@@ -9,12 +9,12 @@
       <Owner>developer</Owner>
       <IntrospectionStateNumber>3451</IntrospectionStateNumber>
       <Current>1</Current>
-      <Relations>sequence|table|19962|19964|1
-sequence|table|19974|19976|1
-sequence|table|19986|19988|1
+      <Relations>sequence|table|19986|19988|1
 sequence|table|20000|20002|1
 sequence|table|20012|20014|1
 sequence|table|20022|20024|1
+sequence|table|19974|19976|1
+sequence|table|19962|19964|1
 </Relations>
       <Visible>1</Visible>
     </database>

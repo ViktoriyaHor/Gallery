@@ -7,7 +7,6 @@ class Users::SessionsController < Devise::SessionsController
     user = User.find_by_email(sign_in_params['email'])
 
     super and return unless user
-    # raise jjj
     adjust_failed_attempts user
 
     super and return if (user.failed_attempts < User.logins_before_captcha)
@@ -27,10 +26,8 @@ class Users::SessionsController < Devise::SessionsController
   private def adjust_failed_attempts(user)
     if user.failed_attempts > user.cached_failed_attempts
       user.update cached_failed_attempts: user.failed_attempts
-      # raise mm
     else
       increment_failed_attempts(user)
-      # raise kkk
     end
   end
 

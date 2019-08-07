@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
 
-  before_action :find_image
+  before_action :authenticate_user!, :find_image
   before_action :find_like, only: [:destroy]
 
   def create

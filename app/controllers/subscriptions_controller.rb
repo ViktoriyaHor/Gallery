@@ -1,5 +1,6 @@
 class SubscriptionsController < ApplicationController
-  before_action :find_category
+
+  before_action :find_category, :authenticate_user!
   before_action :find_subscription, only: [:destroy]
 
   def create

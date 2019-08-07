@@ -10,5 +10,11 @@
     = link_to "Destroy", category_path(category),
         method: :delete,
         data: { confirm: 'Are you sure?' }
+    - pre_subscription = category.subscriptions.find { |subscription| subscription.user_id == current_user.id}
+    - if pre_subscription
+      = button_to 'Unsubscribe', category_subscription_path(category, pre_subscription), method: :delete
+    - else
+      = button_to 'Subscribe', category_subscriptions_path(category), method: :post
+
 
 

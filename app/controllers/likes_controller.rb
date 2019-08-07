@@ -4,9 +4,7 @@ class LikesController < ApplicationController
   before_action :find_like, only: [:destroy]
 
   def create
-    unless already_liked?
-      @image.likes.create(user_id: current_user.id)
-    end
+    @image.likes.create(user_id: current_user.id) unless already_liked?
     redirect_to category_image_path(@category, @image)
   end
 

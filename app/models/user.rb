@@ -7,6 +7,7 @@ class User < ApplicationRecord
          # :lockable
   has_many :categories, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
 
   # attr_accessor :failed_attempts
 

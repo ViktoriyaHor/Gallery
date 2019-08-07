@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   # resources :categories, shallow: true do
   resources :categories, param: :slug do
+    resources :subscriptions, only: [:create, :destroy]
     resources :images, except: [:update, :edit] do
       resources :comments, shallow: true
       resources :likes, only: [:create, :destroy]

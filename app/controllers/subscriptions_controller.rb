@@ -1,0 +1,28 @@
+class SubscriptionsController < ApplicationController
+  before_action :find_category
+  before_action :find_subscription, only: [:destroy]
+
+  def create
+    @category.subscriptions.create(user_id: current_user.id) unless already_subscribe?
+    redirect_to categories_path
+  end
+
+  def destroy
+    @subscription.destroy if already_subscribe?
+    redirect_to categories_path
+  end
+
+  private
+  def find_category
+    @category = Category.friendly.find(params[:category_slug])
+  end
+
+  def find_subscription
+    @subscription = @category.subscriptions.find(params[:id])
+  end
+
+  def already_subscribe?
+    Subscription.where(user_id: current_user.id, category_id:
+      @category.id).exists?
+  end
+end

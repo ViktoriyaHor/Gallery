@@ -1,0 +1,5 @@
+%p
+  Hi, #{@user.username}!
+%p You have successfully subscribed to a category #{@category.slug}!
+%p Following the link will unsubscribe from the category
+= link_to 'Unsubscribe', categories_url

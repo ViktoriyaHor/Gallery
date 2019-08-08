@@ -24,4 +24,12 @@ class User < ApplicationRecord
   def self.logins_before_captcha
     3
   end
+
+  def after_confirmation
+    welcome_send
+  end
+
+  def welcome_send
+    UserMailer.welcome_send(self).deliver
+  end
 end

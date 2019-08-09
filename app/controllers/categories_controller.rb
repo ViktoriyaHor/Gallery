@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @images = Image.where(category_id:"#{@category.id}").page(params[:page])
+    @images = @category.images.page(params[:page])
   end
 
   def new
@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
+    @category = current_user.categories.new(category_params)
     if @category.save
       redirect_to @category, success: 'Category created'
     else
@@ -36,6 +36,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    # current_user.categories.find(@category.id).destroy
     if current_user.id == @category.user_id
       @category.destroy
       redirect_to categories_path, success: 'Category removed'
@@ -47,7 +48,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:title, :slug).merge( {user_id: current_user.id} )
+    params.require(:category).permit(:title, :slug)#.merge( {user_id: current_user.id} )
   end
 
   def find_category

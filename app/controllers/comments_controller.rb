@@ -22,8 +22,10 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    @image = Image.find(@comment.image_id)
-    @category = Category.find(@image.category_id)
+    @image = @comment.image
+    @category = @image.category
+    # @image = Image.find(@comment.image_id)
+    # @category = Category.find(@image.category_id)
     if @comment.update(commenter: comment_params[:commenter], body: comment_params[:body])
       redirect_to category_image_new_path(@category, @image), success: 'Comment updated'
     else

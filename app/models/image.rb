@@ -11,6 +11,7 @@ class Image < ApplicationRecord
   private
 
   def send_email_to_subscribers
-    UserMailer.new_image(self).deliver
+    Resque.enqueue(NewImageSendEmail, self.id)
+    # UserMailer.new_image(self.id).deliver
   end
 end

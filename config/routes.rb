@@ -20,4 +20,6 @@ Rails.application.routes.draw do
 
   get 'categories/:category_slug/:id', to: 'images#show', as: 'category_image_new'
 
+  mount Resque::Server.new, at: "/resque"
+
 end

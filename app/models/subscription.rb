@@ -7,7 +7,11 @@ class Subscription < ApplicationRecord
   private
 
   def send_email_to_subscribers
-    UserMailer.subscription_send(self).deliver
+    email = User.find(self.user_id).email
+    username = User.find(self.user_id).username
+    category = Category.find(self.category_id).slug
+    Resque.enqueue(ToSubscribersSendEmail, [email, username, category])
+    # UserMailer.subscription_send(self).deliver
   end
 
 end

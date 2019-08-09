@@ -89,3 +89,6 @@ gem 'figaro'
 gem 'kaminari'
 
 gem "recaptcha", require: "recaptcha/rails"
+
+gem 'resque', require: 'resque/server'
+gem 'resque-web', require: 'resque_web'

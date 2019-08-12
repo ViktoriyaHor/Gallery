@@ -5,6 +5,10 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    unless current_user.blank?
+      @subscription = Subscription.find_by_user_id(current_user)
+      @category = @subscription.category_id unless @subscription.blank?
+    end
   end
 
   def show

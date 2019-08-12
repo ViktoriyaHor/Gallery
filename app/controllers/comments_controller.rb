@@ -1,14 +1,13 @@
 class CommentsController < ApplicationController
 
-  before_action :authenticate_user!
-  before_action :find_category_image, only: [:create, :destroy]
+  before_action :authenticate_user!, :find_category_image, only: [:create, :destroy]
+  before_action :find_comment, only: [:edit, :update, :destroy]
 
   def new
     @comment = Comment.new
   end
 
   def edit
-    @comment = Comment.find(params[:id])
   end
 
   def create
@@ -21,12 +20,9 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find(params[:id])
     @image = @comment.image
     @category = @image.category
-    # @image = Image.find(@comment.image_id)
-    # @category = Category.find(@image.category_id)
-    if @comment.update(commenter: comment_params[:commenter], body: comment_params[:body])
+    if @comment.update(comment_params)
       redirect_to category_image_new_path(@category, @image), success: 'Comment updated'
     else
       render 'edit'
@@ -34,7 +30,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to category_image_new_path(@category, @image), success: 'Comment removed'
   end
@@ -52,6 +47,10 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:commenter, :body)
+  end
+
+  def find_comment
+    @comment = Comment.find(params[:id])
   end
 
 end

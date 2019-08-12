@@ -9,6 +9,7 @@ class ImagesController < ApplicationController
   end
 
   def show
+    @pre_like = @image.likes.find { |like| like.user_id == current_user.id}
   end
 
   def new

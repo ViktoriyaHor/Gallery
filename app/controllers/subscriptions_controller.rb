@@ -23,7 +23,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def already_subscribe?
-    Subscription.where(user_id: current_user.id, category_id:
-      @category.id).exists?
+    Subscription.where(user_id: current_user.id, category_id: @category.id).exists?
   end
 end

@@ -16,3 +16,5 @@ end
 5.times do |i|
   Comment.create(commenter: "User #{i}", body: "Comment #{i}", image_id: image.id)
 end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

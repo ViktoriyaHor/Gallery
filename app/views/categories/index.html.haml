@@ -15,7 +15,7 @@
         = button_to 'Unsubscribe', category_subscription_path(category, @subscription), method: :delete
       - else
         = button_to 'Subscribe', category_subscriptions_path(category), method: :post
-    -else
+    - else
       = button_to 'Subscribe', category_subscriptions_path(category), method: :post
 
 

@@ -5,8 +5,8 @@
 -else
   = button_to 'Like', category_image_likes_path(@category, @image), method: :post
 %p
-  = @image.likes.count
-  = (@image.likes.count) == 1 ? 'Like' : 'Likes'
+  = @image.likes.size
+  = (@image.likes.size) == 1 ? 'Like' : 'Likes'
 
 %h2 Comments:
 - @image.comments.each do |comment|

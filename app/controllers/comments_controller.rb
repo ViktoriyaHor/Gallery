@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
   before_action :authenticate_user!, :find_category_image, only: [:create, :destroy]
   before_action :find_comment, only: [:edit, :update, :destroy]
+  after_action :logging_comments, only: [:create]
 
   def new
     @comment = Comment.new
@@ -12,6 +13,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @image.comments.new(comment_params)
+    @comment.user_id = current_user.id
     if @comment.save
       redirect_to category_image_new_path(@category, @image, @comment), success: 'Comment created'
     else
@@ -51,6 +53,10 @@ class CommentsController < ApplicationController
 
   def find_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def logging_comments
+    LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('comments').id}", :action_path=>request.original_url).save if user_signed_in?
   end
 
 end

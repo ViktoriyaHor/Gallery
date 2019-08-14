@@ -1,5 +1,6 @@
 ActiveAdmin.register Subscription do
-
+  actions :all, except: [:update, :edit]
+  permit_params :category_id, :user_id
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

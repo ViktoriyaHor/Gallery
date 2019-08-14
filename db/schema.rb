@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_081635) do
+ActiveRecord::Schema.define(version: 2019_08_14_063623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.string "action_type"
+  end
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -58,7 +62,9 @@ ActiveRecord::Schema.define(version: 2019_08_13_081635) do
     t.bigint "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["image_id"], name: "index_comments_on_image_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -79,7 +85,9 @@ ActiveRecord::Schema.define(version: 2019_08_13_081635) do
     t.datetime "updated_at", null: false
     t.integer "likes_count", default: 0, null: false
     t.integer "comments_count", default: 0, null: false
+    t.bigint "user_id"
     t.index ["category_id"], name: "index_images_on_category_id"
+    t.index ["user_id"], name: "index_images_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -89,6 +97,16 @@ ActiveRecord::Schema.define(version: 2019_08_13_081635) do
     t.bigint "user_id"
     t.index ["image_id"], name: "index_likes_on_image_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "logging_user_actions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "action_id"
+    t.string "action_path"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["action_id"], name: "index_logging_user_actions_on_action_id"
+    t.index ["user_id"], name: "index_logging_user_actions_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -129,9 +147,13 @@ ActiveRecord::Schema.define(version: 2019_08_13_081635) do
 
   add_foreign_key "categories", "users"
   add_foreign_key "comments", "images"
+  add_foreign_key "comments", "users"
   add_foreign_key "images", "categories"
+  add_foreign_key "images", "users"
   add_foreign_key "likes", "images"
   add_foreign_key "likes", "users"
+  add_foreign_key "logging_user_actions", "actions"
+  add_foreign_key "logging_user_actions", "users"
   add_foreign_key "subscriptions", "categories"
   add_foreign_key "subscriptions", "users"
 end

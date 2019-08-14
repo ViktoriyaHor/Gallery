@@ -8,8 +8,10 @@ class User < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
-
-  # attr_accessor :failed_attempts
+  has_many :comments, dependent: :destroy
+  has_many :images, dependent: :destroy
+  has_many :logging_user_actions, dependent: :destroy
+         # attr_accessor :failed_attempts
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid, username: auth.info.name).first_or_create do |user|

@@ -1,5 +1,5 @@
-ActiveAdmin.register Comment do
-  permit_params :commenter, :body
+ActiveAdmin.register LoggingUserAction do
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

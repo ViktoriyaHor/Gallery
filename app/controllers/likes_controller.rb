@@ -2,6 +2,7 @@ class LikesController < ApplicationController
 
   before_action :authenticate_user!, :find_image
   before_action :find_like, only: [:destroy]
+  after_action :logging_likes, only: [:create, :destroy]
 
   def create
     @image.likes.create(user_id: current_user.id) unless already_liked?
@@ -28,5 +29,9 @@ class LikesController < ApplicationController
 
   def find_like
     @like = @image.likes.find(params[:id])
+  end
+
+  def logging_likes
+    LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('likes').id}", :action_path=>request.original_url).save if user_signed_in?
   end
 end

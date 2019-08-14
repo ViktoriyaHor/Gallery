@@ -9,12 +9,18 @@
 image = Image.last
 user = User.first
 
-5.times do |i|
+5.times do
   Like.create(image_id: image.id, user_id: user.id)
 end
 
 5.times do |i|
-  Comment.create(commenter: "User #{i}", body: "Comment #{i}", image_id: image.id)
+  Comment.create(commenter: "User #{i}", body: "Comment #{i}", image_id: image.id, user_id: user.id)
 end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+Action.create!(action_type: "navigation")
+Action.create!(action_type: "user sign in")
+Action.create!(action_type: "user sign out")
+Action.create!(action_type: "likes")
+Action.create!(action_type: "comments")

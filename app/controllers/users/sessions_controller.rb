@@ -2,6 +2,9 @@
 
 class Users::SessionsController < Devise::SessionsController
 
+  after_action :action_sign_in, only: [:create]
+  before_action :action_sign_out, only: [:destroy]
+
   def create
     flash.clear
 
@@ -24,7 +27,12 @@ class Users::SessionsController < Devise::SessionsController
     respond_with_navigational(resource) { render :new }
   end
 
-  private def adjust_failed_attempts(user)
+  def destroy
+    super
+  end
+
+  private
+  def adjust_failed_attempts(user)
     if user.failed_attempts > user.cached_failed_attempts
       user.update cached_failed_attempts: user.failed_attempts
     else
@@ -36,8 +44,6 @@ class Users::SessionsController < Devise::SessionsController
     user.update cached_failed_attempts: 0, failed_attempts: 0
     stored_location_for(user) || categories_path
   end
-
-  private
 
   def increment_failed_attempts(user)
     user.increment :cached_failed_attempts
@@ -52,6 +58,14 @@ class Users::SessionsController < Devise::SessionsController
 
   def recaptcha_present?(params)
     params[:recaptcha_challenge_field]
+  end
+
+  def action_sign_in
+    LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('user sign in').id}", :action_path=>request.original_url).save if user_signed_in?
+  end
+
+  def action_sign_out
+    LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('user sign out').id}", :action_path=>request.original_url).save if user_signed_in?
   end
 
   # before_action :configure_sign_in_params, only: [:create]

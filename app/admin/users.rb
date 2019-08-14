@@ -1,5 +1,6 @@
-ActiveAdmin.register Comment do
-  permit_params :commenter, :body
+ActiveAdmin.register User do
+  actions :all, except: [:update, :edit]
+  permit_params :email, :password, :password_confirmation, :username
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

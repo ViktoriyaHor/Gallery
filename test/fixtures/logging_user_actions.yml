@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  action: one
+  action_path: MyString
+
+two:
+  user: two
+  action: two
+  action_path: MyString

@@ -93,3 +93,5 @@ gem "recaptcha", require: "recaptcha/rails"
 
 gem 'resque', require: 'resque/server'
 gem 'resque-web', require: 'resque_web'
+
+gem 'nokogiri', '~> 1.6', '>= 1.6.7.2'

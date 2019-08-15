@@ -81,5 +81,13 @@ ActiveAdmin.register_page "Dashboard" do
         strong {link_to "View all actions", admin_logging_user_actions_path}
       end
     end
+    columns do
+      column do
+        panel "Upload Images" do
+          input 'URL', :body
+        end
+        # strong {link_to "View all images", admin_images_path}
+      end
+    end
   end # content
 end

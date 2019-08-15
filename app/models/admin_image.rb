@@ -1,0 +1,2 @@
+class AdminImage < ApplicationRecord
+end

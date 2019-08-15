@@ -10,7 +10,7 @@ module ApplicationHelper
   end
   #
   # def scraping_images(url)
-  #   require 'nokogiri'
+  #   require 'upload_images'
   #   require 'open-uri'
   #
   #   document = Nokogiri::HTML(open(url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))

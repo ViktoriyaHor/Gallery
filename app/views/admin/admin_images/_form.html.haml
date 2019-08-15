@@ -1,0 +1,5 @@
+= semantic_form_for :images, builder: ActiveAdmin::FormBuilder, url: { action: :add } do |f|
+  = f.inputs "Upload images" do
+    = select("category", "category_id", Category.all.collect {|c| [ c.title, c.id ] }, { include_blank: true })
+    -#=f.input :authenticity_token, type: :hidden, name: :authenticity_token, value: form_authenticity_token
+    = f.action :submit, label: 'Add Image'

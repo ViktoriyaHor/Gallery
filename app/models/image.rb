@@ -1,5 +1,6 @@
 class Image < ApplicationRecord
   mount_uploader :src, ImageUploader
+  # mount_uploader :remote_src_url, ImageUploader
   belongs_to :category
   belongs_to :user
   has_many :comments, dependent: :destroy

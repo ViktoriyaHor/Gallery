@@ -1,4 +1,5 @@
 ActiveAdmin.register_page "Upload images" do
+  menu priority: 10
 
   page_action :grab, method: :post do
     url = params['upload_images']['url']

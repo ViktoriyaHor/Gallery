@@ -1,5 +1,6 @@
 ActiveAdmin.register Category do
-
+  menu priority: 2
+  filter :title
   permit_params :title, :slug
 
   controller do
@@ -7,6 +8,17 @@ ActiveAdmin.register Category do
       scoped_collection.friendly.find(params[:id])
     end
   end
+
+  index do
+    selectable_column
+    column :id
+    column :title
+    column :created_at
+    column :updated_at
+    column :user
+    actions
+  end
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

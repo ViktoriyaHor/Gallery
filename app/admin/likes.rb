@@ -1,5 +1,10 @@
 ActiveAdmin.register Like do
+  menu priority: 5
   actions :all, except: [:update, :edit]
+  preserve_default_filters!
+  filter :image, collection: -> {
+    Image.all.map { |img| [img.id] }
+  }
   permit_params :image_id, :user_id
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

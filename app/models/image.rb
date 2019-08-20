@@ -6,7 +6,7 @@ class Image < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   validates :src, presence: true
-  paginates_per 5
+  paginates_per 6
 
   after_create :send_email_to_subscribers
 

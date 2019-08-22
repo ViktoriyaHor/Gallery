@@ -1,9 +1,9 @@
 %h1.text-center Categories
 - if user_signed_in?
-  = link_to "Create new category", new_category_path, class: "btn btn-dark d-flex justify-content-end my-3"
+  = link_to "Create new category", new_category_path, class: "btn btn-dark my-3"
 
 - @categories.each_slice(3).each do |row|
-  .row
+  .row.my-2
     - row.each do |category|
       .col-4
         .position-relative

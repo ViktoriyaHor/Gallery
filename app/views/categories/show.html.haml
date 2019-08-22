@@ -1,16 +1,16 @@
-
 %h1.text-center= @category.title.capitalize
+.row
+  .col-12
+    - if user_signed_in?
+      - if @pre_subscribe
+        = link_to 'Unsubscribe', category_subscription_path(@category, @pre_subscribe), method: :delete, class: "btn btn-dark justify-content-end my-3"
+      - else
+        = link_to 'Subscribe', category_subscriptions_path(@category), method: :post, class: "btn btn-dark justify-content-end my-3"
+    - else
+      = link_to 'Subscribe', category_subscriptions_path(@category), method: :post, class: "btn btn-dark justify-content-end my-3"
 
-- if user_signed_in?
-  - if @pre_subscribe
-    = link_to 'Unsubscribe', category_subscription_path(@category, @pre_subscribe), method: :delete, class: "btn btn-dark d-flex justify-content-end my-3"
-  - else
-    = link_to 'Subscribe', category_subscriptions_path(@category), method: :post, class: "btn btn-dark d-flex justify-content-end my-3"
-- else
-  = link_to 'Subscribe', category_subscriptions_path(@category), method: :post, class: "btn btn-dark d-flex justify-content-end my-3"
-
-- if user_signed_in?
-  = render 'images/form'
+    - if user_signed_in?
+      = render 'images/form'
 
 = paginate @images
 

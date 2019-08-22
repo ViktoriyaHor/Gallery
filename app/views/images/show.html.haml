@@ -17,20 +17,19 @@
 
 - if @image.comments.first.id?
   %h3.my-4 Comments:
-  - @image.comments.each do |comment|
-    %ul.list-unstyled
+  %ul.list-unstyled
+    - @image.comments.each do |comment|
+      %hr
       %li.media
         .media-body.ml-3
-          %h5.mt-0.mb-1
-            = comment.commenter
+          .d-flex.justify-content-between
+            %h5.m-1
+              = comment.commenter
+            - unless comment.id.nil?
+              %time= comment.created_at.to_date.strftime("%Y-%m-%d")
           %p
             = comment.body
             -#%abbr.timeago{:title => comment.created_at.getutc.iso8601}
             -#  = comment.created_at.to_s
-      %hr
-    -#= link_to 'Destroy Comment', comment_path(category_slug: @image.category.slug,
-    -#image_id: @image.id, id: comment.id),
-    -#method: :delete,
-    -#data: { confirm: 'Are you sure?' }
-    -#= link_to "Edit", edit_comment_path(comment)
+
 

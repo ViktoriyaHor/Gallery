@@ -22,12 +22,21 @@
   width: 100%;
 }
 
-
 @media (max-width: 767.98px){
   .column {
     flex: 100%;
     max-width: 100%;
   }
+}
+
+.overlay{
+  position: absolute;
+  background: rgba(0,0,0,0.6);
+  width: 100%;
+  bottom: 0%;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
 }
 
 

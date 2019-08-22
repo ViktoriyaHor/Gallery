@@ -1,14 +1,18 @@
 %h1.text-center
   Comments
+
 = paginate @comments
+
 - @comments.each do |comment|
   %ul.list-unstyled
     %li.media
-      = link_to image_tag("#{find_image(comment).src.url(:thumbnail)}", :class => "img-fluid"),
-                              category_image_new_path(category_slug: find_image(comment).category.slug, id: find_image(comment).id) if find_image(comment).src?
+      = link_to image_tag("#{find_image(comment).src.url(:thumbnail)}", :class => "img-fluid m-2"),
+      category_image_new_path(category_slug: find_image(comment).category.slug, id: find_image(comment).id) if find_image(comment).src?
       .media-body.ml-3
-        %h5.mt-0.mb-1
-          = comment.commenter
+        .d-flex.justify-content-between
+          %h5.m-1
+            = comment.commenter
+          %time= comment.created_at.to_date.strftime("%Y-%m-%d")
         %p
           = comment.body
         -#%abbr.timeago{:title => comment.created_at.getutc.iso8601}

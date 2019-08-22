@@ -1,6 +1,3 @@
--#= form action: "upload_images/index", method: :post do |f|
--#  = f.input :url, type: :text, name: 'url'
--#  = f.input :submit, type: :submit
 = semantic_form_for :upload_images, builder: ActiveAdmin::FormBuilder, url: { action: :grab } do |f|
   =f.inputs do
     =f.input :url, label: false, placeholder: 'Paste your URL'

@@ -19,9 +19,13 @@
     .column
       - column.each do |image|
         - if user_signed_in?
-          = link_to image_tag("#{image.src.url(:thumb)}", :class => "img-fluid"),
+          .position-relative
+            = link_to image_tag("#{image.src.url(:thumb)}", :class => "img-fluid"),
                               category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
-          .overlay Like
+            .overlay
+              = fa_icon('heart', type: :far)
+              = image.likes.size
+
         - else
           = image_tag("#{image.src.url(:thumb)}", :class => "img-fluid") if image.src?
 = paginate @images

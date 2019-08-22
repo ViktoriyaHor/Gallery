@@ -2,14 +2,20 @@
   Comments
 = paginate @comments
 - @comments.each do |comment|
-  .row
-    .col-12
-      .div
-        %h5 Commenter:
-        %p= comment.commenter
-      .div
-        %h5 Comment:
-        %p= comment.body
-      %time= comment.created_at.to_date.strftime("%Y-%m-%d")
-      %hr
+  %ul.list-unstyled
+    %li.media
+      = link_to image_tag("#{find_image(comment).src.url(:thumbnail)}", :class => "img-fluid"),
+                              category_image_new_path(category_slug: find_image(comment).category.slug, id: find_image(comment).id) if find_image(comment).src?
+      .media-body.ml-3
+        %h5.mt-0.mb-1
+          = comment.commenter
+        %p
+          = comment.body
+        -#%abbr.timeago{:title => comment.created_at.getutc.iso8601}
+        -#  = comment.created_at.to_s
+    %hr
+
 = paginate @comments
+
+
+

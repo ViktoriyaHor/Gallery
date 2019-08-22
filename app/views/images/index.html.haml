@@ -1,19 +1,14 @@
 .container
   %h1.text-center Images
   = paginate @images
-  - @images.to_a.each_slice(2).each do |pair|
-    .row
-      - pair.each do |image|
-        .col-6.d-flex.justify-content-center.align-items-center.p-2
+  .row
+    - @images.to_a.each_slice(3).each do |column|
+      .column
+        - column.each do |image|
           - if user_signed_in?
             = link_to image_tag("#{image.src.url(:thumb)}"), category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
           - else
             = image_tag("#{image.src.url(:thumb)}") if image.src?
-          -#- if user_signed_in?
-            -#%p.text-center
-            -#  = link_to image_tag("#{image.src.url(:thumb)}", :class => "img-fluid"),
-            -#                  category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
-            -#  = link_to "Look", category_image_new_path(category_slug: image.category.slug, id: image.id)
   = paginate @images
 
 

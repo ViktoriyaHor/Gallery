@@ -1,5 +1,6 @@
 %h4 Add an image:
-= simple_form_for [ @category, @category.images.build ] do |f|
-  .form-group
-    = f.file_field :src
-    = f.submit 'Save'
+= form_with(model: [@category, @category.images.build ], local: true) do |f|
+  = f.file_field :src, :class => "form-control-file"
+  = f.submit 'Save', :class => "btn btn-dark"
+
+

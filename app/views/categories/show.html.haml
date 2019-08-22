@@ -1,19 +1,29 @@
-%h1.text-center= @category.title
 
-= render 'images/form'
+%h1.text-center= @category.title.capitalize
 
-= link_to "Back", categories_path
+- if user_signed_in?
+  - if @pre_subscribe
+    = link_to 'Unsubscribe', category_subscription_path(@category, @pre_subscribe), method: :delete, class: "btn btn-dark d-flex justify-content-end my-3"
+  - else
+    = link_to 'Subscribe', category_subscriptions_path(@category), method: :post, class: "btn btn-dark d-flex justify-content-end my-3"
+- else
+  = link_to 'Subscribe', category_subscriptions_path(@category), method: :post, class: "btn btn-dark d-flex justify-content-end my-3"
+
+- if user_signed_in?
+  = render 'images/form'
+
 = paginate @images
 
-- @images.each_slice(2).each do |pair|
-  .row
-    - pair.each do |image|
-      .col-6
-        = link_to image_tag("#{image.src.url(:thumb)}", :class => "img-fluid"),
+.row
+  - @images.to_a.each_slice(3).each do |column|
+    .column
+      - column.each do |image|
+        - if user_signed_in?
+          = link_to image_tag("#{image.src.url(:thumb)}", :class => "img-fluid"),
                               category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
-        %p.text-center= link_to 'Destroy Image', category_image_path(category_slug: image.category.slug, id: image.id),
-                method: :delete,
-                data: { confirm: 'Are you sure?' }
+          .overlay Like
+        - else
+          = image_tag("#{image.src.url(:thumb)}", :class => "img-fluid") if image.src?
 = paginate @images
 
 

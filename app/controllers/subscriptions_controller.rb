@@ -5,12 +5,12 @@ class SubscriptionsController < ApplicationController
 
   def create
     @category.subscriptions.create(user_id: current_user.id) unless already_subscribe?
-    redirect_to categories_path
+    redirect_to category_path(@category)
   end
 
   def destroy
     @subscription.destroy if already_subscribe?
-    redirect_to categories_path
+    redirect_to category_path(@category)
   end
 
   private
@@ -19,6 +19,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def find_subscription
+    find_category
     @subscription = @category.subscriptions.find(params[:id])
   end
 

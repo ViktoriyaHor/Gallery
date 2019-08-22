@@ -1,4 +1,4 @@
-= simple_form_for [@category, @image, @image.comments.build ] do |f|
+= form_with(model: [@category, @image, @image.comments.build ], local: true) do |f|
   .form-group
     = f.label :commenter, class: 'control-label'
     = f.text_field :commenter, value: current_user.username, class: 'form-control'

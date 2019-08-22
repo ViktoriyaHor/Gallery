@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
 
   before_action :find_category, only: [:create, :show, :destroy]
   before_action :find_image, only: [:show, :destroy]
@@ -21,9 +22,13 @@ class ImagesController < ApplicationController
     if params[:image].blank?
       redirect_to @category, danger: "Image didn't save! Please select a file"
     else
-      @image = @category.images.new(image_params)
+      @image = @category.images.new(image_params.merge( {user_id: current_user.id} ))
       @image.save
-      redirect_to @category, success: "Image saved"
+      if @image.errors.empty?
+        redirect_to @category, success: "Image saved"
+      else
+        render :new
+      end
     end
   end
 
@@ -43,7 +48,7 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:src, :category_id)
+    params.require(:image).permit(:src, :category_id, :current_user_id)
   end
 
 end

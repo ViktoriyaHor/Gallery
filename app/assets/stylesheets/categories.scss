@@ -2,4 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.title{
+  position: absolute;
+  background: rgba(0,0,0,0.6);
+  width: 100%;
+  bottom: 0%;
+  padding: 10px;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+}
 

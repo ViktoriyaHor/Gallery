@@ -38,21 +38,23 @@
             %li.nav-item
               = link_to "Registration", new_user_registration_path, class: "nav-link"
 
-      - flash.each do |name, message|
-        .container-fluid.p-0
-          %div{:class => "alert #{bootstrap_class_for(name)}"}
-            %button{:class => 'close', "data-dismiss" => 'alert'} &times;
-            = message
+    = render "categories/errors"
+    = render "images/errors"
+    = render "comments/errors"
+    = render "layouts/errors"
+
     - if controller_name == "static_pages"
       .container-fluid.p-0
         = yield
     - else
-      .container
+      .container.my-4
         = yield
+
     %footer
       %p © Company 2019
-    %script{:src => 'https://www.google.com/recaptcha/api.js', :async => "", :defer => ""}
 
+
+    %script{:src => 'https://www.google.com/recaptcha/api.js', :async => "", :defer => ""}
 
 
 

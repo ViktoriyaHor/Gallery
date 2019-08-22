@@ -1,22 +1,21 @@
-%h1
-  Categories
-= link_to "New category", new_category_path
+%h1.text-center Categories
+- if user_signed_in?
+  = link_to "Create new category", new_category_path, class: "btn btn-dark d-flex justify-content-end my-3"
 
-%ul
-  - @categories.each do |category|
-    %li #{category.title}
-    = link_to "Show", category_path(category)
-    = link_to "Edit", edit_category_path(category)
-    = link_to "Destroy", category_path(category),
-        method: :delete,
-        data: { confirm: 'Are you sure?' }
-    - if current_user
-      - if @category == category.id
-        = button_to 'Unsubscribe', category_subscription_path(category, @subscription), method: :delete
-      - else
-        = button_to 'Subscribe', category_subscriptions_path(category), method: :post
-    - else
-      = button_to 'Subscribe', category_subscriptions_path(category), method: :post
+- @categories.each_slice(3).each do |row|
+  .row
+    - row.each do |category|
+      .col-4
+        .position-relative
+          .title #{category.title.capitalize}
+          - if popular_image(category.id)
+            = link_to image_tag("#{popular_image(category.id).src.url(:thumb)}", :class => "img-fluid"), category_path(category)
+          - else
+            = link_to image_tag('no-image.jpg', :class => "img-fluid"), category_path(category)
+
+
+
+
 
 
 

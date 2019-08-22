@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, :find_category_image, only: [:create, :destroy]
   before_action :find_comment, only: [:edit, :update, :destroy]
   after_action :logging_comments, only: [:create]
+  helper_method :find_image
 
   def new
     @comment = Comment.new
@@ -53,6 +54,10 @@ class CommentsController < ApplicationController
 
   def find_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def find_image(comment)
+    Image.find(comment.image_id)
   end
 
   def logging_comments

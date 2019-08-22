@@ -2,17 +2,19 @@ class CategoriesController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_category, only: [:update, :edit, :show, :destroy]
+  helper_method :popular_image
 
   def index
     @categories = Category.all
-    unless current_user.blank?
-      @subscription = Subscription.find_by_user_id(current_user)
-      @category = @subscription.category_id unless @subscription.blank?
-    end
+    # unless current_user.blank?
+    #   @subscription = Subscription.find_by_user_id(current_user)
+    #   @category = @subscription.category_id unless @subscription.blank?
+    # end
   end
 
   def show
     @images = @category.images.page(params[:page])
+    @pre_subscribe = @category.subscriptions.find { |subscription| subscription.user_id == current_user.id} if current_user
   end
 
   def new
@@ -57,6 +59,10 @@ class CategoriesController < ApplicationController
 
   def find_category
     @category = Category.find_by_slug(params[:slug])
+  end
+
+  def popular_image(category)
+    Category.find(category).images.select("images.*, (likes_count + comments_count) AS i_count").order("i_count DESC").first
   end
 
 end

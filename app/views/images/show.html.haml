@@ -1,27 +1,36 @@
 = image_tag "#{@image.src.url}", :class => "img-fluid" if @image.src?
+.row.d-flex.justify-content-between.align-items-center.m-1
+  .col-6.d-flex.justify-content-start.align-items-center
+    - if @pre_like
+      = button_to category_image_like_path(@category, @image, @pre_like), method: :delete, :class => "rounded-circle" do
+        = fa_icon('heart', type: :fas)
+    - else
+      = button_to category_image_likes_path(@category, @image), method: :post, :class => "rounded-circle" do
+        = fa_icon('heart', type: :far)
+    = @image.likes.size
+  .col-6.d-flex.justify-content-end
+    -#= (@image.likes.size) == 1 ? 'Like' : 'Likes'
+    = link_to "Back", images_path
 
-- if @pre_like
-  = button_to 'Unlike', category_image_like_path(@category, @image, @pre_like), method: :delete
--else
-  = button_to 'Like', category_image_likes_path(@category, @image), method: :post
-%p
-  = @image.likes.size
-  = (@image.likes.size) == 1 ? 'Like' : 'Likes'
-
-%h2 Comments:
-- @image.comments.each do |comment|
-  %p Commenter:
-  = comment.commenter
-  %p Comment:
-  = comment.body
-  %p
-    = link_to 'Destroy Comment', comment_path(category_slug: @image.category.slug,
-    image_id: @image.id, id: comment.id),
-    method: :delete,
-    data: { confirm: 'Are you sure?' }
-    = link_to "Edit", edit_comment_path(comment)
-
-%h2 Add a comment:
+%h4.my-4 Add a comment:
 = render 'comments/form'
 
-= link_to "Back", images_path
+- if @image.comments.first.id?
+  %h3.my-4 Comments:
+  - @image.comments.each do |comment|
+    %ul.list-unstyled
+      %li.media
+        .media-body.ml-3
+          %h5.mt-0.mb-1
+            = comment.commenter
+          %p
+            = comment.body
+            -#%abbr.timeago{:title => comment.created_at.getutc.iso8601}
+            -#  = comment.created_at.to_s
+      %hr
+    -#= link_to 'Destroy Comment', comment_path(category_slug: @image.category.slug,
+    -#image_id: @image.id, id: comment.id),
+    -#method: :delete,
+    -#data: { confirm: 'Are you sure?' }
+    -#= link_to "Edit", edit_comment_path(comment)
+

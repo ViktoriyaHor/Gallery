@@ -3,6 +3,7 @@
 @import "static_pages";
 @import "images";
 @import "categories";
+@import 'font_awesome5_webfont';
 
 h1{
   margin: 24px;
@@ -45,4 +46,6 @@ h1{
   border: solid 1px #343a40;
 }
 
-
+.hidden {
+  display: none !important;
+}

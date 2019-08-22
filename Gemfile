@@ -95,3 +95,4 @@ gem 'resque', require: 'resque/server'
 gem 'resque-web', require: 'resque_web'
 
 gem 'nokogiri', '~> 1.6', '>= 1.6.7.2'
+gem 'font_awesome5_rails'

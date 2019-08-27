@@ -1,8 +1,31 @@
 - if user_signed_in?
-  %p
-    = @user.email
-  %p
-    = @user.username
+  .container
+    %h2.text-center Profile
+    = link_to "Edit profile", edit_user_registration_path
+    %table.table.table-hover.mt-4
+      %thead
+        %tr
+          %th Name
+          %th Email
+      %tbody
+        %tr
+          %td
+            = @user.username
+          %td
+            = @user.email
+    %h4 Yours categories
+    %table.table.table-hover.mt-4
+      %thead
+        %tr
+          %th Title
+          %th Action
+      %tbody
+        - @categories.each do |category|
+          %tr
+            %td #{category.title.capitalize}
+            %td
+              = link_to "Show", category_path(category), :class => "btn btn-dark"
+              = link_to "Destroy", category_path(category),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, :class => "btn btn-dark"
 
-
-= link_to "Edit profile", edit_user_registration_path

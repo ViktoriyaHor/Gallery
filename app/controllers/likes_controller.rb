@@ -31,6 +31,10 @@ class LikesController < ApplicationController
     @like = @image.likes.find(params[:id])
   end
 
+  def pre_like
+    @pre_like = @image.likes.find { |like| like.user_id == current_user.id}
+  end
+
   def logging_likes
     LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('likes').id}", :action_path=>request.original_url).save if user_signed_in?
   end

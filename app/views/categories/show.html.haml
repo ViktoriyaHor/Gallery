@@ -9,11 +9,6 @@
     - else
       = link_to 'Subscribe', category_subscriptions_path(@category), method: :post, class: "btn btn-dark justify-content-end my-3"
 
-    - if user_signed_in?
-      = render 'images/form'
-
-= paginate @images
-
 .row
   - @images.to_a.each_slice(3).each do |column|
     .column
@@ -28,6 +23,10 @@
 
         - else
           = image_tag("#{image.src.url(:thumb)}", :class => "img-fluid") if image.src?
+
+- if user_signed_in?
+  = render 'images/form'
+
 = paginate @images
 
 

@@ -1,14 +1,21 @@
 .container
   %h1.text-center Images
-  = paginate @images
+
   .row
     - @images.to_a.each_slice(3).each do |column|
       .column
         - column.each do |image|
-          - if user_signed_in?
-            = link_to image_tag("#{image.src.url(:thumb)}"), category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
-          - else
-            = image_tag("#{image.src.url(:thumb)}") if image.src?
+          .position-relative
+            - if user_signed_in?
+              .overlay
+                = fa_icon('heart', type: :far)
+                = image.likes.size
+              = link_to image_tag("#{image.src.url(:thumb)}"), category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
+            - else
+              .overlay
+                = fa_icon('heart', type: :far)
+                = image.likes.size
+              = image_tag("#{image.src.url(:thumb)}") if image.src?
   = paginate @images
 
 

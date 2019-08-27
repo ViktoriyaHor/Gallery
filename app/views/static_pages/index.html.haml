@@ -1,18 +1,26 @@
 .carousel.slide.position-relative{:id=>"carouselExampleIndicators", :data => {:ride => "carousel"}}
   %ol.carousel-indicators
     - @images.each_with_index do |image, index|
-      %li{:data => {:target => "#carouselExampleIndicators", :slide_to => "#{index}", :class => "#{index == 0 ? 'active' : ''}"}}
+      - if index%3==0
+        %li{:data => {:target => "#carouselExampleIndicators", :slide_to => "#{index}", :class => "#{index == 0 ? 'active' : ''}"}}
   .carousel-inner
-    - @images.each_with_index do |image, index|
+    - @images.each_slice(3).each_with_index do |row, index|
       .carousel-item{:class => ("active" if index == 0)}
-        %img.d-block.w-100{:src => "#{image.src.url}", :alt => "Image"}
+        .row
+          - row.each do |image|
+            .col-lg-4.col-12
+              %img{:src => "#{image.src.url}", :alt => "Image", :class => "d-block", :style => "height: 50vh; width: 100%; object-fit: cover;"}
   %a.carousel-control-prev{:href => "#carouselExampleIndicators", :role => "button", :data => {:slide => "prev"}}
     %span.carousel-control-prev-icon{:aria => {:hidden => "true"}}
     %span.sr-only Previous
   %a.carousel-control-next{:href => "#carouselExampleIndicators", :role => "button", :data => {:slide => "next"}}
     %span.carousel-control-next-icon{:aria => {:hidden => "true"}}
     %span.sr-only Next
-  .back
-    %p Amazing pictures every day!
-    = link_to "Sign in", new_user_session_path, class: "btn btn-light"
+  .row.m-0.p-0
+    .back.col-lg-4.col-12.align-items-center
+      %p Amazing pictures every day!
+      .links
+        = link_to "Sign in", new_user_session_path, class: "btn btn-light"
+        = link_to "Registration", new_user_registration_path, class: "btn btn-light"
+
 

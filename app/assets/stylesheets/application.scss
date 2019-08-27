@@ -3,8 +3,29 @@
 @import "static_pages";
 @import "images";
 @import "categories";
-@import 'font_awesome5_webfont';
+@import "likes";
 
+@import 'font_awesome5_webfont';
+.bg-light{
+  background-color: #fff !important;
+}
+.carousel .col-12{
+  padding-left: 0 !important;
+}
+.carousel .col-lg-4{
+  padding-right: 0 !important;
+}
+.navbar-brand{
+  color: #000;
+}
+.navbar-brand:hover .logo{
+  color: #000;
+  -moz-transform: scale(1.2); /* Для Firefox */
+  -ms-transform: scale(1.2); /* Для IE */
+  -webkit-transform: scale(1.2); /* Для Safari, Chrome, iOS */
+  -o-transform: scale(1.2); /* Для Opera */
+  transform: scale(1.2);
+}
 h1{
   margin: 24px;
 }
@@ -48,4 +69,22 @@ h1{
 
 .hidden {
   display: none !important;
+}
+
+.form-control:focus {
+  border-color: #343a40;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.6);
+}
+a, a:hover{
+  color: #343a40;
+}
+.form-actions{
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.category img{
+  height: 30vh;
+  width: 100%;
+  object-fit: cover;
 }

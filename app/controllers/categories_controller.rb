@@ -45,9 +45,9 @@ class CategoriesController < ApplicationController
     # current_user.categories.find(@category.id).destroy
     if current_user.id == @category.user_id
       @category.destroy
-      redirect_to categories_path, success: 'Category removed'
+      redirect_to profile_path, success: 'Category removed'
     else
-      redirect_to categories_path, danger: "Category not yours"
+      redirect_to profile_path, danger: "Category not yours"
     end
   end
 

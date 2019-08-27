@@ -3,12 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .back{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: absolute;
-  background: rgba(0,0,0,0.6);
-  width: 100%;
-  top: 20%;
-  padding: 100px;
+  background: rgba(0,0,0,0.4);
+  max-width: 100%;
+  top: 0;
+  height: 50vh;
   color: #fff;
   font-size: 36px;
   text-align: center;
+  padding: 5px;
 }

@@ -13,5 +13,5 @@
     - if User.find_by_email(resource.email).failed_attempts >= User.logins_before_captcha
       = recaptcha_tags
   .form-actions
-    = f.button :submit, "Log in", class: 'btn btn-primary'
+    = f.button :submit, "Log in", class: 'btn btn-dark'
 = render "devise/shared/links"

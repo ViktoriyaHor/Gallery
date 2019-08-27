@@ -8,13 +8,20 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %nav.navbar.navbar-expand-lg.sticky-top.bg-dark.navbar-dark
-      %a.navbar-brand.mx-4{:href => "/"} Gallery
-      %button.navbar-toggler{:data => {:target => "#navbarSupportedContent", :toggle => "collapse"}, :type => "button", :aria => {:controls => "navbarSupportedContent", :expanded => "false", :label => "Toggle navigation"}}
+    .row.mt-4
+      .col.text-center
+        %a.navbar-brand.mx-auto{:href => "/"}
+          = image_tag('logo.resized.png', :class => "d-flex text-align-center")
+          .logo.mt-3
+            %em
+              %strong Gallery
+          %hr
+    %nav.container.navbar.navbar-expand-lg.sticky-top.bg-light.navbar-light
+      %button.navbar-toggler{:class => "mx-auto", :data => {:target => "#navbarSupportedContent", :toggle => "collapse"}, :type => "button", :aria => {:controls => "navbarSupportedContent", :expanded => "false", :label => "Toggle navigation"}}
         %span.navbar-toggler-icon
       .collapse.navbar-collapse#navbarSupportedContent
         %ul.navbar-nav.mr-auto
-          %li.nav-item.dropdown
+          %li.nav-item.dropdown{:class => ("active" if controller_name == "categories")}
             = link_to "Categories", root_path, class: "nav-link dropdown-toggle", id: "navbardrop",
               'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false"
             .dropdown-menu
@@ -22,9 +29,9 @@
                 = link_to "#{category.title.capitalize}", category_path(category), class: "dropdown-item"
               .dropdown-divider
               = link_to "All categories", categories_path, class: "dropdown-item"
-          %li.nav-item.active
+          %li.nav-item{:class => ("active" if controller_name == "images")}
             = link_to "Images", images_path, class: "nav-link"
-          %li.nav-item
+          %li.nav-item{:class => ("active" if controller_name == "comments")}
             = link_to "Comments", comments_path, class: "nav-link"
         %ul.navbar-nav
           - if user_signed_in?
@@ -44,14 +51,13 @@
     = render "layouts/errors"
 
     - if controller_name == "static_pages"
-      .container-fluid.p-0
+      .container-fluid.p-2
         = yield
     - else
       .container.my-4
         = yield
-
     %footer
-      %p © Company 2019
+      %p.text-center Copyright © 2019 Gallery
 
 
     %script{:src => 'https://www.google.com/recaptcha/api.js', :async => "", :defer => ""}

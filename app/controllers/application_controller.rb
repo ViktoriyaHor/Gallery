@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :navigation, only: [:index, :show]
 
+  before_action :set_locale
+
   helper_method :rating_categories
 
   protected
@@ -21,6 +23,14 @@ class ApplicationController < ActionController::Base
 
   def navigation
     LoggingUserAction.new(:user_id => current_user.id, :action_id => "#{Action.find_by_action_type('navigation').id}", :action_path=>request.original_url).save if user_signed_in?
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def default_url_options(options={})
+    { locale: I18n.locale }.merge options
   end
 
 end

@@ -3,6 +3,6 @@
 %p You are subscribed to a category #{@category.slug}.
 %p New image posted in this category. Follow the link to see the picture
 = link_to 'Look', category_image_new_url(category_slug: @category.slug,
-            id: @image.id)
+            id: @image.id, locale: @locale)
 %p Following the link you can unsubscribe from the category
-= link_to 'Unsubscribe', categories_url
+= link_to 'Unsubscribe', category_url(slug: @category.slug, locale: @locale)

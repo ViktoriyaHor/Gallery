@@ -2,10 +2,21 @@ class SubscriptionsController < ApplicationController
 
   before_action :find_category, :authenticate_user!
   before_action :find_subscription, only: [:destroy]
+  # before_action :send_email_to_subscribers, only: [:create]
+
 
   def create
-    @category.subscriptions.create(user_id: current_user.id) unless already_subscribe?
-    redirect_to category_path(@category)
+    @subscription = @category.subscriptions.new(user_id: current_user.id) unless already_subscribe?
+    if @subscription.save
+      locale = params[:locale]
+      email = User.find(@subscription.user_id).email
+      username = User.find(@subscription.user_id).username
+      category = Category.find(@subscription.category_id).slug
+      Resque.enqueue(ToSubscribersSendEmail, [email, username, category, locale])
+      redirect_to category_path(@category)
+    else
+      redirect_to category_path(@category), danger: "Subscription didn't creat"
+    end
   end
 
   def destroy
@@ -14,6 +25,7 @@ class SubscriptionsController < ApplicationController
   end
 
   private
+
   def find_category
     @category = Category.friendly.find(params[:category_slug])
   end
@@ -26,4 +38,5 @@ class SubscriptionsController < ApplicationController
   def already_subscribe?
     Subscription.where(user_id: current_user.id, category_id: @category.id).exists?
   end
+
 end

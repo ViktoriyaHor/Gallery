@@ -7,12 +7,4 @@ class Image < ApplicationRecord
   # validates :src, presence: true
   paginates_per 6
 
-  after_create :send_email_to_subscribers
-
-  private
-
-  def send_email_to_subscribers
-    Resque.enqueue(NewImageSendEmail, self.id)
-    # UserMailer.new_image(self.id).deliver
-  end
 end

@@ -23,11 +23,14 @@ class ImagesController < ApplicationController
       redirect_to @category, danger: "Image didn't save! Please select a file"
     else
       @image = @category.images.new(image_params.merge( {user_id: current_user.id} ))
-      @image.save
-      if @image.errors.empty?
+      if @image.save && @image.errors.empty?
+        locale = params[:locale]
+        id = @image.id
+        Resque.enqueue(NewImageSendEmail, id, locale)
+        # raise hhh
         redirect_to @category, success: "Image saved"
       else
-        render :new
+        render :new, danger: "Image didn't save"
       end
     end
   end

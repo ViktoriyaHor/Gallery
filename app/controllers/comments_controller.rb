@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @comment = @image.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to category_image_new_path(@category, @image, @comment), success: 'Comment created'
+      redirect_to category_image_new_path(@category, @image, @comment, locale: I18n.locale), success: 'Comment created'
     else
       render :new
     end

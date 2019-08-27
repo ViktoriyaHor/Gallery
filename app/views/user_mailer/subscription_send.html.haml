@@ -2,4 +2,4 @@
   Hi, #{@username}!
 %p You have successfully subscribed to a category #{@category}!
 %p Following the link will unsubscribe from the category
-= link_to 'Unsubscribe', categories_url
+= link_to 'Unsubscribe', category_url(@locale, @category)

@@ -1,5 +1,5 @@
-%h4.mt-2 Add an image:
-= form_with(model: [@category, @category.images.build ], local: true, class: "d-flex justify-content-between align-items-center btn btn-dark rounded-0 m-0") do |f|
+%h4.text-center.mt-2= t('images.form.title')
+= form_with(model: [@category, @category.images.build ], local: true, class: "d-flex justify-content-between align-items-center btn btn-light rounded-0 m-0") do |f|
   = f.file_field :src, :class => "form-control-file"
-  = f.submit 'Save', :class => "btn btn-light"
+  = f.submit t('links.save'), :class => "btn btn-dark"
 

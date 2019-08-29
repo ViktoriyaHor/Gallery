@@ -1,0 +1,15 @@
+ru:
+  activerecord:
+    models:
+      category: 'Категория'
+      image: 'Изображение'
+      comment: 'Комментарий'
+    attributes:
+      category:
+        title: 'Название'
+      comment:
+        commenter: 'Автор'
+        body: 'Комментарий'
+    errors:
+      messages:
+        blank: 'не может быть пустым'

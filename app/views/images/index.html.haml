@@ -1,5 +1,5 @@
 .container
-  %h1.text-center Images
+  %h1.text-center= t('images.index.title')
 
   .row
     - @images.to_a.each_slice(3).each do |column|

@@ -15,7 +15,7 @@ class SubscriptionsController < ApplicationController
       Resque.enqueue(ToSubscribersSendEmail, [email, username, category, locale])
       redirect_to category_path(@category)
     else
-      redirect_to category_path(@category), danger: "Subscription didn't creat"
+      redirect_to category_path(@category), danger: I18n.t('flash.subscription.didnt_create')
     end
   end
 

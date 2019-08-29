@@ -1,5 +1,6 @@
-%h1.text-center New category
+%h1.text-center
+  = t('categories.new.title')
 
 = render 'form'
 
-= link_to "Back", categories_path
+= link_to t('links.back'), categories_path

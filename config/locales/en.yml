@@ -30,4 +30,87 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  categories:
+    new:
+      title: 'New category'
+    edit:
+      title: "Editing category"
+    index:
+      title: "Categories"
+    show:
+      unsubscribe: "Unsubscribe"
+      subscribe: "Subscribe"
+  links:
+    save: "Save"
+    back: "Back"
+    create_new_category: "Create new category"
+  comments:
+    all:
+      title: "Comments"
+    edit:
+      title: "Edit comment"
+    new:
+      title: "New comment"
+  images:
+    form:
+      title: "Add an image:"
+    index:
+      title: "Images"
+    show:
+      add_comment: "Add a comment"
+      comment: "Comments:"
+    new:
+      title: "New image"
+  menu:
+    categories: "Categories"
+    all_categories: "All categories"
+    images: "Images"
+    comments: "Comments"
+    profile: "Profile"
+    exit: "Exit"
+    sign_in: "Sign in"
+    registration: "Registration"
+  static_pages:
+    index:
+      next: "Next"
+      previous: "Previous"
+      title: "Amazing pictures every day!"
+      sign_in: "Sign in"
+      registration: "Registration"
+  profile:
+    title: "Profile"
+    links:
+      edit: "Edit profile"
+    name: "Name"
+    yours_categories: "Yours categories"
+    categories:
+      title: "Title"
+      action:
+        title: "Action"
+        create: "Create"
+        edit: "Show"
+        destroy: "Destroy"
+  views:
+    pagination:
+      first: "First"
+      last: "Last"
+      next: "Next"
+      previous: "Prev"
+  flash:
+    category:
+      created: "Category created"
+      didnt_create: "Category didn't creat"
+      updated: "Category updated"
+      didnt_update: "Category didn't update"
+      removed: "Category removed"
+      didnt_remove: "Category didn't remove. This category not yours"
+    comment:
+      updated: "Comment updated"
+      removed: "Comment removed"
+    image:
+      select: "Image didn't save! Please select a file"
+      saved: "Image saved"
+      didnt_save: "Image didn't save"
+      removed: "Image removed"
+    subscription:
+      didnt_create: "Subscription didn't create."

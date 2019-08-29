@@ -10,7 +10,7 @@
   %body
     .row.mt-4
       .col.text-center
-        %a.navbar-brand.mx-auto{:href => "/"}
+        %a.navbar-brand.mx-auto{:href => root_path}
           = image_tag('logo.resized.png', :class => "d-flex text-align-center")
           .logo.mt-3
             %em
@@ -22,28 +22,33 @@
       .collapse.navbar-collapse#navbarSupportedContent
         %ul.navbar-nav.mr-auto
           %li.nav-item.dropdown{:class => ("active" if controller_name == "categories")}
-            = link_to "Categories", root_path, class: "nav-link dropdown-toggle", id: "navbardrop",
+            = link_to t('menu.categories'), root_path, class: "nav-link dropdown-toggle", id: "navbardrop",
               'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false"
             .dropdown-menu
               -rating_categories.each do |category|
                 = link_to "#{category.title.capitalize}", category_path(category), class: "dropdown-item"
               .dropdown-divider
-              = link_to "All categories", categories_path, class: "dropdown-item"
+              = link_to t('menu.all_categories'), categories_path, class: "dropdown-item"
           %li.nav-item{:class => ("active" if controller_name == "images")}
-            = link_to "Images", images_path, class: "nav-link"
+            = link_to t('menu.images'), images_path, class: "nav-link"
           %li.nav-item{:class => ("active" if controller_name == "comments")}
-            = link_to "Comments", comments_path, class: "nav-link"
+            = link_to t('menu.comments'), comments_path, class: "nav-link"
+        %ul.navbar-nav
+          %li.nav-item.border
+            = link_to "ru", { locale: :ru }, class: (I18n.locale == :ru ? "nav-link active" : "nav-link")
+          %li.nav-item.border.border-left-0
+            = link_to "en", { locale: :en }, class: (I18n.locale == :en ? "nav-link active" : "nav-link ")
         %ul.navbar-nav
           - if user_signed_in?
             %li.nav-item
-              = link_to "Profile", profile_path, class: "nav-link"
+              = link_to t('menu.profile'), profile_path, class: "nav-link"
             %li.nav-item
-              = link_to "Exit", destroy_user_session_path, method: :delete, class: "nav-link"
+              = link_to t('menu.exit'), destroy_user_session_path, method: :delete, class: "nav-link"
           - else
             %li.nav-item
-              = link_to "Sign in", new_user_session_path, class: "nav-link"
+              = link_to t('menu.sign_in'), new_user_session_path, class: "nav-link"
             %li.nav-item
-              = link_to "Registration", new_user_registration_path, class: "nav-link"
+              = link_to t('menu.registration'), new_user_registration_path, class: "nav-link"
 
     = render "categories/errors"
     = render "images/errors"

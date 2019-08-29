@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     @image = @comment.image
     @category = @image.category
     if @comment.update(comment_params)
-      redirect_to category_image_new_path(@category, @image), success: 'Comment updated'
+      redirect_to category_image_new_path(@category, @image), success: I18n.t('flash.comment.updated')
     else
       render 'edit'
     end
@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to category_image_new_path(@category, @image), success: 'Comment removed'
+    redirect_to category_image_new_path(@category, @image), success: I18n.t('flash.comment.removed')
   end
 
   def all

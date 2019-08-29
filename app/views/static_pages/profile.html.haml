@@ -1,11 +1,12 @@
 - if user_signed_in?
   .container
-    %h2.text-center Profile
-    = link_to "Edit profile", edit_user_registration_path
-    %table.table.table-hover.mt-4
+    %h2.text-center= t('profile.title')
+    .text-right
+      = link_to t('profile.links.edit'), edit_user_registration_path
+    %table.table.table-hover.text-center.mt-4
       %thead
         %tr
-          %th Name
+          %th= t('profile.name')
           %th Email
       %tbody
         %tr
@@ -13,19 +14,20 @@
             = @user.username
           %td
             = @user.email
-    %h4 Yours categories
-    %table.table.table-hover.mt-4
+    %h4.text-center.mt-4= t('profile.yours_categories')
+    %table.table.table-hover.text-center.mt-4
       %thead
         %tr
-          %th Title
-          %th Action
+          %th= t('profile.categories.title')
+          %th= t('profile.categories.action.title')
       %tbody
         - @categories.each do |category|
           %tr
             %td #{category.title.capitalize}
             %td
-              = link_to "Show", category_path(category), :class => "btn btn-dark"
-              = link_to "Destroy", category_path(category),
+              = link_to t('profile.categories.action.create'), new_category_path, :class => "btn btn-dark"
+              = link_to t('profile.categories.action.edit'), category_path(category), :class => "btn btn-dark"
+              = link_to t('profile.categories.action.destroy'), category_path(category),
               method: :delete,
               data: { confirm: 'Are you sure?' }, :class => "btn btn-dark"
 

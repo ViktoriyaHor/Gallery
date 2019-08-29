@@ -20,7 +20,7 @@ class ImagesController < ApplicationController
 
   def create
     if params[:image].blank?
-      redirect_to @category, danger: "Image didn't save! Please select a file"
+      redirect_to @category, danger: I18n.t('flash.image.select')
     else
       @image = @category.images.new(image_params.merge( {user_id: current_user.id} ))
       if @image.save && @image.errors.empty?
@@ -28,16 +28,16 @@ class ImagesController < ApplicationController
         id = @image.id
         Resque.enqueue(NewImageSendEmail, id, locale)
         # raise hhh
-        redirect_to @category, success: "Image saved"
+        redirect_to @category, success: I18n.t('flash.image.saved')
       else
-        render :new, danger: "Image didn't save"
+        render :new, danger: I18n.t('flash.image.didnt_save')
       end
     end
   end
 
   def destroy
     @image.destroy
-    redirect_to category_path(@category), success: "Image removed"
+    redirect_to category_path(@category), success: I18n.t('flash.image.removed')
   end
 
   private

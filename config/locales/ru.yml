@@ -1,0 +1,84 @@
+ru:
+  categories:
+    new:
+      title: 'Новая категория'
+    edit:
+      title: "Редактирование категории"
+    index:
+      title: "Категории"
+    show:
+      unsubscribe: "Отписаться"
+      subscribe: "Подписаться"
+  links:
+    save: "Сохранить"
+    back: "Назад"
+    create_new_category: "Создать новую категорию"
+  comments:
+    all:
+      title: "Комментарии"
+    edit:
+      title: "Редактировать комментарий"
+    new:
+      title: "Новый комментарий"
+  images:
+    form:
+      title: "Добавить изображение"
+    index:
+      title: "Изображения"
+    show:
+      add_comment: "Добавить комментарий"
+      comment: "Комментарии:"
+    new:
+      title: "Новое изображение"
+  menu:
+    categories: "Категории"
+    all_categories: "Все категории"
+    images: "Изображения"
+    comments: "Комментарии"
+    profile: "Профиль"
+    exit: "Выход"
+    sign_in: "Войти"
+    registration: "Зарегистрироваться"
+  static_pages:
+    index:
+      previous: "Пред"
+      next: "След"
+      title: "Лучшие картинки каждый день!"
+      sign_in: "Вход"
+      registration: "Регистрация"
+  profile:
+    title: "Профиль"
+    links:
+      edit: "Редактировать профиль"
+    name: "Имя"
+    yours_categories: "Ваши категории"
+    categories:
+      title: "Наименование"
+      action:
+        title: "Действия"
+        create: "Создать"
+        edit: "Просмотреть"
+        destroy: "Удалить"
+  views:
+    pagination:
+      first: "Первая"
+      last: "Посл"
+      next: "След"
+      previous: "Пред"
+  flash:
+    category:
+      created: "Категория создана"
+      didnt_create: "Категория не создана"
+      updated: "Категория отредактирована"
+      didnt_update: "Категория не отредактирована"
+      removed: "Категория удалена"
+      didnt_remove: "Вы не являетесь собственником категории"
+    comment:
+      updated: "Комментарий отредактирован"
+      removed: "Комментарий удален"
+    image:
+      saved: "Изображение сохранено"
+      didnt_save: "Изображение не сохранено"
+      removed: "Изображение удалено"
+    subscription:
+      didnt_create: "Не удалось осуществить подписку."

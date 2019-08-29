@@ -1,12 +1,14 @@
-%h1.text-center Categories
+%h1.text-center= t('categories.index.title')
 - if user_signed_in?
-  = link_to "Create new category", new_category_path, class: "btn btn-dark my-3"
+  .row
+    .col-12.d-flex.justify-content-center
+      = link_to t('links.create_new_category'), new_category_path, class: "btn btn-dark my-3"
 
 - @categories.each_slice(3).each do |row|
   .category.row
     - row.each do |category|
       .col-lg-4.col-12.px-1
-        .position-relative
+        .position-relative.zindex-modal
           .title #{category.title.capitalize}
           - if popular_image(category.id)
             = link_to image_tag("#{popular_image(category.id).src.url(:thumb)}", :class => "img-fluid mt-2"), category_path(category)

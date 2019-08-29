@@ -27,17 +27,17 @@ class CategoriesController < ApplicationController
   def create
     @category = current_user.categories.new(category_params)
     if @category.save
-      redirect_to @category, success: 'Category created'
+      redirect_to @category, success: I18n.t('flash.category.created')
     else
-      render :new, danger: "Category didn't creat"
+      render :new, danger: I18n.t('flash.category.didnt_create')
     end
   end
 
   def update
     if @category.update(title: category_params[:title], slug: category_params[:title])
-      redirect_to @category, success: 'Category updated'
+      redirect_to @category, success: I18n.t('flash.category.updated')
     else
-      render :edit, danger: "Category didn't update"
+      render :edit, danger: I18n.t('flash.category.didnt_update')
     end
   end
 
@@ -45,9 +45,9 @@ class CategoriesController < ApplicationController
     # current_user.categories.find(@category.id).destroy
     if current_user.id == @category.user_id
       @category.destroy
-      redirect_to profile_path, success: 'Category removed'
+      redirect_to profile_path, success: I18n.t('flash.category.removed')
     else
-      redirect_to profile_path, danger: "Category not yours"
+      redirect_to profile_path, danger: I18n.t('flash.category.didnt_remove')
     end
   end
 

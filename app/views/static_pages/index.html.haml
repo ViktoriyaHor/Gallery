@@ -12,15 +12,15 @@
               %img{:src => "#{image.src.url}", :alt => "Image", :class => "d-block", :style => "height: 50vh; width: 100%; object-fit: cover;"}
   %a.carousel-control-prev{:href => "#carouselExampleIndicators", :role => "button", :data => {:slide => "prev"}}
     %span.carousel-control-prev-icon{:aria => {:hidden => "true"}}
-    %span.sr-only Previous
+    %span.sr-only= t('static_pages.index.previous')
   %a.carousel-control-next{:href => "#carouselExampleIndicators", :role => "button", :data => {:slide => "next"}}
     %span.carousel-control-next-icon{:aria => {:hidden => "true"}}
-    %span.sr-only Next
+    %span.sr-only= t('static_pages.index.next')
   .row.m-0.p-0
     .back.col-lg-4.col-12.align-items-center
-      %p Amazing pictures every day!
+      %p= t('static_pages.index.title')
       .links
-        = link_to "Sign in", new_user_session_path, class: "btn btn-light"
-        = link_to "Registration", new_user_registration_path, class: "btn btn-light"
+        = link_to t('static_pages.index.sign_in'), new_user_session_path, class: "btn btn-light"
+        = link_to t('static_pages.index.registration'), new_user_registration_path, class: "btn btn-light"
 
 

@@ -1,13 +1,13 @@
 %h1.text-center= @category.title.capitalize
 .row
-  .col-12
+  .col-12.d-flex.justify-content-center
     - if user_signed_in?
       - if @pre_subscribe
-        = link_to 'Unsubscribe', category_subscription_path(@category, @pre_subscribe), method: :delete, class: "btn btn-dark justify-content-end my-3"
+        = link_to t('categories.show.unsubscribe'), category_subscription_path(@category, @pre_subscribe), method: :delete, class: "btn btn-dark my-3"
       - else
-        = link_to 'Subscribe', category_subscriptions_path(@category), method: :post, class: "btn btn-dark justify-content-end my-3"
+        = link_to t('categories.show.subscribe'), category_subscriptions_path(@category), method: :post, class: "btn btn-dark my-3"
     - else
-      = link_to 'Subscribe', category_subscriptions_path(@category), method: :post, class: "btn btn-dark justify-content-end my-3"
+      = link_to t('categories.show.subscribe'), category_subscriptions_path(@category), method: :post, class: "btn btn-dark my-3"
 
 .row
   - @images.to_a.each_slice(3).each do |column|

@@ -12,13 +12,13 @@
     = @image.likes.size
 
 .row.d-flex.justify-content-end.m-1
-  = link_to "Back", images_path
+  = link_to t('links.back'), images_path
 
-%h4.my-4 Add a comment:
+%h4.my-4= t('images.show.add_comment')
 = render 'comments/form'
 
 - if @image.comments.first.id?
-  %h3.my-4 Comments:
+  %h3.my-4= t('images.show.comment')
   %ul.list-unstyled
     - @image.comments.each do |comment|
       %hr

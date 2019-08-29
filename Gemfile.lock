@@ -113,6 +113,9 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    devise-bootstrap-views (1.1.0)
+    devise-i18n (1.8.1)
+      devise (>= 4.6)
     erubi (1.8.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -327,9 +330,6 @@ GEM
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
     sexp_processor (4.12.1)
-    simple_form (4.1.0)
-      actionpack (>= 5.0)
-      activemodel (>= 5.0)
     sinatra (2.0.5)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -394,6 +394,8 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  devise-bootstrap-views
+  devise-i18n
   figaro
   font_awesome5_rails
   friendly_id (~> 5.2.4)
@@ -415,7 +417,6 @@ DEPENDENCIES
   resque-web
   sass-rails (~> 5.0)
   selenium-webdriver
-  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

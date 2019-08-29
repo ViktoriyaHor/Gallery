@@ -67,8 +67,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #bootstrap 4
 gem 'bootstrap', '~> 4.3.1'
 
-gem 'simple_form'
-
 gem 'jquery-rails', '4.3.5'
 
 gem "haml-rails", "~> 2.0"
@@ -79,6 +77,9 @@ gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'mini_magick'
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-bootstrap-views'
+
 gem 'activeadmin'
 
 gem 'omniauth'

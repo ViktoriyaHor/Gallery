@@ -1,7 +1,7 @@
 class NewImageSendEmail
   @queue = :new_image_email
 
-  def self.perform(id, locale)
-    UserMailer.new_image(id, locale).deliver
+  def self.perform(id)
+    UserMailer.new_image(id).deliver
   end
 end

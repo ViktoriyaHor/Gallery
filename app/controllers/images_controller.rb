@@ -24,9 +24,8 @@ class ImagesController < ApplicationController
     else
       @image = @category.images.new(image_params.merge( {user_id: current_user.id} ))
       if @image.save && @image.errors.empty?
-        locale = params[:locale]
         id = @image.id
-        Resque.enqueue(NewImageSendEmail, id, locale)
+        Resque.enqueue(NewImageSendEmail, id)
         # raise hhh
         redirect_to @category, success: I18n.t('flash.image.saved')
       else

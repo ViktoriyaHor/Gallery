@@ -1,7 +1,7 @@
 ActiveAdmin.register Image do
   menu priority: 3
   remove_filter :comments, :likes
-  permit_params :src, :category_id
+  permit_params :src, :category_id, :user_id
 
   index do
     selectable_column

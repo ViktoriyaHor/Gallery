@@ -13,7 +13,6 @@ class UserMailer < ApplicationMailer
     # mail to: @user.email, subject: "Subscription to a category"
     @username = params[1]
     @category = params[2]
-    @locale = params[3]
     mail to: params[0], subject: "Subscription to a category"
   end
 
@@ -29,10 +28,9 @@ class UserMailer < ApplicationMailer
   #   end
   #   mail to: @emails, subject: "New image add to category"
   # end
-  def new_image(id, locale)
+  def new_image(id)
     @image = Image.find(id)
     category_id = @image.category_id
-    @locale = locale
     @category = Category.find(category_id)
     subscriptions = Subscription.where(category_id: category_id)
     @emails = Array.new

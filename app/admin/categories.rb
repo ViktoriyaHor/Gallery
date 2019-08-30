@@ -1,7 +1,7 @@
 ActiveAdmin.register Category do
   menu priority: 2
   filter :title
-  permit_params :title, :slug
+  permit_params :title, :slug, :user_id
 
   controller do
     def find_resource

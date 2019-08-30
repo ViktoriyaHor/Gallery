@@ -1,0 +1,6 @@
+- if @user && @user.errors.any?
+  - @user.errors.full_messages.each do |message|
+    .container-fluid.p-0
+      %div{:class => "alert alert-danger"}
+        %button{:class => 'close', "data-dismiss" => 'alert'} &times;
+        = message

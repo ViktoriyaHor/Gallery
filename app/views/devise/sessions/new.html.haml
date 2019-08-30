@@ -1,4 +1,4 @@
-%h1.text-center= t('.sign_in')
+%h1= t('.sign_in')
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form-group
     = f.label :email
@@ -11,6 +11,9 @@
       = f.check_box :remember_me, class: 'form-check-input'
       = f.label :remember_me, class: 'form-check-label' do
         = resource.class.human_attribute_name('remember_me')
+  - if User.find_by_email(resource.email)
+    - if User.find_by_email(resource.email).failed_attempts >= User.logins_before_captcha
+      = recaptcha_tags
   .form-group
     = f.submit  t('.sign_in'), class: 'btn btn-dark'
 = render 'devise/shared/links'

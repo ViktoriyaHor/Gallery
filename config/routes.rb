@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, only: :omniauth_callbacks,
-             :controllers => { omniauth_callbacks: 'users/omniauth_callbacks',
-                               sessions: 'users/sessions'}
+             :controllers => { omniauth_callbacks: 'users/omniauth_callbacks'}
 
   scope "/:locale" , locale: /#{I18n.available_locales.join('|')}/ do
     devise_for :admin_users, ActiveAdmin::Devise.config
@@ -24,7 +23,6 @@ Rails.application.routes.draw do
     end
 
     get 'categories/:category_slug/:id', to: 'images#show', as: 'category_image_new'
-
-    mount Resque::Server.new, at: "/resque"
   end
+  mount Resque::Server.new, at: "/resque"
 end

@@ -4,8 +4,7 @@ Rails.application.routes.draw do
              :controllers => { omniauth_callbacks: 'users/omniauth_callbacks'}
 
   scope "/:locale" , locale: /#{I18n.available_locales.join('|')}/ do
-    devise_for :admin_users, ActiveAdmin::Devise.config
-    ActiveAdmin.routes(self)
+
     devise_for :users, skip: :omniauth_callbacks
     root 'static_pages#index'
 
@@ -23,6 +22,9 @@ Rails.application.routes.draw do
     end
 
     get 'categories/:category_slug/:id', to: 'images#show', as: 'category_image_new'
+    mount Resque::Server.new, at: "/resque"
   end
-  mount Resque::Server.new, at: "/resque"
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 end

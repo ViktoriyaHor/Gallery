@@ -8,6 +8,11 @@ module ApplicationHelper
         notice: 'alert-info',
     }[name.to_sym] || name
   end
+
+  def current_class?(test_path)
+    return 'active' if request.path == test_path
+    ''
+  end
   #
   # def scraping_images(url)
   #   require 'upload_images'

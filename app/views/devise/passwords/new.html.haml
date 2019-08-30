@@ -1,18 +1,8 @@
-<<<<<<< HEAD
 %h1.text-center= t('.forgot_your_password')
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-=======
-%h1= t('.forgot_your_password')
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-
->>>>>>> locale
   .form-group
     = f.label :email
     = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
   .form-group
-<<<<<<< HEAD
     = f.submit t('.send_me_reset_password_instructions'), class: 'btn btn-dark'
-=======
-    = f.submit t('.send_me_reset_password_instructions'), class: 'btn btn-primary'
->>>>>>> locale
 = render 'devise/shared/links'

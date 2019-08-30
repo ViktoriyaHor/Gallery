@@ -16,6 +16,12 @@
             %em
               %strong Gallery
           %hr
+    %nav.container.navbar.navbar-expand-lg.bg-light.navbar-light
+      %ul.navbar-nav.mx-auto
+        %li.nav-item.border
+          = link_to "ru", { locale: :ru }, class: (I18n.locale == :ru ? "nav-link active" : "nav-link")
+        %li.nav-item.border.border-left-0
+          = link_to "en", { locale: :en }, class: (I18n.locale == :en ? "nav-link active" : "nav-link")
     %nav.container.navbar.navbar-expand-lg.sticky-top.bg-light.navbar-light
       %button.navbar-toggler{:class => "mx-auto", :data => {:target => "#navbarSupportedContent", :toggle => "collapse"}, :type => "button", :aria => {:controls => "navbarSupportedContent", :expanded => "false", :label => "Toggle navigation"}}
         %span.navbar-toggler-icon
@@ -34,20 +40,15 @@
           %li.nav-item{:class => ("active" if controller_name == "comments")}
             = link_to t('menu.comments'), comments_path, class: "nav-link"
         %ul.navbar-nav
-          %li.nav-item.border
-            = link_to "ru", { locale: :ru }, class: (I18n.locale == :ru ? "nav-link active" : "nav-link")
-          %li.nav-item.border.border-left-0
-            = link_to "en", { locale: :en }, class: (I18n.locale == :en ? "nav-link active" : "nav-link ")
-        %ul.navbar-nav
           - if user_signed_in?
-            %li.nav-item
+            %li.nav-item{:class => current_class?('/profile')}
               = link_to t('menu.profile'), profile_path, class: "nav-link"
             %li.nav-item
               = link_to t('menu.exit'), destroy_user_session_path, method: :delete, class: "nav-link"
           - else
-            %li.nav-item
+            %li.nav-item{:class => current_class?('/users/sign_in')}
               = link_to t('menu.sign_in'), new_user_session_path, class: "nav-link"
-            %li.nav-item
+            %li.nav-item{:class => current_class?('/users/sign_up')}
               = link_to t('menu.registration'), new_user_registration_path, class: "nav-link"
 
     = render "categories/errors"
@@ -62,8 +63,23 @@
     - else
       .container.my-4
         = yield
+
     %footer
-      %p.text-center Copyright © 2019 Gallery
+      .container-fluid.bg-dark.text-light
+        .row
+          .col-12.text-center
+            %h4.m-2 Contacts
+            .email
+              = fa_icon('envelope', type: :far, size: '1x')
+              gallery@gmail.com
+            .icons.m-2
+              = link_to "/", method: :get, :class => "rounded-circle m-1" do
+                = fa_icon('facebook-f', type: :fab, size: '1x')
+              = link_to "/", method: :get, :class => "rounded-circle m-1" do
+                = fa_icon('vk', type: :fab, size: '1x')
+              = link_to "/", method: :get, :class => "rounded-circle m-1" do
+                = fa_icon('instagram', type: :fab, size: '1x')
+            %p.text-center Copyright © 2019 Gallery
 
 
     %script{:src => 'https://www.google.com/recaptcha/api.js', :async => "", :defer => ""}

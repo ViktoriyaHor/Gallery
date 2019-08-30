@@ -5,6 +5,7 @@ ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
+gem 'rails-i18n'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
@@ -77,6 +78,10 @@ gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'mini_magick'
 
 gem 'devise'
+gem 'devise-i18n'
+gem "bootstrap_form", ">= 4.0.0.alpha1"
+gem 'devise-bootstrap-views'
+
 gem 'activeadmin'
 
 gem 'omniauth'

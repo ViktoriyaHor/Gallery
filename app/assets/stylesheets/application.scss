@@ -24,6 +24,47 @@
   color: #000;
   text-shadow: 2px 1px 1px #ccc;
 }
+
+.menu .nav-item{
+  position: relative !important;
+}
+//.menu .active .nav-link:after{
+//  content:'';
+//  display: none;
+//  height: 1px;
+//  width: 80%;
+//  margin: 0 auto;
+//  position: absolute;
+//  bottom: 7px;
+//  left: 10%;
+//  background: #f23534;
+//  transition: all 1s;
+//}
+.menu>.collapse>ul>li>.nav-link:before{
+  content:'';
+  display: block;
+  height: 1px;
+  width: 0;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  background: #343a40;
+  transition: all 1s;
+}
+
+.menu>.collapse>ul>li:hover>.nav-link:before, .menu>.collapse>ul>.active>.nav-link:before{
+  display: block;
+  width: 80%;
+  left: 10%;
+}
+.menu>.collapse>ul>li>.dropdown-menu>.dropdown-item:hover{
+  padding-left: 2rem;
+}
+.dropdown-item{
+  padding-left: 1.5rem;
+  transition: all 1s;
+}
 h1{
   margin: 24px;
 }

@@ -22,7 +22,7 @@
           = link_to "ru", { locale: :ru }, class: (I18n.locale == :ru ? "nav-link active" : "nav-link")
         %li.nav-item.border.border-left-0
           = link_to "en", { locale: :en }, class: (I18n.locale == :en ? "nav-link active" : "nav-link")
-    %nav.container.navbar.navbar-expand-lg.sticky-top.bg-light.navbar-light
+    %nav.container.navbar.navbar-expand-lg.sticky-top.bg-light.navbar-light.menu
       %button.navbar-toggler{:class => "mx-auto", :data => {:target => "#navbarSupportedContent", :toggle => "collapse"}, :type => "button", :aria => {:controls => "navbarSupportedContent", :expanded => "false", :label => "Toggle navigation"}}
         %span.navbar-toggler-icon
       .collapse.navbar-collapse#navbarSupportedContent

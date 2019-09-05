@@ -46,6 +46,7 @@ ru:
       title: "Лучшие картинки каждый день!"
       sign_in: "Вход"
       registration: "Регистрация"
+      functions: "Дополнительные функции"
   profile:
     title: "Профиль"
     links:

@@ -10,7 +10,10 @@
               .overlay
                 = fa_icon('heart', type: :far)
                 = image.likes.size
-              = link_to image_tag("#{image.src.url(:thumb)}"), category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
+              - if image.src.url(:thumb)
+                = link_to image_tag("#{image.src.url(:thumb)}"), category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
+              - else
+                = link_to image_tag('no-image.jpg', :class => "img-fluid mt-2"), category_image_new_path(category_slug: image.category.slug, id: image.id)
             - else
               .overlay
                 = fa_icon('heart', type: :far)

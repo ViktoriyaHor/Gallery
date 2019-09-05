@@ -77,6 +77,7 @@ en:
       title: "Amazing pictures every day!"
       sign_in: "Sign in"
       registration: "Registration"
+      functions: "Additional functions"
   profile:
     title: "Profile"
     links:

@@ -6,16 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-image = Image.last
-user = User.first
+# image = Image.last
+# user = User.first
 
-5.times do
-  Like.create(image_id: image.id, user_id: user.id)
-end
-
-5.times do |i|
-  Comment.create(commenter: "User #{i}", body: "Comment #{i}", image_id: image.id, user_id: user.id)
-end
+# 5.times do
+#   Like.create(image_id: image.id, user_id: user.id)
+# end
+#
+# 5.times do |i|
+#   Comment.create(commenter: "User #{i}", body: "Comment #{i}", image_id: image.id, user_id: user.id)
+# end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') #if Rails.env.development?
 

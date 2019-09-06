@@ -2,6 +2,7 @@ namespace :app do
   desc "migrate images"
   task :migrate_images => :environment do
     user = User.create(email: "user@name.com", password: 'password', password_confirmation: 'password', :username => 'user')
+    user.confirm
     user_id = user.id
     cats = Dir.entries("app/assets/images").reject {|f| File.directory?(f) || f.include?('.')}
     cats.each do |cat|

@@ -48,7 +48,6 @@ class Users::SessionsController < Devise::SessionsController
   def increment_failed_attempts(user)
     user.increment :cached_failed_attempts
     user.update failed_attempts: user.cached_failed_attempts
-    # raise i
   end
 
   def decrement_failed_attempts(user)

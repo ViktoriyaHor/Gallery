@@ -25,8 +25,7 @@ class ImagesController < ApplicationController
       @image = @category.images.new(image_params.merge( {user_id: current_user.id} ))
       if @image.save && @image.errors.empty?
         id = @image.id
-        # Resque.enqueue(NewImageSendEmail, id)
-        # raise hhh
+        Resque.enqueue(NewImageSendEmail, id)
         redirect_to @category, success: I18n.t('flash.image.saved')
       else
         render :new, danger: I18n.t('flash.image.didnt_save')

@@ -27,12 +27,12 @@ class User < ApplicationRecord
     3
   end
 
-  # def after_confirmation
-  #   welcome_send
-  # end
-  #
-  # def welcome_send
-  #   Resque.enqueue(WelcomeSendEmail, [self.email, self.username])
-  #   # UserMailer.welcome_send(self).deliver
-  # end
+  def after_confirmation
+    welcome_send
+  end
+
+  def welcome_send
+    Resque.enqueue(WelcomeSendEmail, [self.email, self.username])
+    # UserMailer.welcome_send(self).deliver
+  end
 end

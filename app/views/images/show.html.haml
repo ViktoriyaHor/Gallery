@@ -3,12 +3,12 @@
 
   - if @pre_like
     .like-img
-      = link_to category_image_like_path(@category, @image, @pre_like), method: :delete do
+      = link_to category_image_like_path(@category, @image, @pre_like), method: :delete, class: 'link-delete' do
         = fa_icon('heart', type: :fas, size: '2x')
         %h5= @image.likes.size
   - else
     .like-img
-      = link_to category_image_likes_path(@category, @image), method: :post do
+      = link_to category_image_likes_path(@category, @image), method: :post, class: 'link-create' do
         = fa_icon('heart', type: :far, size: '2x')
         %h5= @image.likes.size
 

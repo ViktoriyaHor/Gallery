@@ -27,7 +27,8 @@ ru:
       title: "Изображения"
     show:
       add_comment: "Добавить комментарий"
-      comment: "Комментарии:"
+      comment: "Комментарии"
+      time: "назад"
     new:
       title: "Новое изображение"
   menu:

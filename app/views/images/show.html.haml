@@ -1,5 +1,5 @@
 .img-show.position-relative
-  = image_tag "#{@image.src.url}", :class => "img-fluid" if @image.src?
+  = image_tag "#{@image.src.url}", :class => "img-fluid mb-4" if @image.src?
 
   - if @pre_like
     .like-img
@@ -12,24 +12,16 @@
         = fa_icon('heart', type: :far, size: '2x')
         %h5= @image.likes.size
 
+%h3#comments-link.text-center= t('images.show.comment')
 
-%h4.my-4= t('images.show.add_comment')
-= render 'comments/form'
+#comments-section.d-none
+  %h4.my-4= t('images.show.add_comment')
+  #comments
+    = render 'comments/form'
 
-- if @image.comments.first.id?
-  %h3.my-4= t('images.show.comment')
-  %ul.list-unstyled
-    - @image.comments.each do |comment|
-      %hr
-      %li.media
-        .media-body.ml-3
-          .d-flex.justify-content-between
-            %h5.m-1
-              = comment.commenter
-            - unless comment.id.nil?
-              %time= comment.created_at.to_date.strftime("%Y-%m-%d")
-          %p
-            = comment.body
+  - if @image.comments.first.id?
+    = render @image.comments.desc
+
 
 
 

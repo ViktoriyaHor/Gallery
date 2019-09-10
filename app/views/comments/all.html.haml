@@ -10,11 +10,9 @@
         .d-flex.justify-content-between
           %h5.m-1
             = comment.commenter
-          %time= comment.created_at.to_date.strftime("%Y-%m-%d")
+          .date #{time_ago_in_words(comment.created_at)} #{t('images.show.time')}
         %p
           = comment.body
-        -#%abbr.timeago{:title => comment.created_at.getutc.iso8601}
-        -#  = comment.created_at.to_s
     %hr
 
 = paginate @comments

@@ -58,7 +58,8 @@ en:
       title: "Images"
     show:
       add_comment: "Add a comment"
-      comment: "Comments:"
+      comment: "Comments"
+      time: "ago"
     new:
       title: "New image"
   menu:

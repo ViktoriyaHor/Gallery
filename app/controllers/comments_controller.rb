@@ -16,7 +16,11 @@ class CommentsController < ApplicationController
     @comment = @image.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to category_image_new_path(@category, @image, @comment, locale: I18n.locale), success: 'Comment created'
+      # redirect_to category_image_new_path(@category, @image, @comment, locale: I18n.locale), success: 'Comment created'
+      respond_to do |format|
+        format.html {redirect_to category_image_new_path(@category, @image, @comment, locale: I18n.locale), success: 'Comment created'}
+        format.js #render comments/create.js.haml
+      end
     else
       render :new
     end
@@ -38,7 +42,7 @@ class CommentsController < ApplicationController
   end
 
   def all
-    @comments = Comment.order(:created_at).page(params[:page])
+    @comments = Comment.order(created_at: :desc).page(params[:page])
   end
 
   private

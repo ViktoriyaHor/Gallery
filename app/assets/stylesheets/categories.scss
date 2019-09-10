@@ -13,4 +13,32 @@
   text-align: center;
   z-index: 100;
 }
+.overlay{
+  position: absolute;
+  background: #000; /* Для старых браузров */
+  background: linear-gradient(to top, #000, #ddd);
+  background: rgba(0,0,0,0);
+  width: 100%;
+  bottom: 0;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  height: 2vh;
+  transition: .5s;
+
+}
+.overlay i, .overlay span{
+  display: none;
+}
+.position-relative:hover .overlay{
+  display: block;
+  height: 6vh;
+  background: #000; /* Для старых браузров */
+  background: linear-gradient(to top, #000, #5E5E5E);
+  opacity: 0.6;
+  transition: .5s;
+}
+.position-relative:hover .overlay i, .position-relative:hover .overlay span{
+  display: block;
+}
 

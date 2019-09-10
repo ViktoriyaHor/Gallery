@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   helper_method :rating_categories
+  helper_method :popular_image
 
   protected
 
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
 
   def rating_categories
     @category = Category.left_outer_joins(:images).select("categories.*, (sum(images.likes_count + images.comments_count)+subscriptions_count) AS c_count").order("c_count DESC NULLS LAST").group("id").limit(5)
+  end
+
+  def popular_image(category)
+    Category.find(category).images.select("images.*, (likes_count + comments_count) AS i_count").order("i_count DESC").first
   end
 
   def navigation

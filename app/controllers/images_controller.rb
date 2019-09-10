@@ -3,10 +3,12 @@ class ImagesController < ApplicationController
 
   before_action :find_category, only: [:create, :show, :destroy]
   before_action :find_image, only: [:show, :destroy]
+  before_action :find_category_by_id, only: [:extended_create]
+  before_action :create_common, only: [:create, :extended_create]
+  before_action :find_category_all, only: [:extended_new]
+
 
   def index
-    # @images = Image.select("images.*, COUNT(likes.id) AS l_count").left_outer_joins(:likes).group("images.id")
-    #               .order("l_count DESC").page(params[:page])
     @images = Image.select("images.*, (likes_count + comments_count) AS i_count").order("i_count DESC").page(params[:page])
   end
 
@@ -19,6 +21,41 @@ class ImagesController < ApplicationController
   end
 
   def create
+
+  end
+
+  def destroy
+    @image.destroy
+    redirect_to category_path(@category), success: I18n.t('flash.image.removed')
+  end
+
+  def extended_new
+     @image = Image.new
+  end
+
+  def extended_create
+    @category = Category.find(image_params[:category_id])
+  end
+
+  private
+
+  def find_category
+    @category = Category.friendly.find(params[:category_slug])
+  end
+
+  def find_category_by_id
+    @category = Category.find(image_params[:category_id])
+  end
+
+  def find_category_all
+    @category_all = Category.all
+  end
+
+  def find_image
+    @image = @category.images.find(params[:id])
+  end
+
+  def create_common
     if params[:image].blank?
       redirect_to @category, danger: I18n.t('flash.image.select')
     else
@@ -31,21 +68,6 @@ class ImagesController < ApplicationController
         render :new, danger: I18n.t('flash.image.didnt_save')
       end
     end
-  end
-
-  def destroy
-    @image.destroy
-    redirect_to category_path(@category), success: I18n.t('flash.image.removed')
-  end
-
-  private
-
-  def find_category
-    @category = Category.friendly.find(params[:category_slug])
-  end
-
-  def find_image
-    @image = @category.images.find(params[:id])
   end
 
   def image_params

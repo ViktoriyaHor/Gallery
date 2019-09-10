@@ -17,6 +17,7 @@
     %h4.text-center.mt-4= t('profile.yours_categories')
     %table.table.table-hover.text-center.mt-4
       %thead
+        = link_to t('profile.categories.action.create'), new_category_path, :class => "btn btn-dark text-center"
         %tr
           %th= t('profile.categories.title')
           %th= t('profile.categories.action.title')
@@ -25,7 +26,6 @@
           %tr
             %td #{category.title.capitalize}
             %td
-              = link_to t('profile.categories.action.create'), new_category_path, :class => "btn btn-dark"
               = link_to t('profile.categories.action.edit'), category_path(category), :class => "btn btn-dark"
               = link_to t('profile.categories.action.destroy'), category_path(category),
               method: :delete,

@@ -7,18 +7,23 @@
         - column.each do |image|
           .position-relative
             - if user_signed_in?
-              .overlay
+              .overlay.d-flex.justify-content-end.align-items-center
                 = fa_icon('heart', type: :far)
-                = image.likes.size
+                %span.m-1= image.likes.size
               - if image.src.url(:thumb)
                 = link_to image_tag("#{image.src.url(:thumb)}"), category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
               - else
                 = link_to image_tag('no-image.jpg', :class => "img-fluid mt-2"), category_image_new_path(category_slug: image.category.slug, id: image.id)
             - else
-              .overlay
+              .overlay.d-flex.justify-content-end.align-items-center
                 = fa_icon('heart', type: :far)
-                = image.likes.size
-              = image_tag("#{image.src.url(:thumb)}") if image.src?
+                %span.m-1= image.likes.size
+              = image_tag("#{image.src.url(:thumb)}", class: 'images', 'data-src': "#{image.src.url}") if image.src?
+              #myModal.modal
+                .close &times
+                = image_tag("#{image.src.url}", id: "img-modal", class: "modal-content")
+
+
   = paginate @images
 
 

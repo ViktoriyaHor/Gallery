@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
 
   def index
     @images = Image.select("images.*, (likes_count + comments_count) AS i_count").order("i_count DESC").limit(6)
+    @categories = Category.all.limit(6);
   end
 
   def profile

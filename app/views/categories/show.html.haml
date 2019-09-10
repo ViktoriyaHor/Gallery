@@ -13,16 +13,22 @@
   - @images.to_a.each_slice(3).each do |column|
     .column
       - column.each do |image|
-        - if user_signed_in?
-          .position-relative
+        .position-relative
+          - if user_signed_in?
             = link_to image_tag("#{image.src.url(:thumb)}", :class => "img-fluid"),
                               category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
-            .overlay
+            .overlay.d-flex.justify-content-end.align-items-center
               = fa_icon('heart', type: :far)
-              = image.likes.size
+              %span.m-1= image.likes.size
 
-        - else
-          = image_tag("#{image.src.url(:thumb)}", :class => "img-fluid") if image.src?
+          - else
+            = image_tag("#{image.src.url(:thumb)}", class: 'images', 'data-src': "#{image.src.url}") if image.src?
+            .overlay.d-flex.justify-content-end.align-items-center
+              = fa_icon('heart', type: :far)
+              %span.m-1= image.likes.size
+            #myModal.modal
+              .close &times
+              %span= image_tag("#{image.src.url}", id: "img-modal", class: "modal-content")
 
 - if user_signed_in?
   = render 'images/form'

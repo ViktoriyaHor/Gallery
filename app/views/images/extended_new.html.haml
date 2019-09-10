@@ -1,0 +1,8 @@
+%h4.text-center.mt-2= t('images.form.title')
+= form_with(model: @image, url: images_new_path, local: true) do |f|
+  .form-group
+    = f.label(:category_id)
+    = f.select :category_id, @category_all.collect {|c| [ c.title, c.id ] }, { include_blank: true }, :class => "form-control"
+  .form-group
+    = f.file_field :src, :class => "form-control-file"
+  = f.submit t('links.save'), :class => "btn btn-dark"

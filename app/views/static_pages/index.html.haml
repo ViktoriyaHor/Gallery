@@ -22,8 +22,39 @@
       .links
         = link_to t('static_pages.index.sign_in'), new_user_session_path, class: "btn btn-light"
         = link_to t('static_pages.index.registration'), new_user_registration_path, class: "btn btn-light"
-  .row
-    .col-lg-6.col-12
-      %h2.text-center= t('static_pages.index.functions')
+
+%h2.text-center.m-3= t('static_pages.index.functions')
+.container
+  .row.justify-content-center
+    .col-lg-6.col-12.mb-4
+      %a(title="" href='categories/new')
+        .position
+          .description
+            .link-action
+              %h4
+                = t('links.create_new_category')
+          .block-1.clip-path
+    .col-lg-6.col-12.mb-4
+      %a(title="" href='images/new')
+        .position
+          .description
+            .link-action
+              %h4
+                = t('images.form.title')
+          .block-2.clip-path
+.container
+  %h2.m-3.text-center= t('categories.index.title')
+  - @categories.each_slice(2).each do |row|
+    .row
+      - row.each do |category|
+        .col-lg-6.col-12
+          = link_to(category_path(category)) do
+            .bubba.mx-auto
+              %h3= category.title
+              %p
+                #{category.images.size}
+                =t('static_pages.index.images')
+              = image_tag("#{popular_image(category.id).src.url(:thumb)}")
+
 
 

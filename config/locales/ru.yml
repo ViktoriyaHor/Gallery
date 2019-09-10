@@ -47,6 +47,7 @@ ru:
       sign_in: "Вход"
       registration: "Регистрация"
       functions: "Дополнительные функции"
+      images: "картинок"
   profile:
     title: "Профиль"
     links:

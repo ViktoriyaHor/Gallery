@@ -28,19 +28,8 @@
 .menu .nav-item{
   position: relative !important;
 }
-//.menu .active .nav-link:after{
-//  content:'';
-//  display: none;
-//  height: 1px;
-//  width: 80%;
-//  margin: 0 auto;
-//  position: absolute;
-//  bottom: 7px;
-//  left: 10%;
-//  background: #f23534;
-//  transition: all 1s;
-//}
-.menu>.collapse>ul>li>.nav-link:before{
+
+.menu>.w-75>.collapse>ul>li>.nav-link:before{
   content:'';
   display: block;
   height: 1px;
@@ -53,12 +42,12 @@
   transition: all 1s;
 }
 
-.menu>.collapse>ul>li:hover>.nav-link:before, .menu>.collapse>ul>.active>.nav-link:before{
+.menu>.w-75>.collapse>ul>li:hover>.nav-link:before, .menu>.collapse>ul>.active>.nav-link:before{
   display: block;
   width: 80%;
   left: 10%;
 }
-.menu>.collapse>ul>li>.dropdown-menu>.dropdown-item:hover{
+.menu>.w-75>.collapse>ul>li>.dropdown-menu>.dropdown-item:hover{
   padding-left: 2rem;
 }
 .dropdown-item{
@@ -127,10 +116,99 @@ a, a:hover{
   width: 100%;
   object-fit: cover;
 }
+.bubba{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #343a40;
+  width: 250px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+}
+.bubba img{
+  position: absolute;
+  left: -10px;
+  top: 0;
+  transition: all .5s;
+  opacity: 1;
+}
+.bubba:hover img{
+  opacity: 0.6;
+  left: 0;
+}
+.bubba h3{
+  position: absolute;
+  top: 120px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  transition: all .5s;
+  opacity: 1;
+  z-index: 10;
+}
+.bubba p{
+  position: absolute;
+  bottom: 120px;
+  width: 80%;
+  left: 10%;
+  text-align: center;
+  color: #fff;
+  transition: all .5s;
+  opacity: 0;
+
+}
+.bubba:hover h3{
+  transform: translateY(20px);
+  opacity: 1;
+
+}
+.bubba:hover p{
+  transform: translateY(-30px);
+  opacity: 1;
+  z-index: 10;
+
+}
+.bubba:before{
+  content: '';
+  display: block;
+  border-top: 1px transparent solid;
+  border-bottom: 1px transparent solid;
+  position: absolute;
+  width: 40%;
+  height: 80%;
+  top: 10%;
+  left: 30%;
+  transition: all .5s;
+}
+.bubba:after{
+  content: '';
+  display: block;
+  border-left: 1px transparent solid;
+  border-right: 1px transparent solid;
+  position: absolute;
+  width: 80%;
+  height: 40%;
+  top: 30%;
+  left: 10%;
+  transition: all .5s;
+}
+.bubba:hover:before{
+  border-top: 1px #fff solid;
+  border-bottom: 1px #fff solid;
+  transform: scale(2,1);
+  z-index: 5;
+}
+.bubba:hover:after{
+  border-right: 1px #fff solid;
+  border-left: 1px #fff solid;
+  transform: scale(1,2);
+}
 
 footer a{
-  color: #343a40;
-  background: #fff;
+  color: #fff;
+  background: #343a40;
   display: inline-block;
   width: 50px;
   height: 50px;
@@ -141,6 +219,19 @@ footer a{
 }
 
 .icons a:hover{
-  background: #343a40;
-  color: #fff;
+  background: #fff;
+  color: #343a40;
+}
+
+
+@media screen and (min-width: 992px) {
+  .bubba {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .bubba {
+    width: 450px;
+  }
 }

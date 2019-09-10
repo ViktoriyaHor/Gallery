@@ -53,7 +53,7 @@ en:
       title: "New comment"
   images:
     form:
-      title: "Add an image:"
+      title: "Add an image"
     index:
       title: "Images"
     show:
@@ -78,6 +78,7 @@ en:
       sign_in: "Sign in"
       registration: "Registration"
       functions: "Additional functions"
+      images: "images"
   profile:
     title: "Profile"
     links:

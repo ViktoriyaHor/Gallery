@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_category, only: [:update, :edit, :show, :destroy]
-  helper_method :popular_image
+
 
   def index
     @categories = Category.all
@@ -61,9 +61,7 @@ class CategoriesController < ApplicationController
     @category = Category.find_by_slug(params[:slug])
   end
 
-  def popular_image(category)
-    Category.find(category).images.select("images.*, (likes_count + comments_count) AS i_count").order("i_count DESC").first
-  end
+
 
 end
 

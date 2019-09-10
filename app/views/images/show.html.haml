@@ -1,20 +1,17 @@
+.img-show.position-relative
+  = image_tag "#{@image.src.url}", :class => "img-fluid" if @image.src?
 
-= image_tag "#{@image.src.url}", :class => "img-fluid" if @image.src?
-
-.like.d-flex.justify-content-end.align-items-center.mb-2
   - if @pre_like
-    .rounded-circle.bg-light.p-1
-      = link_to category_image_like_path(@category, @image, @pre_like), method: :delete, :class => "rounded-circle" do
-        = fa_icon('heart', type: :fas, size: '1x')
+    .like-img
+      = link_to category_image_like_path(@category, @image, @pre_like), method: :delete do
+        = fa_icon('heart', type: :fas, size: '2x')
+        %h5= @image.likes.size
   - else
-    .rounded-circle.bg-light.p-1
-      = link_to category_image_likes_path(@category, @image), method: :post, :class => "rounded-circle" do
-        = fa_icon('heart', type: :far, size: '1x')
-  .h-5.m-2
-    = @image.likes.size
+    .like-img
+      = link_to category_image_likes_path(@category, @image), method: :post do
+        = fa_icon('heart', type: :far, size: '2x')
+        %h5= @image.likes.size
 
-.row.d-flex.justify-content-end.m-1
-  = link_to t('links.back'), images_path
 
 %h4.my-4= t('images.show.add_comment')
 = render 'comments/form'

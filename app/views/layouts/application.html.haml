@@ -1,10 +1,11 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %title Gallery
     = csrf_meta_tags
     = csp_meta_tag
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
@@ -22,34 +23,35 @@
           = link_to "ru", { locale: :ru }, class: (I18n.locale == :ru ? "nav-link active" : "nav-link")
         %li.nav-item.border.border-left-0
           = link_to "en", { locale: :en }, class: (I18n.locale == :en ? "nav-link active" : "nav-link")
-    %nav.container.navbar.navbar-expand-lg.sticky-top.bg-light.navbar-light.menu
-      %button.navbar-toggler{:class => "mx-auto", :data => {:target => "#navbarSupportedContent", :toggle => "collapse"}, :type => "button", :aria => {:controls => "navbarSupportedContent", :expanded => "false", :label => "Toggle navigation"}}
-        %span.navbar-toggler-icon
-      .collapse.navbar-collapse#navbarSupportedContent
-        %ul.navbar-nav.mr-auto
-          %li.nav-item.dropdown{:class => ("active" if controller_name == "categories")}
-            = link_to t('menu.categories'), root_path, class: "nav-link dropdown-toggle", id: "navbardrop",
-              'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false"
-            .dropdown-menu
-              -rating_categories.each do |category|
-                = link_to "#{category.title.capitalize}", category_path(category), class: "dropdown-item"
-              .dropdown-divider
-              = link_to t('menu.all_categories'), categories_path, class: "dropdown-item"
-          %li.nav-item{:class => ("active" if controller_name == "images")}
-            = link_to t('menu.images'), images_path, class: "nav-link"
-          %li.nav-item{:class => ("active" if controller_name == "comments")}
-            = link_to t('menu.comments'), comments_path, class: "nav-link"
-        %ul.navbar-nav
-          - if user_signed_in?
-            %li.nav-item{:class => current_class?('/profile')}
-              = link_to t('menu.profile'), profile_path, class: "nav-link"
-            %li.nav-item
-              = link_to t('menu.exit'), destroy_user_session_path, method: :delete, class: "nav-link"
-          - else
-            %li.nav-item{:class => current_class?('/users/sign_in')}
-              = link_to t('menu.sign_in'), new_user_session_path, class: "nav-link"
-            %li.nav-item{:class => current_class?('/users/sign_up')}
-              = link_to t('menu.registration'), new_user_registration_path, class: "nav-link"
+    %nav.container-fluid.navbar.navbar-expand-lg.sticky-top.bg-light.navbar-light.menu
+      .w-75.mx-auto.text-center
+        %button.navbar-toggler{:class => "mx-auto", :data => {:target => "#navbarSupportedContent", :toggle => "collapse"}, :type => "button", :aria => {:controls => "navbarSupportedContent", :expanded => "false", :label => "Toggle navigation"}}
+          %span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarSupportedContent
+          %ul.navbar-nav.mr-auto
+            %li.nav-item.dropdown{:class => ("active" if controller_name == "categories")}
+              = link_to t('menu.categories'), root_path, class: "nav-link dropdown-toggle", id: "navbardrop",
+                'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false"
+              .dropdown-menu
+                -rating_categories.each do |category|
+                  = link_to "#{category.title.capitalize}", category_path(category), class: "dropdown-item"
+                .dropdown-divider
+                = link_to t('menu.all_categories'), categories_path, class: "dropdown-item"
+            %li.nav-item{:class => ("active" if controller_name == "images")}
+              = link_to t('menu.images'), images_path, class: "nav-link"
+            %li.nav-item{:class => ("active" if controller_name == "comments")}
+              = link_to t('menu.comments'), comments_path, class: "nav-link"
+          %ul.navbar-nav
+            - if user_signed_in?
+              %li.nav-item{:class => current_class?('/profile')}
+                = link_to t('menu.profile'), profile_path, class: "nav-link"
+              %li.nav-item
+                = link_to t('menu.exit'), destroy_user_session_path, method: :delete, class: "nav-link"
+            - else
+              %li.nav-item{:class => current_class?('/users/sign_in')}
+                = link_to t('menu.sign_in'), new_user_session_path, class: "nav-link"
+              %li.nav-item{:class => current_class?('/users/sign_up')}
+                = link_to t('menu.registration'), new_user_registration_path, class: "nav-link"
 
     = render "categories/errors"
     = render "images/errors"
@@ -65,7 +67,7 @@
         = yield
 
     %footer
-      .container-fluid.bg-dark.text-light
+      .container-fluid.bg-light.text-dark
         .row
           .col-12.text-center
             %h4.m-2 Contacts

@@ -22,3 +22,44 @@
 .carousel:hover p{
   text-shadow: 3px 2px 2px #000;
 }
+
+.position{
+	position: relative;
+	border: 1px solid #d5d5d5;
+	box-shadow: 0 0 6px 0 rgba(0,0,0,.1);
+}
+.block-1{
+	background: url(block-1.jpg) 100%;
+	background-size: contain;
+	height: 300px;
+}
+.block-2{
+  background: url(block-2.jpg) 100%;
+  background-size: contain;
+  height: 300px;
+}
+.position .description{
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  width: 50%;
+}
+
+.position .link-action{
+  transition: all .5s;
+
+}
+a:hover{
+  text-decoration: none;
+
+}
+.position:hover .link-action{
+  transform: scale(1.1);
+
+}
+.position:hover{
+  box-shadow: 0 0 12px 0 rgba(0,0,0,.2);
+}
+.clip-path{
+  clip-path: polygon(75% 0, 100% 0, 100% 100%, 50% 100%);
+}

@@ -13,16 +13,5 @@ module ApplicationHelper
     return 'active' if request.path == test_path
     ''
   end
-  #
-  # def scraping_images(url)
-  #   require 'upload_images'
-  #   require 'open-uri'
-  #
-  #   document = Nokogiri::HTML(open(url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
-  #   img = document.css("img")
-  #   img.each do |link|
-  #     AdminImage.create(:src => link.attributes["src"].value)
-  #   end
-  #
-  # end
+
 end

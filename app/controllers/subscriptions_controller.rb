@@ -1,9 +1,8 @@
-class SubscriptionsController < ApplicationController
+# frozen_string_literal: true
 
+class SubscriptionsController < ApplicationController
   before_action :find_category, :authenticate_user!
   before_action :find_subscription, only: [:destroy]
-  # before_action :send_email_to_subscribers, only: [:create]
-
 
   def create
     @subscription = @category.subscriptions.new(user_id: current_user.id) unless already_subscribe?

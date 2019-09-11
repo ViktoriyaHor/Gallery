@@ -1,26 +1,33 @@
-.img-show.position-relative
-  = image_tag "#{@image.src.url}", :class => "img-fluid mb-4" if @image.src?
+.container
+  .img-show.position-relative
+    = image_tag "#{@image.src.url}", :class => "img-fluid mb-4" if @image.src?
 
-  - if @pre_like
-    .like-img
-      = link_to category_image_like_path(@category, @image, @pre_like), method: :delete, class: 'link-delete' do
-        = fa_icon('heart', type: :fas, size: '2x')
-        %h5= @image.likes.size
-  - else
-    .like-img
-      = link_to category_image_likes_path(@category, @image), method: :post, class: 'link-create' do
-        = fa_icon('heart', type: :far, size: '2x')
-        %h5= @image.likes.size
+    - if @pre_like
+      .like-img.d-flex.align-items-center.justify-content-between
+        .comments
+          %h4#comments-link= t('images.show.comment')
+        = link_to category_image_like_path(@category, @image, @pre_like), method: :delete, class: 'link-delete' do
+          .block-like.d-flex.align-items-center.justify-content-end
+            = fa_icon('heart', type: :fas, size: '2x')
+            %h5.m-1= @image.likes.size
+    - else
+      .like-img.d-flex.align-items-center.justify-content-between
+        .comments
+          %h4#comments-link= t('images.show.comment')
+        = link_to category_image_likes_path(@category, @image), method: :post, class: 'link-create' do
+          .block-like.d-flex.align-items-center.justify-content-end
+            = fa_icon('heart', type: :far, size: '2x')
+            %h5.m-1= @image.likes.size
 
-%h3#comments-link.text-center= t('images.show.comment')
 
-#comments-section.container.d-none
-  %h4.my-4= t('images.show.add_comment')
-  #comments
-    = render 'comments/form'
 
-  - if @image.comments.first.id?
-    = render @image.comments.desc
+  #comments-section.container.d-none
+    %h5.my-4= t('images.show.add_comment')
+    #comments
+      = render 'comments/form'
+
+    - if @image.comments.first.id?
+      = render @image.comments.desc
 
 
 

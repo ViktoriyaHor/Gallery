@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# send letter when user subscribes to a category
 class ToSubscribersSendEmail
   @queue = :to_subscribers_email
 

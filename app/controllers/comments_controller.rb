@@ -1,7 +1,8 @@
-class CommentsController < ApplicationController
+# frozen_string_literal: true
 
-  before_action :authenticate_user!, :find_category_image, only: [:create, :destroy]
-  before_action :find_comment, only: [:edit, :update, :destroy]
+class CommentsController < ApplicationController
+  before_action :authenticate_user!, :find_category_image, only: %i[create destroy]
+  before_action :find_comment, only: %i[edit update destroy]
   after_action :logging_comments, only: [:create]
   helper_method :find_image
 
@@ -19,7 +20,7 @@ class CommentsController < ApplicationController
       # redirect_to category_image_new_path(@category, @image, @comment, locale: I18n.locale), success: 'Comment created'
       respond_to do |format|
         format.html {redirect_to category_image_new_path(@category, @image, @comment, locale: I18n.locale), success: 'Comment created'}
-        format.js #render comments/create.js.haml
+        format.js # render comments/create.js.haml
       end
     else
       render :new
@@ -65,7 +66,9 @@ class CommentsController < ApplicationController
   end
 
   def logging_comments
-    LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('comments').id}", :action_path=>request.original_url).save if user_signed_in?
+    LoggingUserAction.new(user_id: current_user.id,
+                          action_id: "#{Action.find_by_action_type('comments').id}",
+                          action_path: request.original_url).save if user_signed_in?
   end
 
 end

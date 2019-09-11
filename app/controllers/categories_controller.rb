@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
-
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_category, only: [:update, :edit, :show, :destroy]
-
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :find_category, only: %i[update edit show destroy]
 
   def index
     @categories = Category.all
@@ -61,7 +61,4 @@ class CategoriesController < ApplicationController
     @category = Category.find_by_slug(params[:slug])
   end
 
-
-
 end
-

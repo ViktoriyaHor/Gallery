@@ -5,7 +5,6 @@
 @import "categories";
 @import "likes";
 @import "comments";
-
 @import 'font_awesome5_webfont';
 
 .bg-light{
@@ -222,6 +221,10 @@ footer a{
 .icons a:hover{
   background: #fff;
   color: #343a40;
+}
+
+.locale>.navbar-nav{
+  flex-direction: row;
 }
 
 

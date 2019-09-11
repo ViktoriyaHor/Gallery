@@ -1,19 +1,19 @@
+# frozen_string_literal: true
+
 class ImagesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-
-  before_action :find_category, only: [:create, :show, :destroy]
-  before_action :find_image, only: [:show, :destroy]
+  before_action :find_category, only: %i[create show destroy]
+  before_action :find_image, only: %i[show destroy]
   before_action :find_category_by_id, only: [:extended_create]
-  before_action :create_common, only: [:create, :extended_create]
+  before_action :create_common, only: %i[create extended_create]
   before_action :find_category_all, only: [:extended_new]
 
-
   def index
-    @images = Image.select("images.*, (likes_count + comments_count) AS i_count").order("i_count DESC").page(params[:page])
+    @images = Image.select('images.*, (likes_count + comments_count) AS i_count').order('i_count DESC').page(params[:page])
   end
 
   def show
-    @pre_like = @image.likes.find { |like| like.user_id == current_user.id}
+    @pre_like = @image.likes.find { |like| like.user_id == current_user.id }
   end
 
   def new
@@ -21,7 +21,6 @@ class ImagesController < ApplicationController
   end
 
   def create
-
   end
 
   def destroy
@@ -59,7 +58,7 @@ class ImagesController < ApplicationController
     if params[:image].blank?
       redirect_to @category, danger: I18n.t('flash.image.select')
     else
-      @image = @category.images.new(image_params.merge( {user_id: current_user.id} ))
+      @image = @category.images.new(image_params.merge( { user_id: current_user.id } ))
       if @image.save && @image.errors.empty?
         id = @image.id
         Resque.enqueue(NewImageSendEmail, id)

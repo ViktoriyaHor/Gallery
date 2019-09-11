@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+#
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -11,7 +13,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :images, dependent: :destroy
   has_many :logging_user_actions, dependent: :destroy
-         # attr_accessor :failed_attempts
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid, username: auth.info.name).first_or_create do |user|
@@ -19,7 +20,7 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.email = auth.info.email
       user.username = auth.info.name
-      user.password = Devise.friendly_token[0,20]
+      user.password = Devise.friendly_token[0, 20]
     end
   end
 
@@ -33,6 +34,5 @@ class User < ApplicationRecord
 
   def welcome_send
     Resque.enqueue(WelcomeSendEmail, [self.email, self.username])
-    # UserMailer.welcome_send(self).deliver
   end
 end

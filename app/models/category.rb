@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Category < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
@@ -5,5 +7,4 @@ class Category < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   belongs_to :user
   validates :title, presence: true, uniqueness: true
-            # length: { minimum: 5 }
 end

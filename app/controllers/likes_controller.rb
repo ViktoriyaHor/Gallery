@@ -1,19 +1,19 @@
-class LikesController < ApplicationController
+# frozen_string_literal: true
 
+class LikesController < ApplicationController
   before_action :authenticate_user!, :find_image
   before_action :find_like, only: [:destroy]
-  after_action :logging_likes, only: [:create, :destroy]
+  after_action :logging_likes, only: %i[create destroy]
 
   def create
-    @like = @image.likes.new(user_id: current_user.id) unless already_liked?
-    if @like.save
-      # respond_to do |format|
-      #   format.html {redirect_to category_image_path(@category, @image)}
-      #   format.js #render likes/create.js.haml
-      # end
-      redirect_to category_image_path(@category, @image)
-    end
-
+    @like = @image.likes.create(user_id: current_user.id) unless already_liked?
+    # if @like.save
+    #   respond_to do |format|
+    #     format.html {redirect_to category_image_path(@category, @image)}
+    #     format.js #render likes/create.js.haml
+    #   end
+    redirect_to category_image_path(@category, @image)
+    # end
   end
 
   def destroy
@@ -24,9 +24,9 @@ class LikesController < ApplicationController
       #   format.js #render likes/destroy.js.haml
       # end
     end
-
     redirect_to category_image_path(@category, @image)
   end
+
   private
 
   def find_image
@@ -44,10 +44,12 @@ class LikesController < ApplicationController
   end
 
   def pre_like
-    @pre_like = @image.likes.find { |like| like.user_id == current_user.id}
+    @pre_like = @image.likes.find { |like| like.user_id == current_user.id }
   end
 
   def logging_likes
-    LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('likes').id}", :action_path=>request.original_url).save if user_signed_in?
+    LoggingUserAction.new(user_id: current_user.id,
+                          action_id: "#{Action.find_by_action_type('likes').id}",
+                          action_path: request.original_url).save if user_signed_in?
   end
 end

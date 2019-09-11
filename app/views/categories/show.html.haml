@@ -16,7 +16,8 @@
         .position-relative
           - if user_signed_in?
             = link_to image_tag("#{image.src.url(:thumb)}", :class => "img-fluid"),
-                              category_image_new_path(category_slug: image.category.slug, id: image.id) if image.src?
+                              category_image_new_path(category_slug: image.category.slug,
+                              id: image.id) if image.src?
             .overlay.d-flex.justify-content-end.align-items-center
               = fa_icon('heart', type: :far)
               %span.m-1= image.likes.size

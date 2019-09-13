@@ -52,6 +52,12 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "letter_opener"
+
+  gem 'capistrano', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano3-puma', require: false
+  gem "airbrussh", require: false
+
 end
 
 group :test do
@@ -64,7 +70,6 @@ end
 
 group :production do
   gem 'rails_12factor', '0.0.2'
-
 end
 gem "fog-aws"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

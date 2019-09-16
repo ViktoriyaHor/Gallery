@@ -9,7 +9,8 @@ ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/ubuntu/gallery"
-set :rvm_ruby_version, '2.6.3@gallery'
+# set :rvm_ruby_version, '2.6.3@gallery'
+
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
@@ -23,7 +24,6 @@ set :rvm_ruby_version, '2.6.3@gallery'
 # Default value for :linked_files is []
 append :linked_files, *%w(
   config/database.yml
-  config/secrets.yml
 )
 
 # Default value for linked_dirs is []

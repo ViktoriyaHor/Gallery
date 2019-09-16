@@ -95,6 +95,9 @@ GEM
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
     capistrano3-puma (3.1.1)
       capistrano (~> 3.7)
       capistrano-bundler
@@ -450,8 +453,10 @@ DEPENDENCIES
   bootstrap_form (>= 4.0.0.alpha1)
   byebug
   capistrano
+  capistrano-bundler (~> 1.6)
   capistrano-figaro-yml (~> 1.0.2)
   capistrano-rails
+  capistrano-rvm
   capistrano3-puma
   capybara (>= 2.15)
   carrierwave (>= 2.0.0.rc, < 3.0)

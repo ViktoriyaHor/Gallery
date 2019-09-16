@@ -56,6 +56,8 @@ group :development do
   gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano3-puma', require: false
+  gem 'capistrano-figaro-yml', '~> 1.0.2'
+  gem 'capistrano-bundler', '~> 1.6'
   gem "airbrussh", require: false
 
 end
@@ -70,7 +72,6 @@ end
 
 group :production do
   gem 'rails_12factor', '0.0.2'
-  gem 'capistrano-figaro-yml', '~> 1.0.2'
 end
 gem "fog-aws"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

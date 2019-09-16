@@ -30,9 +30,8 @@ require 'capistrano/rails'
 require 'capistrano/puma'
 require "airbrussh/capistrano"
 require 'capistrano/figaro_yml'
-# require 'capistrano/rvm'
+require 'capistrano/rvm'
 
-# require "capistrano/rvm"
 # require "capistrano/rbenv"
 # require "capistrano/chruby"
 require "capistrano/bundler"

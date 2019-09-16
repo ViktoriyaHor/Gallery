@@ -59,7 +59,7 @@ group :development do
   gem 'capistrano-figaro-yml', '~> 1.0.2'
   gem 'capistrano-bundler', '~> 1.6'
   gem "airbrussh", require: false
-
+  gem 'capistrano-rvm'
 end
 
 group :test do

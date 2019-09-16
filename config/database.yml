@@ -82,4 +82,4 @@ production:
   <<: *default
   database: <%= ENV['DATABASE'] %>
   username: <%= ENV['db_username'] %>
-#  password: <%= ENV['GALLERY_DATABASE_PASSWORD'] %>
+  password: <%= ENV['GALLERY_DATABASE_PASSWORD'] %>

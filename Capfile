@@ -29,6 +29,7 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/rails'
 require 'capistrano/puma'
 require "airbrussh/capistrano"
+require 'capistrano/figaro_yml'
 
 # require "capistrano/rvm"
 # require "capistrano/rbenv"

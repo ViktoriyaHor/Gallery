@@ -4,6 +4,7 @@ namespace :deploy do
     on roles(:all) do
       # execute "mkdir -p #{shared_path}/config"
       upload! 'config/database.yml', "#{deploy_to}/shared/config/database.yml"
+      upload! 'config/master.key', "#{deploy_to}/shared/config/master.key"
     end
   end
 end

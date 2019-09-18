@@ -71,9 +71,68 @@ set :keep_releases, 1
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 # Puma config
-set :puma_init_active_record, true
-set :puma_preload_app, true
+# set :puma_init_active_record, true
+# set :puma_preload_app, true
 #
 # before 'deploy', 'rvm1:install:rvm'
 # before 'deploy', 'rvm1:install:ruby'  # install/update Ruby
 # before 'deploy', 'bundler:install'
+#
+task :execute, :command do |_task, args|
+  on roles :app do
+    within current_path do
+      # cap production "execute[update:role['developer']]"
+      execute :bundle, "exec rake #{args[:command]} RAILS_ENV=production"
+    end
+  end
+end
+
+namespace :deploy do
+
+  task :create_symlink do
+    on roles :app do
+      within current_path do
+        p '****************** CREATE SYMLINK ******************'
+        execute 'ln -s /home/production/www/employees/shared/config/.env.production /home/production/www/employees/current'
+      end
+    end
+  end
+
+  task :restart do
+    on roles :app do
+      within current_path do
+        p '****************** REBOOTING SERVER ******************'
+        execute "kill -SIGKILL `cat /home/production/www/employees/shared/tmp/pids/server.pid` && rm /home/production/www/employees/shared/tmp/pids/server.pid"
+        execute :bundle, "exec rails s -e production -d -p 3005"
+      end
+    end
+  end
+
+  task :start do
+    on roles :app do
+      within current_path do
+        p '****************** STARTING SERVER ******************'
+        execute :bundle, "exec rails s -e production -d -p 3005"
+      end
+    end
+  end
+
+  task :stop do
+    on roles :app do
+      within current_path do
+        p '****************** STOPPING SERVER ******************'
+        execute "kill -SIGKILL `cat /home/production/www/employees/shared/tmp/pids/server.pid` && rm /home/production/www/employees/shared/tmp/pids/server.pid"
+      end
+    end
+  end
+
+  task :seed do
+    on roles :app do
+      within current_path do
+        execute :rake, "db:seed"
+      end
+    end
+  end
+
+after 'deploy:finished', 'deploy:create_symlink'
+after 'deploy:finished', 'deploy:restart'

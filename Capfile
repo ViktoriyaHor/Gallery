@@ -37,7 +37,7 @@ require "capistrano/bundler"
 require "capistrano/rails/migrations"
 require 'capistrano/rails/assets'
 
-require 'capistrano/puma'
+# require 'capistrano/puma'
 # require "airbrussh/capistrano"
 # require "capistrano/rails/assets"
 # require "capistrano/rails/migrations"

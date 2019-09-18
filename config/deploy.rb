@@ -44,6 +44,7 @@ set :rvm1_ruby_version, '2.6.3'
 # Default value for :linked_files is []
 append :linked_files, *%w(
   config/database.yml
+  config/master.key
 )
 
 # Default value for linked_dirs is []

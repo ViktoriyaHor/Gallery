@@ -12,7 +12,7 @@ set :deploy_to, "/home/ubuntu/gallery"
 
 set :rvm1_ruby_version, '2.6.3'
 
-set :rvm1_map_bins,   -> { %w{rake gem bundle ruby} }
+set :rvm1_map_bins,   -> { %w{rake gem bundle ruby puma rails pumactl} }
 # set :bundle_roles, :all                                         # this is default
 # set :bundle_servers, -> { release_roles(fetch(:bundle_roles)) } # this is default
 # set :bundle_binstubs, -> { shared_path.join('bin') }            # default: nil
@@ -69,6 +69,10 @@ append :linked_dirs, *%w(
 set :keep_releases, 1
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
+set :pty,             true
+set :use_sudo,        false
+set :stage,           :production
+set :deploy_via,      :remote_cache
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 set :puma_bind, "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"

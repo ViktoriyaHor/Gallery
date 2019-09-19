@@ -67,7 +67,8 @@ append :linked_dirs, *%w(
 
 # Default value for keep_releases is 5
 set :keep_releases, 1
-
+set :puma_threads,    [4, 16]
+set :puma_workers,    0
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 set :puma_bind, "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"

@@ -12,7 +12,7 @@ set :deploy_to, "/home/ubuntu/gallery"
 
 set :rvm1_ruby_version, '2.6.3'
 
-set :rvm1_map_bins,   -> { %w{rake gem bundle ruby puma rails pumactl} }
+set :rvm1_map_bins,   -> { %w{rake gem bundle ruby puma} }
 # set :bundle_roles, :all                                         # this is default
 # set :bundle_servers, -> { release_roles(fetch(:bundle_roles)) } # this is default
 # set :bundle_binstubs, -> { shared_path.join('bin') }            # default: nil
@@ -67,22 +67,9 @@ append :linked_dirs, *%w(
 
 # Default value for keep_releases is 5
 set :keep_releases, 1
-set :puma_threads,    [4, 16]
-set :puma_workers,    0
-set :pty,             true
-set :use_sudo,        false
-set :stage,           :production
-set :deploy_via,      :remote_cache
+
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
-set :puma_bind, "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
-set :puma_state, "#{shared_path}/tmp/pids/puma.state"
-set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
-set :puma_access_log, "#{release_path}/log/puma.error.log"
-set :puma_error_log, "#{release_path}/log/puma.access.log"
-set :puma_preload_app, true
-set :puma_worker_timeout, nil
-set :puma_init_active_record, true
 # Puma config
 # set :puma_init_active_record, true
 # set :puma_preload_app, true
@@ -99,17 +86,7 @@ set :puma_init_active_record, true
 #     end
 #   end
 # end
-namespace :puma do
-     desc 'Create Directories for Puma Pids and Socket'
-     task :make_dirs do
-         on roles(:app) do
-             execute "mkdir #{shared_path}/tmp/sockets -p"
-             execute "mkdir #{shared_path}/tmp/pids -p"
-         end
-     end
 
-     before :start, :make_dirs
-end
 namespace :deploy do
 
   # task :create_symlink do
@@ -131,14 +108,14 @@ namespace :deploy do
   #   end
   # end
 
-  # task :start do
-  #   on roles :app do
-  #     within current_path do
-  #       p '****************** STARTING SERVER ******************'
-  #       execute :bundle, "exec rails s -e production -d -p 3005"
-  #     end
-  #   end
-  # end
+  task :start do
+    on roles :app do
+      within current_path do
+        p '****************** STARTING SERVER ******************'
+        execute :bundle, "exec rails s -e production -d -p 3005"
+      end
+    end
+  end
   #
   # task :stop do
   #   on roles :app do
@@ -148,36 +125,14 @@ namespace :deploy do
   #     end
   #   end
   # end
-desc "Make sure local git is in sync with remote."
-    task :check_revision do
-        on roles(:app) do
-            unless `git rev-parse HEAD` == `git rev-parse origin/master`
-                puts "WARNING: HEAD is not the same as origin/master"
-                puts "Run `git push` to sync changes."
-            end
-        end
+
+  task :seed do
+    on roles :app do
+      within current_path do
+        execute :rake, "db:seed"
+      end
     end
-
-    desc 'Initial Deploy'
-    task :initial do
-        on roles(:app) do
-            before 'deploy:restart', 'puma:start'
-            invoke 'deploy'
-        end
-    end
-
-    desc 'Restart application'
-    task :restart do
-        on roles(:app), in: :sequence, wait: 5 do
-            invoke 'puma:restart'
-        end
-    end
-
-    before :starting, :check_revision
-    after :finishing, :compile_assets
-    after :finishing, :cleanup
-    after :finishing, :restart
-
+  end
 end
 # after 'deploy:finished', 'deploy:create_symlink'
-# after 'deploy:finished', 'deploy:restart'
+after 'deploy:finished', 'deploy:restart'

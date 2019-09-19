@@ -98,15 +98,15 @@ namespace :deploy do
   #   end
   # end
 
-  # task :restart do
-  #   on roles :app do
-  #     within current_path do
-  #       p '****************** REBOOTING SERVER ******************'
-  #       execute "kill -SIGKILL `cat /home/production/www/employees/shared/tmp/pids/server.pid` && rm /home/production/www/employees/shared/tmp/pids/server.pid"
-  #       execute :bundle, "exec rails s -e production -d -p 3005"
-  #     end
-  #   end
-  # end
+  task :restart do
+    on roles :app do
+      within current_path do
+        p '****************** REBOOTING SERVER ******************'
+        execute "kill -SIGKILL `cat /home/ubuntu/gallery/shared/tmp/pids/server.pid` && rm /home/ubuntu/gallery/shared/tmp/pids/server.pid"
+        execute :bundle, "exec rails s -e production -d -p 3005"
+      end
+    end
+  end
 
   task :start do
     on roles :app do

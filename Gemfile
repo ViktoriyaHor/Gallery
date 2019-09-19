@@ -59,7 +59,7 @@ group :development do
   gem 'capistrano-bundler'
   # gem "airbrussh", require: false
   gem 'capistrano-rails', require: false
-  # gem 'capistrano3-puma', require: false
+  gem 'capistrano3-puma', require: false
   # gem 'capistrano-rbenv', '~> 2.1'
   # gem 'capistrano-rvm'
 

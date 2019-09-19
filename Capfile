@@ -36,7 +36,8 @@ require 'rvm1/capistrano3'
 require "capistrano/bundler"
 require "capistrano/rails/migrations"
 require 'capistrano/rails/assets'
-
+require 'capistrano/puma'
+install_plugin Capistrano::Puma
 # require 'capistrano/puma'
 # require "airbrussh/capistrano"
 # require "capistrano/rails/assets"

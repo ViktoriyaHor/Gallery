@@ -117,12 +117,22 @@ namespace :deploy do
     end
   end
 
-  desc "Reload db"
-  task :reload_db do
+  desc "db:schema:dump"
+  task :schema_dump do
     on roles(:app) do
       within "#{current_path}" do
         with rails_env: :production do
           execute :rake, "db:schema:dump"
+        end
+      end
+    end
+  end
+
+  desc "db:schema:load"
+  task :schema_load do
+    on roles(:app) do
+      within "#{current_path}" do
+        with rails_env: :production do
           execute :rake, "db:schema:load"
         end
       end

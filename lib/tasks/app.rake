@@ -13,7 +13,6 @@ namespace :app do
       imgs = Dir.entries("app/assets/images/#{cat}").reject {|f| File.directory?(f)}
       id = Category.find_by(title:"#{cat}").id
       imgs.each do |img|
-        byebug
         Image.create!(:src => open("#{Rails.root}/app/assets/images/#{cat}/#{img}"), :category_id => id, user_id: user_id)
       end
     end

@@ -89,15 +89,6 @@ set :keep_releases, 1
 
 namespace :deploy do
 
-  # task :create_symlink do
-  #   on roles :app do
-  #     within current_path do
-  #       p '****************** CREATE SYMLINK ******************'
-  #       execute 'ln -s /home/production/www/employees/shared/config/.env.production /home/production/www/employees/current'
-  #     end
-  #   end
-  # end
-
   task :restart do
     on roles :app do
       within current_path do
@@ -116,23 +107,16 @@ namespace :deploy do
       end
     end
   end
-  #
-  # task :stop do
-  #   on roles :app do
-  #     within current_path do
-  #       p '****************** STOPPING SERVER ******************'
-  #       execute "kill -SIGKILL `cat /home/production/www/employees/shared/tmp/pids/server.pid` && rm /home/production/www/employees/shared/tmp/pids/server.pid"
-  #     end
-  #   end
-  # end
 
-  task :seed do
+  task :stop do
     on roles :app do
       within current_path do
-        execute :rake, "db:seed"
+        p '****************** STOPPING SERVER ******************'
+        execute "kill -SIGKILL `cat /home/ubuntu/gallery/shared/tmp/pids/server.pid` && rm /home/ubuntu/gallery/shared/tmp/pids/server.pid"
       end
     end
   end
+
 end
-# after 'deploy:finished', 'deploy:create_symlink'
+
 after 'deploy:finished', 'deploy:restart'

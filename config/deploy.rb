@@ -117,6 +117,18 @@ namespace :deploy do
     end
   end
 
+  desc "Reload db"
+  task :reload_db do
+    on roles(:app) do
+      within "#{current_path}" do
+        with rails_env: :production do
+          execute :rake, "db:schema:dump"
+          execute :rake, "db:schema:load"
+        end
+      end
+    end
+  end
+
 end
 
 after 'deploy:finished', 'deploy:restart'

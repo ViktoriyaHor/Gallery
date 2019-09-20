@@ -55,7 +55,7 @@ group :development do
 
   gem 'capistrano', require: false
   gem 'capistrano-figaro-yml', '~> 1.0.2'
-  gem 'rvm1-capistrano3'
+  gem 'rvm1-capistrano3', require: false
   gem 'capistrano-bundler'
   # gem "airbrussh", require: false
   gem 'capistrano-rails', require: false
@@ -109,8 +109,8 @@ gem 'kaminari'
 
 gem "recaptcha", require: "recaptcha/rails"
 
-# gem 'resque', require: 'resque/server'
-# gem 'resque-web', require: 'resque_web'
+gem 'resque', require: 'resque/server'
+gem 'resque-web', require: 'resque_web'
 
 gem 'nokogiri', '~> 1.6', '>= 1.6.7.2'
 

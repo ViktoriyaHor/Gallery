@@ -12,7 +12,7 @@ set :deploy_to, "/home/ubuntu/gallery"
 
 set :rvm1_ruby_version, '2.6.3'
 
-set :rvm1_map_bins,   -> { %w{rake gem bundle ruby puma} }
+set :rvm1_map_bins,   -> { %w{rake gem bundle ruby} }
 # set :bundle_roles, :all                                         # this is default
 # set :bundle_servers, -> { release_roles(fetch(:bundle_roles)) } # this is default
 # set :bundle_binstubs, -> { shared_path.join('bin') }            # default: nil

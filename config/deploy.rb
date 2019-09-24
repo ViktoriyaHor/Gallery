@@ -5,8 +5,8 @@ set :application, "Gallery"
 set :repo_url, "git@github.com:ViktoriyaHor/Gallery.git"
 
 # Default branch is :master
-ask :branch, `git rev-parse --abbrev-ref amazon`.chomp
-
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, ENV['BRANCH'] || master
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/ubuntu/gallery"
 

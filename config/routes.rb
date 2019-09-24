@@ -25,6 +25,6 @@ Rails.application.routes.draw do
   match "images/new" => "images#extended_create", :via => :post
 
   get 'categories/:category_slug/:id', to: 'images#show', as: 'category_image_new'
-  # mount Resque::Server.new, at: "/resque"
+  mount Resque::Server.new, at: "/resque"
 
 end

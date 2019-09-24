@@ -6,5 +6,6 @@ class Image < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  validates :src, file_size: { less_than: 50.megabytes }
   paginates_per 6
 end

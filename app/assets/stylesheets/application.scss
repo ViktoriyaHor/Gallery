@@ -6,6 +6,7 @@
 @import "likes";
 @import "comments";
 @import 'font_awesome5_webfont';
+@import 'active_admin';
 
 .bg-light{
   background-color: #fff !important;
@@ -227,6 +228,9 @@ footer a{
   flex-direction: row;
 }
 
+.text {
+  color: #fff;
+}
 
 @media screen and (min-width: 992px) {
   .bubba {

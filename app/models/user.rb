@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable,
          :omniauthable, :trackable
          # :lockable
+  validates :username, presence: true, uniqueness: true
   has_many :categories, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :subscriptions, dependent: :destroy

@@ -7,10 +7,10 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = @category.subscriptions.new(user_id: current_user.id) unless already_subscribe?
     if @subscription.save
-      # email = User.find(@subscription.user_id).email
-      # username = User.find(@subscription.user_id).username
-      # category = Category.find(@subscription.category_id).slug
-      # Resque.enqueue(ToSubscribersSendEmail, [email, username, category])
+      email = User.find(@subscription.user_id).email
+      username = User.find(@subscription.user_id).username
+      category = Category.find(@subscription.category_id).slug
+      Resque.enqueue(ToSubscribersSendEmail, [email, username, category])
       redirect_to category_path(@category)
     else
       redirect_to category_path(@category), danger: I18n.t('flash.subscription.didnt_create')

@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/stympy/faker.git
+  revision: 4d62e8f1497eb4263f2ef0f6ebc0f073899b7df5
+  branch: master
+  specs:
+    faker (2.4.0)
+      i18n (~> 1.6.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -487,6 +495,7 @@ DEPENDENCIES
   devise-bootstrap-views
   devise-i18n
   factory_bot_rails
+  faker!
   figaro
   file_validators
   fog-aws

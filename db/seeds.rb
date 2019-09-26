@@ -20,7 +20,7 @@ end
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') #if Rails.env.development?
 
 Action.create!(action_type: "navigation")
-Action.create!(action_type: "user sign in")
-Action.create!(action_type: "user sign out")
+Action.create!(action_type: "user_sign_in")
+Action.create!(action_type: "user_sign_out")
 Action.create!(action_type: "likes")
 Action.create!(action_type: "comments")

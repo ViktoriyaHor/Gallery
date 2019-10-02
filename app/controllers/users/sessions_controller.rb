@@ -60,11 +60,11 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def action_sign_in
-    LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('user sign in').id}", :action_path=>request.original_url).save if user_signed_in?
+    LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('user_sign_in').id}", :action_path=>request.original_url).save if user_signed_in?
   end
 
   def action_sign_out
-    LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('user sign out').id}", :action_path=>request.original_url).save if user_signed_in?
+    LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('user_sign_out').id}", :action_path=>request.original_url).save if user_signed_in?
   end
 
   # before_action :configure_sign_in_params, only: [:create]

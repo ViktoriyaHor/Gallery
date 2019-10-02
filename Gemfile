@@ -46,6 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "letter_opener"
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -92,14 +93,14 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'mini_magick'
 
-gem 'devise'
+gem "devise", ">= 4.7.1"
 gem 'devise-i18n'
 gem "bootstrap_form", ">= 4.0.0.alpha1"
 gem 'devise-bootstrap-views'
 
 gem 'activeadmin'
-
-gem 'omniauth'
+gem 'omniauth', '~> 1.6'
+# gem 'omniauth'
 # User Authentication with Facebook
 gem 'omniauth-facebook'
 # Development ENV Variables
@@ -112,7 +113,7 @@ gem "recaptcha", require: "recaptcha/rails"
 gem 'resque', require: 'resque/server'
 gem 'resque-web', require: 'resque_web'
 
-gem 'nokogiri', '~> 1.6', '>= 1.6.7.2'
-
+# gem 'nokogiri', '~> 1.6', '>= 1.6.7.2'
+gem "nokogiri", ">= 1.10.4"
 gem 'font_awesome5_rails'
 gem 'file_validators'

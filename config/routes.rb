@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'profile', to: 'static_pages#profile'
 
   # resources :categories, shallow: true do
-  resources :categories, param: :slug do
+  resources :categories, param: :slug, except: [:edit, :update] do
     resources :subscriptions, only: [:create, :destroy]
     resources :images, except: [:update, :edit] do
       resources :comments, shallow: true

@@ -54,7 +54,7 @@
               %p
                 #{category.images.size}
                 =t('static_pages.index.images')
-              = image_tag("#{popular_image(category.id).src.url(:thumb)}")
+              = popular_image(category.id)? image_tag("#{popular_image(category.id).src.url(:thumb)}") : image_tag('no-image.jpg', :class => "img-fluid")
 
 
 

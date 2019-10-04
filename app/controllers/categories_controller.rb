@@ -2,7 +2,7 @@
 
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :find_category, only: %i[update edit show destroy]
+  before_action :find_category, only: %i[show destroy]
 
   def index
     @categories = Category.all
@@ -22,25 +22,25 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
   def create
     @category = current_user.categories.new(category_params)
     if @category.save
       redirect_to @category, success: I18n.t('flash.category.created')
     else
-      render :new, danger: I18n.t('flash.category.didnt_create')
+      render :new
     end
   end
 
-  def update
-    if @category.update(title: category_params[:title], slug: category_params[:title])
-      redirect_to @category, success: I18n.t('flash.category.updated')
-    else
-      render :edit, danger: I18n.t('flash.category.didnt_update')
-    end
-  end
+  # def update
+  #   if @category.update(category_params)
+  #     redirect_to @category, success: I18n.t('flash.category.updated')
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     # current_user.categories.find(@category.id).destroy
@@ -55,7 +55,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:title, :slug)#.merge( {user_id: current_user.id} )
+    params.require(:category).permit(:title)#.merge( {user_id: current_user.id} )
   end
 
   def find_category

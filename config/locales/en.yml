@@ -102,9 +102,7 @@ en:
   flash:
     category:
       created: "Category created"
-      didnt_create: "Category didn't creat"
       updated: "Category updated"
-      didnt_update: "Category didn't update"
       removed: "Category removed"
       didnt_remove: "Category didn't remove. This category not yours"
     comment:

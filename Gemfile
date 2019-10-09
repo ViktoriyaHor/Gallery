@@ -44,7 +44,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem "letter_opener"
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
   gem 'rails-controller-testing'
 end
@@ -61,14 +60,16 @@ group :development do
   gem 'rvm1-capistrano3', require: false
   gem 'capistrano-bundler'
   gem 'capistrano-rails', require: false
-
-
+  gem "letter_opener"
 end
 
 group :test do
   gem 'database_cleaner'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
+  gem 'capybara-email'
+  gem "fakeredis", :require => "fakeredis/rspec"
+
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
@@ -80,24 +81,17 @@ end
 gem "fog-aws"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 #bootstrap 4
 gem 'bootstrap', '~> 4.3.1'
-
 gem 'jquery-rails', '4.3.5'
-
 gem "haml-rails", "~> 2.0"
-
 gem 'friendly_id', '~> 5.2.4'
-
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'mini_magick'
-
 gem "devise", ">= 4.7.1"
 gem 'devise-i18n'
 gem "bootstrap_form", ">= 4.0.0.alpha1"
 gem 'devise-bootstrap-views'
-
 gem 'activeadmin'
 gem 'omniauth', '~> 1.6'
 # gem 'omniauth'
@@ -105,14 +99,10 @@ gem 'omniauth', '~> 1.6'
 gem 'omniauth-facebook'
 # Development ENV Variables
 gem 'figaro'
-
 gem 'kaminari'
-
 gem "recaptcha", require: "recaptcha/rails"
-
 gem 'resque', require: 'resque/server'
 gem 'resque-web', require: 'resque_web'
-
 # gem 'nokogiri', '~> 1.6', '>= 1.6.7.2'
 gem "nokogiri", ">= 1.10.4"
 gem 'font_awesome5_rails'

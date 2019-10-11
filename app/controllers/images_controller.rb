@@ -23,10 +23,10 @@ class ImagesController < ApplicationController
   def create
   end
 
-  def destroy
-    @image.destroy
-    redirect_to category_path(@category), success: I18n.t('flash.image.removed')
-  end
+  # def destroy
+  #   @image.destroy
+  #   redirect_to category_path(@category), success: I18n.t('flash.image.removed')
+  # end
 
   def extended_new
      @image = Image.new

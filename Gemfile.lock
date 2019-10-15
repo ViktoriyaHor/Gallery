@@ -523,7 +523,7 @@ DEPENDENCIES
   omniauth (~> 1.6)
   omniauth-facebook
   pg (>= 0.18, < 2.0)
-  puma
+  puma (~> 3.11)
   rails (~> 5.2.3)
   rails-controller-testing
   rails-i18n

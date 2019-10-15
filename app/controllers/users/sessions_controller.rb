@@ -2,7 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
 
-  # after_action :action_sign_in, only: [:create]
+  after_action :action_sign_in, only: [:create]
   before_action :action_sign_out, only: [:destroy]
 
   def create
@@ -59,9 +59,9 @@ class Users::SessionsController < Devise::SessionsController
     params[:recaptcha_challenge_field]
   end
 
-  # def action_sign_in
-  #   LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('user_sign_in').id}", :action_path=>request.original_url).save if user_signed_in?
-  # end
+  def action_sign_in
+    LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('user_sign_in').id}", :action_path=>request.original_url).save if user_signed_in?
+  end
 
   def action_sign_out
     LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('user_sign_out').id}", :action_path=>request.original_url).save if user_signed_in?

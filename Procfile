@@ -1,2 +1,2 @@
-web: bundle exec rails server -p 3000
+web: bundle exec puma -c config/puma.rb
 worker: rake resque:work QUEUE=*

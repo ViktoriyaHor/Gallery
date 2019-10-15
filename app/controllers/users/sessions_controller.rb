@@ -2,7 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
 
-  after_action :action_sign_in, only: [:create]
+  # after_action :action_sign_in, only: [:create]
   before_action :action_sign_out, only: [:destroy]
 
   def create

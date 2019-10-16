@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
-  let(:category) {create :category_with_image}
-
+  let(:user) { create :user }
+  let(:category) {create :category_with_image, user: user}
+  let!(:action) { Action.create(params) }
+  let(:params) { { action_type: 'navigation' } }
   context 'user sign_in' do
     login_user
-    let!(:action) { Action.create(params) }
-    let(:params) { { action_type: 'navigation' } }
-
     it "should have a current_user" do
       expect(subject.current_user).to_not eq(nil)
     end
@@ -50,7 +49,6 @@ RSpec.describe CategoriesController, type: :controller do
       it "returns success responce" do
         expect(response).to have_http_status(200)
       end
-
       it 'render template :show' do
         expect(response).to render_template :show
       end
@@ -160,6 +158,16 @@ RSpec.describe CategoriesController, type: :controller do
           expect(flash[:danger]).to eq "Category didn't remove. This category not yours"
         end
       end
+    end
+  end
+  context '#show user - owner category and subscription' do
+    it "assigns @pre_subscribe" do
+      sign_in user
+      subscription = create :subscription, user: user, category: category
+      get :show, params: { slug: category.slug }
+      expect(controller.current_user).to eq(user)
+      expect(assigns(:category)).to eq(category)
+      expect(assigns(:pre_subscribe)).to eq(subscription)
     end
   end
   context 'user log_out' do

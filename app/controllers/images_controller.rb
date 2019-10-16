@@ -6,6 +6,7 @@ class ImagesController < ApplicationController
   before_action :find_image, only: %i[show destroy]
   before_action :find_category_by_id, only: [:extended_create]
   before_action :create_common, only: %i[create extended_create]
+  before_action :new_common, only: %i[new extended_new]
   before_action :find_category_all, only: [:extended_new]
 
   def index
@@ -17,7 +18,6 @@ class ImagesController < ApplicationController
   end
 
   def new
-    @image = Image.new
   end
 
   def create
@@ -29,7 +29,6 @@ class ImagesController < ApplicationController
   # end
 
   def extended_new
-     @image = Image.new
   end
 
   def extended_create
@@ -53,7 +52,9 @@ class ImagesController < ApplicationController
   def find_image
     @image = @category.images.find(params[:id])
   end
-
+  def new_common
+    @image = Image.new
+  end
   def create_common
     if params[:image].blank?
       redirect_to @category, danger: I18n.t('flash.image.select')

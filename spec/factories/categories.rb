@@ -4,14 +4,14 @@ FactoryBot.define do
     user
 
     factory :category_with_image do
-      # transient do
-      #   images_count { 1 }
-      # end
-      # after(:create) do |category, evaluator|
-      #   create_list(:image, evaluator.images_count, category: category)
-      # end
       after(:create) do |category|
         create :image, category: category
+      end
+    end
+
+    factory :category_with_subscription do
+      after(:create) do |category|
+        create :subscription, category: category
       end
     end
   end

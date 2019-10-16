@@ -16,6 +16,7 @@ class CategoriesController < ApplicationController
   def show
     @images = @category.images.page(params[:page])
     @pre_subscribe = @category.subscriptions.find { |subscription| subscription.user_id == current_user.id} if current_user
+    # @pre_subscribe = current_user.subscriptions.find { |subscription| subscription.category_id == @category.id} if current_user
   end
 
   def new

@@ -5,10 +5,10 @@ RSpec.describe ImagesController, type: :controller do
   let(:image) {create :image, category: category}
   let(:user) { create :user }
   let(:like) { create :like, image_id: image.id, user_id: user.id }
+  let!(:action) { Action.create(params) }
+  let(:params) { { action_type: 'navigation' } }
   context 'user sign_in' do
     login_user
-    let!(:action) { Action.create(params) }
-    let(:params) { { action_type: 'navigation' } }
 
     it "should have a current_user" do
       expect(subject.current_user).to_not eq(nil)
@@ -132,6 +132,16 @@ RSpec.describe ImagesController, type: :controller do
           expect(Image.count).to eq(0)
         end
       end
+    end
+  end
+  context '#show user - owner image and like' do
+    it "assigns @pre_like" do
+      sign_in user
+      like = create :like, user: user, image: image
+      get :show, params: { category_slug: category.slug, id: image.id }
+      expect(controller.current_user).to eq(user)
+      expect(assigns(:image)).to eq(image)
+      expect(assigns(:pre_like)).to eq(like)
     end
   end
   context 'user log_out' do

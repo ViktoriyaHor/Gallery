@@ -193,5 +193,17 @@ RSpec.describe CategoriesController, type: :controller do
         expect(response).to render_template :show
       end
     end
+    context '#new' do
+      subject! { get :new }
+      it 'returns a status code 302' do
+        expect(response).to have_http_status(302)
+      end
+      it 'render template :new' do
+        expect(response).to redirect_to('http://test.host/users/sign_in?locale=en')
+      end
+      it 'sends notice' do
+        expect(flash[:alert]).to eq 'You need to sign in or sign up before continuing.'
+      end
+    end
   end
 end

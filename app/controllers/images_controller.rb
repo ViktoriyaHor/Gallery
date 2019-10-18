@@ -32,30 +32,9 @@ class ImagesController < ApplicationController
   end
 
   def extended_create
-    @category = Category.find(image_params[:category_id])
-  end
-
-  private
-
-  def find_category
-    @category = Category.friendly.find(params[:category_slug])
-  end
-
-  def find_category_by_id
-    @category = Category.find(image_params[:category_id])
-  end
-
-  def find_category_all
-    @category_all = Category.all
-  end
-
-  def find_image
-    @image = @category.images.find(params[:id])
-  end
-  def new_common
-    @image = Image.new
   end
   def create_common
+    # byebug
     if params[:image].blank?
       redirect_to @category, danger: I18n.t('flash.image.select')
     else
@@ -70,8 +49,32 @@ class ImagesController < ApplicationController
     end
   end
 
+  private
+
+  def find_category
+    @category = Category.friendly.find(params[:category_slug])
+  end
+
+  def find_category_by_id
+    # byebug
+    @category = Category.find(image_params[:category_id])
+  end
+
+  def find_category_all
+    @category_all = Category.all
+  end
+
+  def find_image
+    @image = @category.images.find(params[:id])
+  end
+
+  def new_common
+    @image = Image.new
+  end
+
+
   def image_params
-    params.require(:image).permit(:src, :category_id, :current_user_id)
+    params.require(:image).permit(:src, :category_id)
   end
 
 end

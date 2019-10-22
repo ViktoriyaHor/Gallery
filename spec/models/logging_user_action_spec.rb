@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe LoggingUserAction, type: :model do
-  subject! { create :logging_user_action, user_id: user.id, action_id: action.id}
+  subject! { create :logging_user_action, user_id: user.id, action_id: action.id }
   let(:action) { create :action }
   let(:user) { create :user }
 

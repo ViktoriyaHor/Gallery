@@ -1,31 +1,32 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
   let(:user) { create :user }
-  let(:category) {create :category_with_image, user: user}
+  let(:category) { create :category_with_image, user: user }
   let!(:action) { Action.create(params) }
   let(:params) { { action_type: 'navigation' } }
   context 'user sign_in' do
     login_user
-    it "should have a current_user" do
+    it 'should have a current_user' do
       expect(subject.current_user).to_not eq(nil)
     end
-    it "does not exist :edit" do
-      expect{get :edit}.to raise_error(ActionController::UrlGenerationError)
+    it 'does not exist :edit' do
+      expect{ get :edit }.to raise_error(ActionController::UrlGenerationError)
     end
-    it "does not exist :update" do
-      expect{put :update}.to raise_error(ActionController::UrlGenerationError)
+    it 'does not exist :update' do
+      expect{ put :update }.to raise_error(ActionController::UrlGenerationError)
     end
     context '#index' do
       subject! { get :index }
-
       it 'returns a successful response to GET' do
         expect(response).to have_http_status(200)
       end
       it 'render template :index' do
         expect(response).to render_template :index
       end
-      it "assigns @categories" do
+      it 'assigns @categories' do
         expect(assigns(:categories)).to eq([category])
       end
       context 'activity' do
@@ -46,7 +47,7 @@ RSpec.describe CategoriesController, type: :controller do
     context '#show' do
       subject! { get :show, params: { slug: category.slug } }
 
-      it "returns success responce" do
+      it 'returns success responce' do
         expect(response).to have_http_status(200)
       end
       it 'render template :show' do
@@ -56,10 +57,10 @@ RSpec.describe CategoriesController, type: :controller do
         expect(controller).to receive(:find_category)
         get :show, params: { slug: category.slug }
       end
-      it "requires the slug parameter" do
+      it 'requires the slug parameter' do
         expect { get :show }.to raise_error(ActionController::UrlGenerationError)
       end
-      it "assigns @images" do
+      it 'assigns @images' do
         expect(assigns(:images)).to eq([category.images.first])
       end
       context 'activity' do
@@ -87,7 +88,7 @@ RSpec.describe CategoriesController, type: :controller do
       it 'assigns @category variable' do
         expect(assigns(:category)).not_to be_nil
       end
-      it "assigns @category" do
+      it 'assigns @category' do
         expect(assigns(:category)).to be_a_new(Category)
       end
       it 'returns a successful response to GET' do
@@ -98,23 +99,23 @@ RSpec.describe CategoriesController, type: :controller do
       end
     end
 
-    context "#create" do
+    context '#create' do
       let(:category) { build(:category) }
 
-      context "with valid attributes" do
-        it "create a category" do
+      context 'with valid attributes' do
+        it 'create a category' do
           expect(category.save!).to be true
         end
-        it "redirects to the new category and sends success flash" do
+        it 'redirects to the new category and sends success flash' do
           post :create, params: { category: { title: category.title } }
           expect(response).to redirect_to Category.last
         end
-        it "sends success flash" do
+        it 'sends success flash' do
           post :create, params: { category: { title: category.title } }
-          expect(flash[:success]).to eq "Category created"
+          expect(flash[:success]).to eq 'Category created'
         end
       end
-      context "with invalid attributes" do
+      context 'with invalid attributes' do
         before do
           post :create, params: { category: { title: nil } }
         end
@@ -149,7 +150,7 @@ RSpec.describe CategoriesController, type: :controller do
           category = create(:category, user: user)
           sign_in user
           delete :destroy, params: { slug: category.slug }
-          expect(flash[:success]).to eq "Category removed"
+          expect(flash[:success]).to eq 'Category removed'
         end
       end
       context 'current user isn\'t owner category' do
@@ -161,7 +162,7 @@ RSpec.describe CategoriesController, type: :controller do
     end
   end
   context '#show user - owner category and subscription' do
-    it "assigns @pre_subscribe" do
+    it 'assigns @pre_subscribe' do
       sign_in user
       subscription = create :subscription, user: user, category: category
       get :show, params: { slug: category.slug }
@@ -180,12 +181,12 @@ RSpec.describe CategoriesController, type: :controller do
       it 'render template :index' do
         expect(response).to render_template :index
       end
-      it "assigns @categories" do
+      it 'assigns @categories' do
         expect(assigns(:categories)).to eq([category])
       end
     end
     context 'success status and render show page' do
-      subject! { get :show, params: { slug: "#{category.slug}"} }
+      subject! { get :show, params: { slug: "#{category.slug}" } }
       it 'returns a successful response to GET' do
         expect(response).to have_http_status(200)
       end

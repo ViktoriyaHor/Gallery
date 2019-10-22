@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :danger
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  after_action :navigation, only: %i[index show]
+  after_action :navigation, only: %i[index show all]
 
   before_action :set_locale
 

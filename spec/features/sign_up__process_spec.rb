@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
-include Capybara::Email::DSL
 
 RSpec.describe 'sign_up process', type: :feature do
+  include Capybara::Email::DSL
   let(:attrs) { attributes_for(:user) }
   before do
     create :category_with_image
@@ -10,31 +12,31 @@ RSpec.describe 'sign_up process', type: :feature do
   end
   scenario 'registers a new user' do
     visit root_path
-    within(".links") do
-      click_link "Registration"
+    within('.links') do
+      click_link 'Registration'
     end
-    fill_in "Username", with: attrs[:username]
-    fill_in "Email", with: attrs[:email]
-    fill_in "Password", with: attrs[:password]
-    fill_in "Password confirmation", with: attrs[:password]
-    click_button "Sign up"
-    expect(page).to have_content "A message with a confirmation link has been" \
-      " sent to your email address. Please follow the link to activate your" \
-      " account."
+    fill_in 'Username', with: attrs[:username]
+    fill_in 'Email', with: attrs[:email]
+    fill_in 'Password', with: attrs[:password]
+    fill_in 'Password confirmation', with: attrs[:password]
+    click_button 'Sign up'
+    expect(page).to have_content 'A message with a confirmation link has been' \
+      ' sent to your email address. Please follow the link to activate your' \
+      ' account.'
     expect(page).to have_current_path '/?locale=en'
     open_email(attrs[:email])
-    expect(current_email.subject).to eq "Confirmation instructions"
-    current_email.click_link "Confirm my account"
-    expect(page).to have_content "Your email address has been successfully " \
-                                 "confirmed."
-    expect(page).to have_content "Your email address has been successfully " \
-                                 "confirmed."
-    within(".new_user") do
+    expect(current_email.subject).to eq 'Confirmation instructions'
+    current_email.click_link 'Confirm my account'
+    expect(page).to have_content 'Your email address has been successfully ' \
+                                 'confirmed.'
+    expect(page).to have_content 'Your email address has been successfully ' \
+                                 'confirmed.'
+    within('.new_user') do
       fill_in 'Email', with: attrs[:email]
       fill_in 'Password', with: attrs[:password]
     end
     click_button 'Log in'
-    expect(page).to have_content "Signed in successfully."
+    expect(page).to have_content 'Signed in successfully.'
   end
   # it "registers a new user" do
   #   visit "/"

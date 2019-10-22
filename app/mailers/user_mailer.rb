@@ -23,6 +23,6 @@ class UserMailer < ApplicationMailer
       @user = User.find(subscription.user_id)
       @emails << @user.email
     end
-    mail to: @emails, subject: "New image add to the category"
+    mail to: @emails, subject: 'New image add to the category'
   end
 end

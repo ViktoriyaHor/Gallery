@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, :find_category_image, only: %i[create destroy]
-  before_action :find_comment, only: %i[edit update destroy]
+  before_action :authenticate_user!, :find_category_image, only: %i[create]
+  # before_action :find_comment, only: %i[edit update destroy]
   after_action :logging_comments, only: [:create]
   helper_method :find_image
 

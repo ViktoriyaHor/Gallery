@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-#
+
 # send letter when user confirmed
-class WelcomeSendEmail
+class WelcomeSendEmail < ActiveJob::Base
   @queue = :welcome_email
 
   def self.perform(params)

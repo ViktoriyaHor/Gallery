@@ -63,4 +63,18 @@ RSpec.describe User, type: :model do
       expect(user.reload.comments).to eq [comment]
     end
   end
+
+  context '#welcome_send' do
+    before do
+      ResqueSpec.reset!
+    end
+    it "user.welcome_send to the WelcomeSendEmail queue" do
+      user.welcome_send
+      expect(WelcomeSendEmail).to have_queued([user.email, user.username]).in(:welcome_email)
+    end
+    it "adds an entry to the WelcomeSendEmail queue" do
+      user.welcome_send
+      expect(WelcomeSendEmail).to have_queue_size_of(1)
+    end
+  end
 end

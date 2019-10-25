@@ -64,7 +64,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context '#welcome_send' do
+  context '#create with resque' do
     before do
       ResqueSpec.reset!
     end

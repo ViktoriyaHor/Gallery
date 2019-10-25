@@ -7,22 +7,12 @@ class LikesController < ApplicationController
 
   def create
     @like = @image.likes.create(user_id: current_user.id) unless already_liked?
-    # if @like.save
-    #   respond_to do |format|
-    #     format.html {redirect_to category_image_path(@category, @image)}
-    #     format.js #render likes/create.js.haml
-    #   end
     redirect_to category_image_path(@category, @image)
-    # end
   end
 
   def destroy
     if already_liked?
       @like.destroy
-      # respond_to do |format|
-      #   format.html {redirect_to category_image_path(@category, @image)}
-      #   format.js #render likes/destroy.js.haml
-      # end
     end
     redirect_to category_image_path(@category, @image)
   end

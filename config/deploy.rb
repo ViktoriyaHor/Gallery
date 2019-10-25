@@ -13,23 +13,6 @@ set :deploy_to, "/home/ubuntu/gallery"
 set :rvm1_ruby_version, '2.6.3'
 
 set :rvm1_map_bins,   -> { %w{rake gem bundle ruby} }
-# set :bundle_roles, :all                                         # this is default
-# set :bundle_servers, -> { release_roles(fetch(:bundle_roles)) } # this is default
-# set :bundle_binstubs, -> { shared_path.join('bin') }            # default: nil
-# set :bundle_gemfile, -> { release_path.join('Gemfile') }      # default: nil
-# set :bundle_path, -> { shared_path.join('bundle') }             # this is default. set it to nil for skipping the --path flag.
-# set :bundle_without, %w{development test}.join(' ')             # this is default
-# set :bundle_flags, '--deployment --quiet'                       # this is default
-# set :bundle_env_variables, {}                                   # this is default
-# set :bundle_clean_options, ""                                   # this is default. Use "--dry-run" if you just want to know what gems would be deleted, without actually deleting them
-# set :bundle_check_before_install, true
-
-# set :rvm_path, "$HOME/.rvm"
-
-# set :rvm1_type, :system
-# set :rbenv_type, :user # or :system, depends on your rbenv setup
-# set :rbenv_ruby, '2.6.3'
-# set :rbenv_path, '/home/ubuntu/.rbenv'
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -68,25 +51,6 @@ append :linked_dirs, *%w(
 # Default value for keep_releases is 5
 set :keep_releases, 1
 
-# Uncomment the following to require manually verifying the host key before first deploy.
-# set :ssh_options, verify_host_key: :secure
-# Puma config
-# set :puma_init_active_record, true
-# set :puma_preload_app, true
-#
-# before 'deploy', 'rvm1:install:rvm'
-# before 'deploy', 'rvm1:install:ruby'  # install/update Ruby
-# before 'deploy', 'bundler:install'
-# #
-# task :execute, :command do |_task, args|
-#   on roles :app do
-#     within current_path do
-#       # cap production "execute[update:role['developer']]"
-#       execute :bundle, "exec rake #{args[:command]} RAILS_ENV=production"
-#     end
-#   end
-# end
-
 namespace :deploy do
 
   task :restart do
@@ -116,29 +80,6 @@ namespace :deploy do
       end
     end
   end
-
-  # desc "db:schema:dump"
-  # task :schema_dump do
-  #   on roles(:app) do
-  #     within "#{current_path}" do
-  #       with rails_env: :production do
-  #         execute :rake, "db:schema:dump"
-  #       end
-  #     end
-  #   end
-  # end
-  #
-  # desc "db:schema:load"
-  # task :schema_load do
-  #   on roles(:app) do
-  #     within "#{current_path}" do
-  #       with rails_env: :production do
-  #         execute :rake, "db:schema:load"
-  #       end
-  #     end
-  #   end
-  # end
-
 end
 
 after 'deploy:finished', 'deploy:restart'

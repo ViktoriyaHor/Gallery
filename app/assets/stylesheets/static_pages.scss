@@ -22,7 +22,6 @@
 .carousel:hover p{
   text-shadow: 3px 2px 2px #000;
 }
-
 .position{
 	position: relative;
 	border: 1px solid #d5d5d5;
@@ -44,10 +43,8 @@
   left: 10%;
   width: 50%;
 }
-
 .position .link-action{
   transition: all .5s;
-
 }
 a:hover{
   text-decoration: none;
@@ -55,7 +52,6 @@ a:hover{
 }
 .position:hover .link-action{
   transform: scale(1.1);
-
 }
 .position:hover{
   box-shadow: 0 0 12px 0 rgba(0,0,0,.2);

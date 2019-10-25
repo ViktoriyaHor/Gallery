@@ -2,7 +2,6 @@
 
 class CommentsController < ApplicationController
   before_action :authenticate_user!, :find_category_image, only: %i[create]
-  # before_action :find_comment, only: %i[edit update destroy]
   after_action :logging_comments, only: [:create]
   helper_method :find_image
 
@@ -10,37 +9,18 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-  # def edit
-  # end
-
   def create
     @comment = @image.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save!
-      # redirect_to category_image_new_path(@category, @image, @comment, locale: I18n.locale), success: 'Comment created'
       respond_to do |format|
         format.html {redirect_to category_image_new_path(@category, @image, @comment, locale: I18n.locale), success: 'Comment created'}
-        format.js # render comments/create.js.haml
+        format.js
       end
     else
       render :new
     end
   end
-
-  # def update
-  #   @image = @comment.image
-  #   @category = @image.category
-  #   if @comment.update(comment_params)
-  #     redirect_to category_image_new_path(@category, @image), success: I18n.t('flash.comment.updated')
-  #   else
-  #     render 'edit'
-  #   end
-  # end
-  #
-  # def destroy
-  #   @comment.destroy
-  #   redirect_to category_image_new_path(@category, @image), success: I18n.t('flash.comment.removed')
-  # end
 
   def all
     @comments = Comment.order(created_at: :desc).page(params[:page])

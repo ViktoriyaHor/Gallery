@@ -43,23 +43,6 @@ set :branch, :master
 #
 # Global options
 # --------------
-# set :ssh_options, {
-#    keys: %w(/home/developer/.ssh/gallery-keypair.pem ~/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(publickey password)
-#  }
 set :ssh_options, {forward_agent: true,
                   user: 'ubuntu',
                   auth_methods: %w(publickey)}
-# The server-based syntax can be used to override options:
-# ------------------------------------
-# server "example.com",
-#   user: "user_name",
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: "user_name", # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: "please use keys"
-#   }

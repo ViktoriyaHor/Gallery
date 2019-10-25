@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe SubscriptionsController, type: :controller do
-  let(:category) {create :category}
+  let(:category) {create :category, user: user}
   let(:user) { create :user }
-  let!(:subscription) { create :subscription }
+  let(:subscription) { create :subscription, user: user, category: category }
   let!(:action) { Action.create(params) }
   let(:params) { { action_type: 'navigation' } }
   context 'user sign_in' do
@@ -57,4 +57,18 @@ RSpec.describe SubscriptionsController, type: :controller do
       end
     end
   end
+  # context '#create with resque' do
+  #   let(:user) { create :user, username: 'bob', email: 'ccc@gmail.com' }
+  #   let(:category) { create :category, user: user }
+  #   let(:subscription) { double("subscription") }
+  #   before do
+  #     sign_in user
+  #     ResqueSpec.reset!
+  #   end
+  #   it "adds an entry to the WelcomeSendEmail queue" do
+  #     post :create, params: { category_slug: category.slug}
+  #     expect(ToSubscribersSendEmail).to have_queue_size_of(1)
+  #     expect(ToSubscribersSendEmail).to have_queued([user.email, user.username, category.slug])
+  #   end
+  # end
 end

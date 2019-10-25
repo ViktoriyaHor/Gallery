@@ -14,5 +14,4 @@ ActiveAdmin.register_page "Upload images" do
   content do
     render partial: 'form'
   end
-
 end

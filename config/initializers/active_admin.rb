@@ -54,6 +54,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
+
   config.authentication_method = :authenticate_admin_user!
 
   # == User Authorization
@@ -91,6 +92,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # (within the application controller) to return the currently logged in user.
+
   config.current_user_method = :current_admin_user
 
   # == Logging Out
@@ -103,6 +105,7 @@ ActiveAdmin.setup do |config|
   # will call the method to return the path.
   #
   # Default:
+  #
   config.logout_link_path = :destroy_admin_user_session_path
 
   # This setting changes the http method used when rendering the
@@ -127,6 +130,7 @@ ActiveAdmin.setup do |config|
   # config.comments = false
 
   # You can change the name under which comments are registered:
+
   config.comments_registration_name = 'AdminComment'
 
   # You can change the order for the comments and you can change the column
@@ -142,7 +146,7 @@ ActiveAdmin.setup do |config|
   # == Batch Actions
   #
   # Enable and disable Batch Actions
-  #
+
   config.batch_actions = true
 
   # == Controller Filters
@@ -156,7 +160,7 @@ ActiveAdmin.setup do |config|
   #
   # You can exclude possibly sensitive model attributes from being displayed,
   # added to forms, or exported by default by ActiveAdmin
-  #
+
   config.filter_attributes = [:encrypted_password, :password, :password_confirmation]
 
   # == Localize Date/Time Format
@@ -167,7 +171,7 @@ ActiveAdmin.setup do |config|
   #
   # You can run `bin/rails runner 'puts I18n.t("date.formats")'` to see the
   # available formats in your application.
-  #
+
   config.localize_format = :long
 
   # == Setting a Favicon
@@ -251,16 +255,13 @@ ActiveAdmin.setup do |config|
   # or customize the formats shown per namespace/globally
   #
   # To disable/customize for the :admin namespace:
+  #
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|
       menu.add :label => "Languages" do |lang|
         lang.add :label => "En",:url => proc { url_for(:locale => 'en') }, id: 'i18n-en', :priority => 1
         lang.add :label => "Ru",:url => proc { url_for(:locale => 'ru') }, id: 'i18n-es', :priority => 2
       end
-      # menu.add :label => proc { display_name current_active_admin_user },
-      #           :url => '#',
-      #           :id => 'current_user',
-      #           :if => proc { current_active_admin_user? }
       admin.add_logout_button_to_menu menu
     end
   end

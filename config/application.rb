@@ -18,7 +18,6 @@ module Gallery
     # the framework and any gems in your application.
     config.time_zone = 'Europe/Kiev'
     config.active_record.default_timezone = :local
-
     I18n.available_locales = [:en, :ru]
   end
 end

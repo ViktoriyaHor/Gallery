@@ -7,12 +7,9 @@ class Users::SessionsController < Devise::SessionsController
 
   def create
     flash.clear
-
     user = User.find_by_email(sign_in_params['email'])
-
     super and return unless user
     adjust_failed_attempts user
-
     super and return if (user.failed_attempts < User.logins_before_captcha)
     super and return if verify_recaptcha
 
@@ -66,28 +63,4 @@ class Users::SessionsController < Devise::SessionsController
   def action_sign_out
     LoggingUserAction.new(:user_id=>current_user.id, :action_id=>"#{Action.find_by_action_type('user_sign_out').id}", :action_path=>request.original_url).save if user_signed_in?
   end
-
-  # before_action :configure_sign_in_params, only: [:create]
-
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
-
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
-
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
 end

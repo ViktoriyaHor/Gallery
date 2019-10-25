@@ -32,7 +32,6 @@ class ApplicationController < ActionController::Base
   end
 
   def navigation
-    # byebug
     LoggingUserAction.new(user_id: current_user.id, action_id: "#{Action.find_by_action_type('navigation').id.to_s}", action_path: request.original_url).save if user_signed_in?
   end
 

@@ -23,18 +23,13 @@ class ImagesController < ApplicationController
   def create
   end
 
-  # def destroy
-  #   @image.destroy
-  #   redirect_to category_path(@category), success: I18n.t('flash.image.removed')
-  # end
-
   def extended_new
   end
 
   def extended_create
   end
+
   def create_common
-    # byebug
     if params[:image].blank?
       redirect_to @category, danger: I18n.t('flash.image.select')
     else
@@ -56,7 +51,6 @@ class ImagesController < ApplicationController
   end
 
   def find_category_by_id
-    # byebug
     @category = Category.find(image_params[:category_id])
   end
 
@@ -76,5 +70,4 @@ class ImagesController < ApplicationController
   def image_params
     params.require(:image).permit(:src, :category_id)
   end
-
 end

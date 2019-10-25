@@ -21,7 +21,6 @@ ActiveAdmin.register_page "Dashboard" do
         end
         strong {link_to "View all categories", admin_categories_path}
       end
-
       column do
         panel "Recent Comments" do
           table_for Comment.order("created_at desc").limit(5) do
@@ -35,6 +34,7 @@ ActiveAdmin.register_page "Dashboard" do
         strong {link_to "View all comments", admin_comments_path}
       end
     end
+
     columns do
       column do
         panel "Recent Images" do
@@ -49,7 +49,6 @@ ActiveAdmin.register_page "Dashboard" do
         end
         strong {link_to "View all images", admin_images_path}
       end
-
       column do
         panel "User actions" do
           table_for LoggingUserAction.order("created_at desc").limit(10) do
@@ -62,5 +61,5 @@ ActiveAdmin.register_page "Dashboard" do
         strong {link_to "View all actions", admin_logging_user_actions_path}
       end
     end
-  end # content
+  end
 end

@@ -24,11 +24,9 @@
   color: #000;
   text-shadow: 2px 1px 1px #ccc;
 }
-
 .menu .nav-item{
   position: relative !important;
 }
-
 .menu>.w-75>.collapse>ul>li>.nav-link:before{
   content:'';
   display: block;
@@ -41,7 +39,6 @@
   background: #343a40;
   transition: all 1s;
 }
-
 .menu>.w-75>.collapse>ul>li:hover>.nav-link:before, .menu>.collapse>ul>.active>.nav-link:before{
   display: block;
   width: 80%;
@@ -65,7 +62,6 @@ h1{
   background-color: white;
   color: #343a40;
 }
-
 .pagination > li > a:focus,
 .pagination > li > a:hover,
 .pagination > li > span:focus,
@@ -76,29 +72,24 @@ h1{
   border-color: #ddd;
   box-shadow: none;
 }
-
 .pagination > .active > a
 {
   color: white;
   background-color: #343a40 !important;
   border: solid 1px #343a40 !important;
 }
-
 .pagination > .active > a:hover
 {
   background-color: #343a40;
   border: solid 1px #343a40;
 }
-
 .pagination > .active > a:active
 {
   border: solid 1px #343a40;
 }
-
 .hidden {
   display: none !important;
 }
-
 .form-control:focus {
   border-color: #343a40;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.6);
@@ -110,7 +101,6 @@ a, a:hover{
   margin-top: 10px !important;
   margin-bottom: 10px !important;
 }
-
 .category img{
   height: 30vh;
   width: 100%;
@@ -157,18 +147,15 @@ a, a:hover{
   color: #fff;
   transition: all .5s;
   opacity: 0;
-
 }
 .bubba:hover h3{
   transform: translateY(20px);
   opacity: 1;
-
 }
 .bubba:hover p{
   transform: translateY(-30px);
   opacity: 1;
   z-index: 10;
-
 }
 .bubba:before{
   content: '';
@@ -205,7 +192,6 @@ a, a:hover{
   border-left: 1px #fff solid;
   transform: scale(1,2);
 }
-
 footer a{
   color: #fff;
   background: #343a40;
@@ -217,26 +203,21 @@ footer a{
   border-radius: 50%;
   transition: all 1s;
 }
-
 .icons a:hover{
   background: #fff;
   color: #343a40;
 }
-
 .locale>.navbar-nav{
   flex-direction: row;
 }
-
 .text {
   color: #fff;
 }
-
 @media screen and (min-width: 992px) {
   .bubba {
     width: 400px;
   }
 }
-
 @media screen and (min-width: 1200px) {
   .bubba {
     width: 450px;

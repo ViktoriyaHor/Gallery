@@ -2,10 +2,7 @@ ActiveAdmin.register AdminImage do
   menu priority: 11
   config.comments = false
   config.filters = false
-  # config.clear_action_items!
-
   actions :all, :except => [:show, :update, :edit]
-
   batch_action :upload do |ids|
     batch_action_collection.find(ids).each do |image|
       puts category_id = Category.first.id
@@ -25,7 +22,6 @@ ActiveAdmin.register AdminImage do
     def show_add
       render partial: 'form'
     end
-
     def add
       puts category_id = params[:images][:category_id]
       puts src = AdminImage.find(params[:id]).src
@@ -44,18 +40,4 @@ ActiveAdmin.register AdminImage do
     column { |image| link_to 'Upload', show_add_admin_admin_image_path(image)}
     actions
   end
-
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-
 end

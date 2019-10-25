@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # send letter when adding images to the subscribed category
-class NewImageSendEmail
+class NewImageSendEmail < ActiveJob::Base
   @queue = :new_image_email
 
   def self.perform(id)

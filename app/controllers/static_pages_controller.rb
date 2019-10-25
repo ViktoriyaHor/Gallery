@@ -12,5 +12,4 @@ class StaticPagesController < ApplicationController
     @user = User.find(current_user.id)
     @categories = @user.categories
   end
-
 end

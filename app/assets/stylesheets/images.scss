@@ -7,26 +7,16 @@
   flex-wrap: wrap;
   padding: 0 4px;
 }
-
-/* Create four equal columns that sits next to each other */
 .column {
   flex: 50%;
   max-width: 50%;
   padding: 0 4px;
   position: relative;
 }
-
 .column img {
   margin-top: 8px;
   vertical-align: middle;
   width: 100%;
-}
-
-@media (max-width: 767.98px){
-  .column {
-    flex: 100%;
-    max-width: 100%;
-  }
 }
 .overlay-likes{
   position: absolute;
@@ -41,30 +31,19 @@
   cursor: pointer;
   transition: 0.3s;
 }
-
 .modal {
   display: none;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 1900;
-  /* Sit on top */
   padding-top: 100px;
-  /* Location of the box */
   left: 0;
   top: 0;
   width: 100%;
-  /* Full width */
   height: 100%;
-  /* Full height */
   overflow: auto;
-  /* Enable scroll if needed */
   background-color: rgb(0, 0, 0);
-  /* Fallback color */
   background-color: rgba(0, 0, 0, 0.9);
-  /* Black w/ opacity */
 }
-/* Modal Content (Image) */
 .modal-content{
   margin: auto;
   display: block;
@@ -92,26 +71,28 @@
   font-weight: bold;
   transition: 0.3s;
 }
-
 .close:hover,
 .close:focus {
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
 }
-
 @media screen and (min-width: 992px) {
   .modal-content{
     max-width: 700px;
   }
 }
-
 @media screen and (min-width: 1200px) {
   .modal-content{
     max-width: 1000px;
   }
 }
-
+@media (max-width: 767.98px){
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
 
 
 

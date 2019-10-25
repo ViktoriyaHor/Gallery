@@ -43,23 +43,6 @@ RSpec.describe LikesController, type: :controller do
       end
     end
   end
-  # context '#destroy' do
-  #   it "should have a current_user" do
-  #     sign_in user
-  #     allow(controller).to receive(:already_liked?).and_return like
-  #     delete :destroy, params: { slug: category.slug, image_id: image.id, like_id: like.id, locale: 'en' }
-  #   end
-  #   it 'has a 302 status code' do
-  #     expect(response).to have_http_status(302)
-  #   end
-  #   it 'should redirect to category_path' do
-  #     expect(response).to redirect_to "http://test.host/categories/#{category.slug}/images/#{image.id}?locale=en"
-  #   end
-  #   it 'receive method :find_category and return category ' do
-  #     expect(controller).to receive(:find_category)
-  #     delete :destroy, params: { slug: category.slug, image_id: image.id }
-  #   end
-  # end
   context 'user sign_out' do
     context '#create' do
       before do

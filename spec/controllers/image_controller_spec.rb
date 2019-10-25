@@ -6,8 +6,7 @@ RSpec.describe ImagesController, type: :controller do
   let(:category) { create :category }
   let(:image) { create :image, category: category }
   let(:user) { create :user }
-  let(:like) { create :like, image_id: image.id, user_id: user.id
-  }
+  let(:like) { create :like, image_id: image.id, user_id: user.id }
   let!(:action) { Action.create(params) }
   let(:params) { { action_type: 'navigation' } }
   context 'user sign_in' do
@@ -149,16 +148,6 @@ RSpec.describe ImagesController, type: :controller do
       end
     end
   end
-  # context '#show user - owner image and like' do
-  #   it "assigns @pre_like" do
-  #     sign_in user
-  #     like = create :like, user: user, image: image
-  #     get :show, params: { category_slug: category.slug, id: image.id }
-  #     expect(controller.current_user).to eq(user)
-  #     expect(assigns(:image)).to eq(image)
-  #     expect(assigns(:pre_like)).to eq(like)
-  #   end
-  # end
   context '#extended_create' do
     let(:category) { create :category }
     let(:image_params) { FactoryBot.attributes_for(:image).stringify_keys.merge(category_id: category.id) }
@@ -219,30 +208,4 @@ RSpec.describe ImagesController, type: :controller do
       end
     end
   end
-  # context '#create with resque' do
-  #   let(:category) { create :category }
-  #   let(:image_params) { FactoryBot.attributes_for(:image).stringify_keys.merge(category_id: category.id, id: 1) }
-  #   before do
-  #     sign_in user
-  #     ResqueSpec.reset!
-  #   end
-  #   it "adds an entry to the WelcomeSendEmail queue" do
-  #     post :create, params: { image: image_params, category_slug: category.slug}
-  #     expect(NewImageSendEmail).to have_queue_size_of(1)
-  #     expect(NewImageSendEmail).to have_queued(1).in(:new_image_email)
-  #   end
-  # end
-  # context '#extended create with resque' do
-  #   let(:category) { create :category }
-  #   let(:image_params) { FactoryBot.attributes_for(:image).stringify_keys.merge(category_id: category.id) }
-  #   before do
-  #     sign_in user
-  #     ResqueSpec.reset!
-  #   end
-  #   it 'adds an entry to the WelcomeSendEmail queue' do
-  #     post :extended_create, params: { image: image_params, id: 1 }
-  #     expect(NewImageSendEmail).to have_queue_size_of(1)
-  #     expect(NewImageSendEmail).to have_queued(1).in(:new_image_email)
-  #   end
-  # end
 end

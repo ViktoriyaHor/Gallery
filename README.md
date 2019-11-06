@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The site has been developed with Ruby On Rails, HTML5, HAML templates, CSS3, JS, Ajax, Bootstrap, SQL. 
 
-Things you may want to cover:
+The user has access to his/her profile, is able to upload his photos, create/edit/delete categories and able to read/create comment images with ability to switch language. There is a functionality to like photos, subscribe to categories. 
 
-* Ruby version
+The administrator is able to create, edit and delete all app resources. He also can see actions of the users in the admin panel.The administrator also has the ability to parse images from other sites.
 
-* System dependencies
+Recaptcha and omniauth are integrated into the application.
 
-* Configuration
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

@@ -70,3 +70,6 @@ gem 'resque-web', require: 'resque_web'
 gem "nokogiri", ">= 1.10.4"
 gem 'font_awesome5_rails'
 gem 'file_validators'
+
+
+gem 'jquery-validation-rails'

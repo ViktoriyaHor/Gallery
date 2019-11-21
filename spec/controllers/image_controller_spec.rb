@@ -24,7 +24,7 @@ RSpec.describe ImagesController, type: :controller do
       expect { put :destroy }.to raise_error(ActionController::UrlGenerationError)
     end
     context '#index' do
-      subject! { get :index }
+      subject! { get :index   }
       let(:image_with_likes) { create :image_with_like, likes_count: 5, category: category }
       it 'returns a successful response to GET' do
         expect(response).to have_http_status(200)

@@ -60,7 +60,7 @@ gem 'devise-i18n'
 gem "bootstrap_form", ">= 4.0.0.alpha1"
 gem 'devise-bootstrap-views'
 gem 'activeadmin'
-gem 'omniauth', '~> 1.6'
+gem 'omniauth', '~> 1.9'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'kaminari'
